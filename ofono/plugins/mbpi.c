@@ -252,6 +252,10 @@ static void usage_start(GMarkupParseContext *context,
 		apn->proto = mbpi_default_ims_proto;
 	} else if (strcmp(text, "wap") == 0)
 		apn->type = OFONO_GPRS_CONTEXT_TYPE_WAP;
+	else if (strcmp(text, "mms-internet-hipri-fota") == 0)
+		apn->type = OFONO_GPRS_CONTEXT_TYPE_INTERNET;
+	else if (strcmp(text, "mms-internet-hipri") == 0)
+		apn->type = OFONO_GPRS_CONTEXT_TYPE_INTERNET;
 	else
 		mbpi_g_set_error(context, error, G_MARKUP_ERROR,
 					G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE,
