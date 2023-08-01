@@ -35,12 +35,12 @@
 #include <ofono/voicecall.h>
 #include "vendor.h"
 
+#include <drivers/atmodem/atutil.h>
+
 #include "gatchat.h"
 #include "gatresult.h"
 
 #include "common.h"
-
-#include "atmodem.h"
 
 /* Amount of ms we wait between CLCC calls */
 #define POLL_CLCC_INTERVAL 500
@@ -1161,7 +1161,6 @@ static void at_voicecall_remove(struct ofono_voicecall *vc)
 }
 
 static const struct ofono_voicecall_driver driver = {
-	.name			= "atmodem",
 	.probe			= at_voicecall_probe,
 	.remove			= at_voicecall_remove,
 	.dial			= at_dial,
@@ -1180,12 +1179,4 @@ static const struct ofono_voicecall_driver driver = {
 	.send_tones		= at_send_dtmf
 };
 
-void at_voicecall_init(void)
-{
-	ofono_voicecall_driver_register(&driver);
-}
-
-void at_voicecall_exit(void)
-{
-	ofono_voicecall_driver_unregister(&driver);
-}
+OFONO_ATOM_DRIVER_BUILTIN(voicecall, atmodem, &driver)
