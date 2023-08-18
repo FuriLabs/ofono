@@ -102,8 +102,6 @@ struct ims_call {
 #define SETTINGS_GROUP "Settings"
 #define REGISTRATION_KEY REGISTRATION_PROP
 
-static GSList *g_drivers = NULL;
-
 static const char *reg_strategy_name[] = { "disabled", "enabled", "auto" };
 
 static gboolean ims_registration_recheck_cb(gpointer user_data);
@@ -624,7 +622,7 @@ static const GDBusSignalTable ims_signals[] = {
 	{ }
 };
 
-static void ims_atom_remove(struct ofono_atom *atom)
+static void ims_remove(struct ofono_atom *atom)
 {
 	struct ofono_ims *ims = __ofono_atom_get_data(atom);
 
@@ -658,65 +656,10 @@ static void ims_atom_remove(struct ofono_atom *atom)
 	g_free(ims);
 }
 
-struct ofono_ims *ofono_ims_create(struct ofono_modem *modem,
-					const char *driver, void *data)
-{
-	struct ofono_ims *ims;
-	GSList *l;
-
-	if (driver == NULL)
-		return NULL;
-
-	ims = g_try_new0(struct ofono_ims, 1);
-
-	if (ims == NULL)
-		return NULL;
-
-	ims->atom = __ofono_modem_add_atom(modem, OFONO_ATOM_TYPE_IMS,
-						ims_atom_remove, ims);
-
-	ims->reg_info = 0;
-	ims->ext_info = -1;
-	ims->reg_strategy = IMS_REG_DEFAULT;
-	ims->reg_check_pending = TRUE;
-	ims->q = __ofono_dbus_queue_new();
-
-	for (l = g_drivers; l; l = l->next) {
-		const struct ofono_ims_driver *drv = l->data;
-
-		if (g_strcmp0(drv->name, driver))
-			continue;
-
-		if (drv->probe(ims, data) < 0)
-			continue;
-
-		ims->driver = drv;
-		break;
-	}
-
-	DBG("IMS atom created");
-
-	return ims;
-}
-
-int ofono_ims_driver_register(const struct ofono_ims_driver *d)
-{
-	DBG("driver: %p, name: %s", d, d->name);
-
-	if (d->probe == NULL)
-		return -EINVAL;
-
-	g_drivers = g_slist_prepend(g_drivers, (void *) d);
-
-	return 0;
-}
-
-void ofono_ims_driver_unregister(const struct ofono_ims_driver *d)
-{
-	DBG("driver: %p, name: %s", d, d->name);
-
-	g_drivers = g_slist_remove(g_drivers, (void *) d);
-}
+OFONO_DEFINE_ATOM_CREATE(ims, OFONO_ATOM_TYPE_IMS, {
+	atom->reg_info = 0;
+	atom->ext_info = -1;
+})
 
 static void ims_atom_unregister(struct ofono_atom *atom)
 {
