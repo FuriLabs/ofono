@@ -30,8 +30,7 @@
 #include "qmi.h"
 #include "nas.h"
 #include "dms.h"
-
-#include "qmimodem.h"
+#include "util.h"
 
 struct settings_data {
 	struct qmi_service *nas;
@@ -286,7 +285,6 @@ static void qmi_radio_settings_remove(struct ofono_radio_settings *rs)
 }
 
 static const struct ofono_radio_settings_driver driver = {
-	.name		= "qmimodem",
 	.probe		= qmi_radio_settings_probe,
 	.remove		= qmi_radio_settings_remove,
 	.set_rat_mode	= qmi_set_rat_mode,
@@ -294,12 +292,4 @@ static const struct ofono_radio_settings_driver driver = {
 	.query_available_rats = qmi_query_available_rats,
 };
 
-void qmi_radio_settings_init(void)
-{
-	ofono_radio_settings_driver_register(&driver);
-}
-
-void qmi_radio_settings_exit(void)
-{
-	ofono_radio_settings_driver_unregister(&driver);
-}
+OFONO_ATOM_DRIVER_BUILTIN(radio_settings, qmimodem, &driver)

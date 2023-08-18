@@ -37,8 +37,7 @@
 #include <ofono/radio-settings.h>
 
 #include "gril.h"
-
-#include "rilmodem.h"
+#include "rilutil.h"
 
 /* Preferred network types */
 #define PREF_NET_TYPE_GSM_WCDMA 0
@@ -453,7 +452,6 @@ static void ril_radio_settings_remove(struct ofono_radio_settings *rs)
 }
 
 static const struct ofono_radio_settings_driver driver = {
-	.name			= RILMODEM,
 	.probe			= ril_radio_settings_probe,
 	.remove			= ril_radio_settings_remove,
 	.query_rat_mode		= ril_query_rat_mode,
@@ -464,12 +462,4 @@ static const struct ofono_radio_settings_driver driver = {
 	.query_available_rats	= ril_query_available_rats
 };
 
-void ril_radio_settings_init(void)
-{
-	ofono_radio_settings_driver_register(&driver);
-}
-
-void ril_radio_settings_exit(void)
-{
-	ofono_radio_settings_driver_unregister(&driver);
-}
+OFONO_ATOM_DRIVER_BUILTIN(radio_settings, rilmodem, &driver)
