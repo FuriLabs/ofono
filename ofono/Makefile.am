@@ -382,7 +382,8 @@ builtin_sources += drivers/atmodem/atutil.h \
 			drivers/gemaltomodem/voicecall.c \
 			drivers/gemaltomodem/gprs-context.c \
 			drivers/gemaltomodem/radio-settings.c \
-			drivers/gemaltomodem/netmon.c
+			drivers/gemaltomodem/netmon.c \
+			drivers/gemaltomodem/models.h
 
 builtin_sources += drivers/atmodem/atutil.h \
 			drivers/xmm7modem/radio-settings.c \
