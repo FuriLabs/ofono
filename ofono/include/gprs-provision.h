@@ -27,10 +27,12 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+
 #include "gprs-context.h"
 
 struct ofono_gprs_provision_data {
-	enum ofono_gprs_context_type type;
+	uint32_t type; /* Multiple types can be set in a bitmap */
 	enum ofono_gprs_proto proto;
 	char *provider_name;
 	ofono_bool_t provider_primary;
