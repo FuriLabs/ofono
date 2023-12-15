@@ -657,6 +657,7 @@ src_ofonod_SOURCES = $(builtin_sources) $(gatchat_sources) src/ofono.ver \
 			src/hfp.h src/siri.c src/watchlist.c \
 			src/netmon.c src/lte.c src/ims.c \
 			src/netmonagent.c src/netmonagent.h \
+			src/module.c \
 			src/slot-manager.c src/slot-manager-dbus.c \
 			src/cell-info.c src/cell-info-dbus.c \
 			src/cell-info-control.c \

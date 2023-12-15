@@ -1946,12 +1946,13 @@ static void sim_watch(struct ofono_atom *atom,
 							modem, NULL);
 }
 
-void __ofono_modemwatch_init(void)
+static int modemwatch_init(void)
 {
 	g_modemwatches = __ofono_watchlist_new(g_free);
+	return 0;
 }
 
-void __ofono_modemwatch_cleanup(void)
+static void modemwatch_cleanup(void)
 {
 	__ofono_watchlist_free(g_modemwatches);
 }
@@ -2373,3 +2374,4 @@ const char *ofono_devinfo_get_serial(struct ofono_devinfo *info)
 {
 	return info ? info->serial : NULL;
 }
+OFONO_MODULE(modemwatch, modemwatch_init, modemwatch_cleanup)
