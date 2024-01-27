@@ -33,7 +33,7 @@
 #  define STORAGEDIR DEFAULT_STORAGEDIR
 #endif
 
-int create_dirs(const char *filename, const mode_t mode);
+int create_dirs(const char *filename);
 
 ssize_t read_file(unsigned char *buffer, size_t len,
 			const char *path_fmt, ...)
