@@ -1891,6 +1891,8 @@ static struct {
 	{ "quectelqmi",	"qcserial",	"2c7c", "0121"	},
 	{ "quectelqmi",	"qmi_wwan",	"2c7c", "0125"	},
 	{ "quectelqmi",	"qcserial",	"2c7c", "0125"	},
+	{ "quectelqmi",	"qmi_wwan",	"2c7c", "0195"	},
+	{ "quectelqmi",	"qcserial",	"2c7c", "0195"	},
 	{ "quectelqmi",	"qmi_wwan",	"2c7c", "0296"	},
 	{ "quectelqmi",	"qcserial",	"2c7c", "0296"	},
 	{ "ublox",	"cdc_acm",	"1546", "1010"	},
