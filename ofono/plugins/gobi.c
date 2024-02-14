@@ -32,6 +32,7 @@
 #define OFONO_API_SUBJECT_TO_CHANGE
 #include <ofono/plugin.h>
 #include <ofono/modem.h>
+#include <ofono/call-settings.h>
 #include <ofono/devinfo.h>
 #include <ofono/netreg.h>
 #include <ofono/netmon.h>
@@ -642,8 +643,10 @@ static void gobi_post_online(struct ofono_modem *modem)
 		ofono_netmon_create(modem, 0, "qmimodem", data->device);
 	}
 
-	if (data->features & GOBI_VOICE)
+	if (data->features & GOBI_VOICE) {
 		ofono_ussd_create(modem, 0, "qmimodem", data->device);
+		ofono_call_settings_create(modem, 0, "qmimodem", data->device);
+	}
 }
 
 static struct ofono_modem_driver gobi_driver = {
