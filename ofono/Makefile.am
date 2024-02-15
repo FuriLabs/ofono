@@ -428,8 +428,6 @@ builtin_sources += plugins/droid.c
 builtin_modules += stemgr
 builtin_sources += plugins/stemgr.c
 
-builtin_modules += caif
-builtin_sources += plugins/caif.c
 endif
 
 builtin_modules += mnclength
