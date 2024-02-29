@@ -1150,7 +1150,7 @@ static DBusMessage *sms_send_message(DBusConnection *conn, DBusMessage *msg,
 	message = g_new0(struct sms_message_data, 1);
 	message->pending = dbus_message_ref(msg);
 
-	sms_address_from_string(&addr, to);
+	__sms_address_from_string(&addr, to);
 	__ofono_sms_filter_chain_send_text(sms->filter_chain, &addr, text,
 		sms_send_message_submit, sms_send_message_destroy, message);
 
@@ -1190,7 +1190,7 @@ static DBusMessage *sms_send_data_message(DBusConnection *conn,
 	message = g_new0(struct sms_message_data, 1);
 	message->pending = dbus_message_ref(msg);
 
-	sms_address_from_string(&addr, to);
+	__sms_address_from_string(&addr, to);
 	__ofono_sms_filter_chain_send_datagram(sms->filter_chain, &addr,
 					dstport, srcport, bytes, len, flags,
 					sms_send_data_message_submit,
