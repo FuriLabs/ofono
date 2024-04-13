@@ -1,10 +1,10 @@
 Source: ofono
 Section: admin
 Priority: optional
-Maintainer: TheKit <thekit@disroot.org>
+Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 XSBC-Original-Maintainer: Debian Telepathy maintainers <pkg-telepathy-maintainers@lists.alioth.debian.org>
-Uploaders: TheKit <thekit@disroot.org>
-Build-Depends: debhelper (>=10),
+Uploaders: Bardia Moshiri <fakeshell@bardia.tech>
+Build-Depends: debhelper-compat (= 13),
                libtool,
                libglib2.0-dev (>= 2.22),
                libdbus-glib-1-dev,
