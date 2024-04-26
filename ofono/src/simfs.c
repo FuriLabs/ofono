@@ -403,6 +403,12 @@ static void sim_fs_op_read_block_cb(const struct ofono_error *error,
 		return;
 	}
 
+	if (data == NULL) {
+		DBG("sim_fs_op_read_block_cb: sim driver executed callback with NULL as data");
+		sim_fs_op_error(fs);
+		return;
+	}
+
 	start_block = op->offset / 256;
 	end_block = op->num_bytes ? (op->offset + op->num_bytes - 1) / 256 :
 								start_block;
