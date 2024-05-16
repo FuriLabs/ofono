@@ -23,7 +23,7 @@ CONFIGURE_FLAGS := \
 	dh $@ --sourcedirectory=ofono
 
 override_dh_installsystemd:
-	dh_installsystemd -pofono --name=ofono ofono.service --no-start
+	dh_installsystemd -pofono --name=ofono ofono.service
 
 override_dh_auto_configure:
 	dh_auto_configure -- $(CONFIGURE_FLAGS)
