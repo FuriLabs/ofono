@@ -47,12 +47,6 @@ dbusconfdir = @DBUS_CONFDIR@
 
 dist_dbusconf_DATA = src/ofono.conf
 
-if SYSTEMD
-systemdunitdir = @SYSTEMD_UNITDIR@
-
-systemdunit_DATA = src/ofono.service
-endif
-
 confdir = $(sysconfdir)/ofono
 
 dist_conf_DATA =
@@ -1225,9 +1219,6 @@ dundee_dundee_LDADD = $(builtin_libadd) gdbus/libgdbus-internal.la \
 if DATAFILES
 dist_dbusconf_DATA += dundee/dundee.conf
 
-if SYSTEMD
-systemdunit_DATA += dundee/dundee.service
-endif
 endif
 
 if BLUEZ4
