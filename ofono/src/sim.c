@@ -3971,6 +3971,13 @@ static void open_channel_cb(const struct ofono_error *error, int session_id,
 	session->session_id = session_id;
 	session->state = SESSION_STATE_OPEN;
 end:
+
+	// jesus: watchers can be added or removed during the callback. that would mess
+	// with the iteration. so we're going to dupe the list, iterate over that, and then
+	// free it.
+
+	GSList *duped = g_slist_copy(iter);
+	iter = duped;
 	/*
 	 * Notify any watchers, after this point, all future watchers will be
 	 * immediately notified with the session ID.
@@ -3983,6 +3990,8 @@ end:
 
 		iter = g_slist_next(iter);
 	}
+
+	g_slist_free(duped);
 }
 
 unsigned int __ofono_sim_add_session_watch(
