@@ -2655,7 +2655,7 @@ void ofono_voicecall_disconnected(struct ofono_voicecall *vc, int id,
 	enum call_status prev_status;
 	const char *number;
 
-	DBG("Got disconnection event for id: %d, reason: %d", id, reason);
+	ofono_error("Got disconnection event for id: %d, reason: %d", id, reason);
 
 	__ofono_modem_callid_release(modem, id);
 

@@ -1,0 +1,3455 @@
+ofono (1.29+git8-5+git20241006142547.4d041c9.trixie.watcher.duplication) trixie; urgency=medium
+
+  * sim: ensure watchers can't mess with the list we're currently iterating over
+
+ -- Jesús Higueras <jesus@furilabs.com>  Sun, 06 Oct 2024 14:25:47 +0200
+
+ofono (1.29+git8-5) trixie; urgency=medium
+
+  [ Bardia Moshiri ]
+  * debian: remove no-start from systemd service
+  * drop systemd files from Makefile.am
+
+  [ Denis Kenzior ]
+  * smsutil: ensure the address length in bytes <= 10
+  * smsutil: Check cbs_dcs_decode return value
+  * simutil: Make sure set_length on the parent succeeds
+  * smsutil: Use a safer strlcpy
+
+ -- Bardia Moshiri <fakeshell@bardia.tech>  Fri, 31 May 2024 16:41:08 -0400
+
+ofono (1.29+git8-4) trixie; urgency=medium
+
+  * circleci: use furilabs-builld checkout step
+
+ -- Bardia Moshiri <fakeshell@bardia.tech>  Thu, 16 May 2024 15:09:06 -0400
+
+ofono (1.29+git8-3) trixie; urgency=medium
+
+  [ Denis Grigorev ]
+  * smsutil: Check that submit report fits in memory
+  * smsutil: Validate the length of the address field
+
+  [ Bardia Moshiri ]
+  * common: Allow APN with a dot in second character
+  * simfs: return if data is NULL during read block callback
+
+ -- Denis Grigorev <d.grigorev@omp.ru>  Mon, 29 Apr 2024 18:14:01 -0400
+
+ofono (1.29+git8-2) trixie; urgency=medium
+
+  [ Bardia Moshiri ]
+  * circleci: add configs
+  * drop jenkins file
+  * debian: modernize packaging for trixie
+
+  [ Tony Espy ]
+  * src: allow MessageCenter/Proxy for TYPE_INTERNET
+  * src: fix combined gprs-context property logic
+
+  [ Jussi Kangas ]
+  * src: allow MessageCenter/Proxy for TYPE_INTERNET and TYPE_MMS
+
+  [ José Pekkarinen ]
+  * src/gprs: also set up IP route for TYPE_INTERNET when there's an MMSC
+  * src/gprs: when reset 1 context, also update MMSC from provisioning data
+
+  [ TheKit ]
+  * mbpi: default to IPv4 during context provisioning
+
+  [ Marius Gripsgard ]
+  * gprs: Add Preferred property to contexts
+
+  [ Eugenio Paolantonio (g7) ]
+  * [skip ci] Replace Drone with CircleCI
+  * [skip ci] [ci] Use the checkout step provided by the droidian-buildd orb
+  * [skip ci] Move to Droidian rolling
+  * Merge tag 'upstream/1.29+git8' into feature/trixie/upgrade-1.29
+
+  [ Matti Lehtimäki ]
+  * [ofono] Add support for NR networks. JB#58763
+  * Merge pull request #40 from sailfishos/jb58763
+
+  [ Slava Monich ]
+  * [ril] Fix double-free. JB#55547
+  * Merge pull request #7 from monich/double-free
+  * [ofono] Replace built-in ril plugin with the external one. JB#55027
+  * [unit] Added back test-conf
+  * [unit] Fixed coverage script
+  * [ofono] Added debug trace
+  * [ofono] Fixed a problem with D-Bus signal not being emitted. JB#55575
+  * [unit] Test DefaultDataModemChanged signal. JB#55575
+  * Merge pull request #8 from monich/signals
+  * [ofono] Do not require non-critical packages. JB#55701
+  * Merge pull request #10 from monich/config
+  * [plugin] Disabled OFONO_API_SUBJECT_TO_CHANGE check in plugin.h
+  * Merge pull request #9 from PsychoGame/ofono-new
+  * Update upstream hash
+  * [ofono] Expose modem watch API to plugins. JB#54540
+  * Merge pull request #11 from monich/modemwatch
+  * [ofono] Bump libglibutil requirement
+  * [radio-settings] Removed unreachable code
+  * Merge pull request #12 from sailfishos/jb55010
+  * Merge pull request #14 from monich/jb55900
+  * [include] Defined enum ofono_call_mode. JB#55524
+  * [include] Define struct modem in types.h
+  * [include] Added ofono_slot_remove_all_handlers macro. JB#55524
+  * [plugins] Add generic phonebook plugin. JB#55524
+  * Merge pull request #15 from monich/phonebook
+  * [plugins] Add ofono_cell_info based NetMon driver. JB#56038
+  * Merge pull request #16 from monich/cellinfo-netmon
+  * [ofono] Fixed a few compilation warnings
+  * [unit] Avoid using g_key_file_save_to_file
+  * [packaging] Detect rpm version at build time. JB#55991
+  * Merge pull request #18 from sailfish-on-dontbeevil/branch-1.26
+  * [include] Updated enum ofono_gprs_auth_method. JB#42254
+  * [ofono] Handle OFONO_GPRS_AUTH_METHOD_ANY. JB#42254
+  * Updated upstream hash to point to 1.26
+  * include: Housekeeping
+  * Merge pull request #19 from sailfish-on-dontbeevil/branch-1.27
+  * Updated upstream hash to point to 1.27
+  * [ofono] Fixed re-evaluation of data slot after SIM change. JB#56789
+  * Merge pull request #21 from monich/imsi-change
+  * [unit] Added one more slot-manager test case
+  * [ofono] Housekeeping
+  * [voicecall] Added ofono_voicecall_is_emergency_number() API. JB#56657
+  * Merge pull request #20 from sailfish-on-dontbeevil/branch-1.28
+  * Updated upstream hash to point to 1.28
+  * Version 1.28
+  * [ofono] Add ofono_ussd_decode and ofono_ussd_decode_free API. JB#55524
+  * Merge pull request #22 from monich/ussd_decode
+  * [ims] Expose ext_info bits to the plugins. JB#57408
+  * Merge pull request #23 from monich/ims
+  * [ofono] Added API for querying IMEI from the modem. JB#56657
+  * Merge pull request #32 from LaakkonenJussi/allow_emerg_call_filter
+  * Merge pull request #27 from monich/imei
+  * [ofono] Add mechanism for extending ofono_sim_driver API
+  * Merge pull request #31 from monich/sim_api_ext
+  * Merge pull request #17 from LaakkonenJussi/jb56657
+  * Housekeeping
+  * [dbus-access] Added access control entry for SendDataMessage. JB#56657
+  * Merge pull request #24 from sailfish-on-dontbeevil/branch-1.29
+  * [sim] OFONO_SIM_DRIVER_API_VERSION 2. JB#54354
+  * Version 1.29
+  * [gprs] Fixed ofono_gprs_context memory leak. JB#54354
+  * [ims] D-Bus access control for org.ofono.IpMultimediaSystem. JB#57408
+  * [watch] Added reg_tech watch. JB#57999
+  * [ims] Extend org.ofono.IpMultimediaSystem D-Bus API. JB#57999
+  * Merge pull request #33 from monich/ims
+  * [ims] Tweak the treatment of the default Registration value
+  * [hfp_ag_bluez5] Remove event source after closing BT socket. JB#58727
+  * Merge pull request #36 from monich/jb58727
+  * Updated upstream hash to point to 1.29
+  * [cbs] Widen the range of allowed cell broadcast channels. JB#5761
+  * Merge pull request #37 from monich/cbs-topics-max
+  * [ofono] Allow merging mask conf values. JB#59210
+  * Merge pull request #38 from monich/conf-mask
+  * [voicecall] Fix use after free. JB#54354
+  * Merge pull request #41 from monich/uaf
+
+  [ Marcel Holtmann ]
+  * build: Remove setup of thread support
+  * Release 1.25
+  * mbim: Add the missing mbim-private.h header into packages
+  * mbimmodem: Fix endian issue with UTF16-LE to UTF16-CPU conversion
+  * mbimmodem: Fix conversion of strings into UTF16-LE on big endian
+  * mbimmodem: Convert back to using __builtin_bswap16 with proper indexing
+  * Release 1.26
+  * Release 1.27
+  * build: Use -fsigned-char and -fno-exceptions compiler options
+  * Release 1.28
+  * gitignore: unit/test-idmap binary
+  * Release 1.29
+
+  [ Richard Röjfors ]
+  * ublox: Do not leave vendor_family unset
+  * ublox: Correct the USBCONF reply prefix
+  * ublox: gprs-context: Fix router mode IP settings.
+
+  [ Antara Borwankar ]
+  * doc: Adding documetation for intel LTE coex
+  * xmm7modem: implemnetation of coexistence functionality
+  * xmm7modem: modified ofono.conf for coex agent
+  * ifxmodem: removing TAP/TUN support check for XMM vendor
+  * udevng: Detect multiple network interfaces for xmm7xxx
+  * xmm7modem: Change in xmm7mode plugin for multiple PDP
+  * gprs-context: adding get function for network interface
+  * gprs-context: Adding get function for inteface
+  * xmm7modem: data channel setup for xmm7modem
+  * doc: Added new properties to SimManager for DSSA
+  * sim: Added set function for CardSlotCount and ActiveCardSlot
+  * sim: handling of dual sim single active feature
+  * sim: added error handling in set slot callback
+  * xmm7modem: handling of dual sim single active feature
+  * xmm7modem: Changes in plugin for DSSA functionality
+
+  [ Denis Kenzior ]
+  * mbim: Remove useless debug
+  * udevng: Fix SIM900 detection
+  * AUTHORS: Mention Martin's contributions
+  * AUTHORS: Mention Julien's contributions
+  * AUTHORS: Mention Nandini's contributions
+  * phonesim: Fix memory leak
+  * xmm7modem: Fix memory leak in netmon
+  * AUTHORS: Mention Giacinto's contributions
+  * doc: Mark new properties experimental
+  * lte: Add additional sanity checks for username/password
+  * atmodem: Make sure to use none_prefix
+  * gemalto: Use GEMALTO vendor for netreg
+  * mbimmodem: Fix compilation on 32-bit
+  * xmm7xxx: Various style cleanups
+  * util: Use bool instead of gboolean
+  * unit: update to the new util api
+  * drivers: Update to the new util api
+  * unit: Fix memory leak
+  * stktest: Handle self-explanatory icons
+  * stktest: Fix immediate response test
+  * stkagent: Use bool instead of gboolean / ofono_bool_t
+  * stkutil: Convert away from glib datatypes
+  * rilmodem: Fix compiler error
+  * stkutil: Use standard types
+  * AUTHORS: Mention Khaled's contributions
+  * stkutil: Fix ofono_bool_t usage
+  * AUTHORS: Mention Pavel's contributions
+  * sim: Fix memory leaks introduced by sim pin caching
+  * gprs: Let gprs_context interface be settable once
+  * ifxmodem: Clean up the previous commit slightly
+  * sim: Emit PropertyChanged for ActiveCardSlot changes
+  * sim: Initialize card_slot_count and active_card_slot
+
+  [ Jonas Bonn ]
+  * drivers: constify vtables
+  * treewide: Remove superfluous use of _GNU_SOURCE
+  * mbim: remove unused modem data
+  * qmimodem: prevent use of unitialized variable
+  * stkutil: remove test for impossible condition
+  * modem: global data is pre-zeroed
+  * Fix whitespace weirdness
+  * atmodem: drop vendor type for Toby L2 model
+  * ublox: drop vendor type for Toby L2 model
+  * atmodem: Remove TOBY_L2 vendor
+  * ublox: make device selection more flexible
+  * ublox: create model data structures
+  * ublox: query device model
+  * ublox: add model flag HAVE_USBCONF
+  * ublox: query USBCONF for applicable devices
+  * udevng: ublox: Model string no longer used
+  * ublox: add device flags
+  * ublox: add TOBY L4 models
+  * udevng: detect ublox TOBY L4
+  * Separate ATE and AT+CMEE commands
+  * ublox: extend LTE driver
+  * ublox: pass model id to LTE plugin
+  * ublox: gprs-context: take model parameter
+  * ublox: pass model_id to gprs-context driver
+  * ublox: TOBY L4 supports only router mode
+  * ublox: gprs-context: query networking mode for TOBY L2
+  * ublox: do not set bridge mode for TOBY L2
+
+  [ Anirudh Gargi ]
+  * udev:fix seg fault in case of vid and pid is NULL
+  * atmodem: add EUTRAN tech for creg read status
+  * doc: Clarify LTE registration status documentation
+  * sms: allow sms send for EUTRAN sms only state
+  * gprs: fix seg fault in case of NULL callback
+  * xmm7xxx: enable sms and phonebook support
+  * sim: fix segfault in sim atom
+
+  [ Philippe De Swert ]
+  * common: Add new NB-IoT technologies
+
+  [ Christophe Ronco ]
+  * atmodem: Add gprs-context quirk for HUAWEI vendor
+  * huawei: use VENDOR_HUAWEI quirk on gprs context creation
+  * qmimodem: fix roaming status report
+  * qmi: support sim hotplug
+
+  [ Pičugins Arsenijs ]
+  * sim800: fix typo in model check code
+
+  [ Nicolas Serafini ]
+  * qmimodem: Notify when SIM is initialized
+
+  [ Pavel Machek ]
+  * test: Better help for delivery reports
+  * doc: Fix typo in location-reporting-api.txt
+  * udevng: Move debug print to more useful place
+  * rilmodem: fix compilation on gcc-6.3
+  * test: better help text for dial-number
+
+  [ Nandini Rebello ]
+  * doc: add support for 2 additional sms alphabets
+  * util: add bengali and gujrati sms alphabets
+  * test: Add test script to set sms alphabet
+  * sms: fix a missing entry in single shift table
+  * doc: add support for 8 additional sms alphabets
+  * util: adding 8 national sms alphabets
+  * sms: support 8 national lang in Alphabet property
+  * test: add support for new languages
+  * udevng: enhance udev detection for intel 7xxx modems
+  * xmm7xxx: Adding case for SIM PIN locked state
+  * test: Fix number of arguments check in change-pin
+  * sim: Sim PIN1 cache upon modem reset/crash
+  * modem: add support to clear cached pins.
+
+  [ Jussi Laakkonen ]
+  * [voicecall] Allow filtering for emergency calls. JB#56657
+  * [sms] Add support for sending SMS data messages. Fixes JB#56657
+  * [sms] Support setting endianess for SMS data messages. JB#56657
+
+  [ Khaled Romdhani ]
+  * gemalto: Move atoms to post_online
+
+  [ Pau Espin Pedrol ]
+  * qmi: Fix Secondary DNS overwriting Primary DNS
+
+  [ Clement Viel ]
+  * sim800: merge sim800 and sim900 documentation.
+  * sim800: add sim800 support
+
+  [ Giacinto Cifelli ]
+  * ublox: Add voicecall support
+  * doc: fix typo in doc/emergency-call-handling.txt
+  * atmodem: added vendor Gemalto
+  * gprs: Fix use of invalid operator for bitwise flags
+  * main: Remove call to g_thread_init
+  * tools: remove calls to g_thread_init
+  * mbim: fix calling mbim_sms_exit instead of _init
+  * atmodem/sms: Do not print an error message incorrectly
+  * gprs: make sure that the context is properly released
+  * lte: clarify failed registration message
+  * include: add ofono_lte_get_modem global function
+  * lte: add implementation for ofono_lte_get_modem
+  * atmodem: added Gemalto vendor to CBS CSCB logic
+  * atmodem: change vendor CINTERION to GEMALTO in sim
+  * gemalto: Use GEMALTO vendor instead of CINTERION
+  * atmodem: change vendor CINTERION in GEMALTO in sms
+  * gemalto: Use GEMALTO vendor for sms
+  * atmodem/sms: no mms support for Gemalto
+  * gatchat: support for auth NONE
+  * connman-api: added "none" auth_method
+  * gprs-context: added OFONO_GPRS_AUTH_METHOD_NONE
+  * file-provision: support for auth type of NONE
+  * include: move auth_method and proto enumerations
+  * common: Move proto and auth_method related helpers
+  * gemalto: Add Gemalto specific voicecall atom
+  * gemalto: added voice support
+  * doc: Add additional default attach parameters to LTE
+  * include: add proto and authentication parameters
+  * lte: protocol and authentication for default ctx
+  * atmodem: Add at_util_gprs_auth_method_to_auth_proto
+  * atmodem: Add at_util_get_cgdcont_command
+  * atmodem: added Gemalto vendor quirk for +CNMI
+  * include: add ofono_modem_set_powered_timeout_hint
+  * modem: Implement ofono_modem_set_timeout_hint
+  * atmodem: Add reference counting to cb_data
+  * atmodem: Add proto and authentication handling to lte
+  * doc/common-patterns.txt: initial version
+  * gemalto: Use Gemalto vendor for LTE atom
+  * atmodem: change vendor cinterion to gemalto
+  * atmodem: Change cinterion prefix to gemalto
+  * cinterion: use Gemalto vendor in netreg
+  * atmodem: remove vendor Cinterion
+
+  [ Antara ]
+  * netmon: Added netmon driver for xmm7modem
+  * netmon: Enabled netmon atom for xmm7modem plugin
+
+  [ Adam Pigg ]
+  * network: add support eutran sms only states
+
+  [ Jimmy Gysens ]
+  * gprs: clean context properly
+
+  [ Björn Bidar ]
+  * [packaging] BuildRequire systemd via pkgconfig. JB#55010
+
+  [ Jan Jasper de Kroon ]
+  * Merge branch 'sailfishos:master' into ofono-new
+  * Merge branch 'sailfishos:master' into ofono-new
+
+  [ Julien Tournier ]
+  * atmodem: Handle cinterion modems compliant with 27.005
+
+  [ Martin Hundebøll ]
+  * udevng: fix removal of serial devices
+  * atmodem: add Quectel M95 special case for PIN query
+
+ -- Bardia Moshiri <fakeshell@bardia.tech>  Sat, 13 Apr 2024 13:59:10 -0400
+
+ofono (1.24+git202109130000-1) bullseye; urgency=medium
+
+  [ r3vn ]
+  * Merge branch 'upstream' into feature/bullseye/20210913
+
+  [ Slava Monich ]
+  * Merge pull request #5 from sailfishos/jb55388
+  * Merge pull request #6 from PsychoGame/ofono-new
+  * Update upstream hash
+  * Housekeeping
+  * [ofono] Make more APIs available to external plugins. JB#55027
+  * Merge pull request #4 from monich/ril-split
+
+  [ Marcel Holtmann ]
+  * call-forwarding: Increase string buffer to avoid overflow
+  * gatchat: Use pragma to mask GFunc casting warning
+  * rilmodem: Use pragma to mask restrict buffer warnings
+  * gatchat: Use pragma to mask unknown pragma diagnostic options
+  * Release 1.24
+
+  [ Antara Borwankar ]
+  * atmodem: Support ETWS & CMAS on XMM series modems
+
+  [ Denis Kenzior ]
+  * include: Add missing vendor parameter to lte atom
+  * lte: update to the new API
+  * atmodem: Update to the new lte API
+  * qmimodem: Update to the new LTE API
+  * rilmodem: Update to the new LTE API
+  * ubloxmodem: Update to the new LTE API
+  * plugins: Update to the new LTE API
+  * AUTHORS: Mention Mariem's contributions
+  * AUTHORS: Mention Bassem's contributions
+  * qmi: Fix memory leak
+  * qmi: Fix memory leak
+  * qmi: Fix uninitialized value use
+  * unit: Fix gcc warning
+  * AUTHORS: Mention Bob's contributions
+  * AUTHORS: Mention Varun's contributions
+  * gemalto: Whitespace fixes
+  * AUTHORS: Mention Florent's contributions
+  * sim: Fix not updating sim pin state
+
+  [ Florent Beillonnet ]
+  * atmodem: Fix at_pin_send_puk userdata use
+
+  [ Varun Gargi ]
+  * udevng: remove vendor ID to make it generic for intel modem
+
+  [ James Prestwood ]
+  * plugins: fixed crash in udevng
+
+  [ Bob Ham ]
+  * plugins: Add support for SIM7100E by SIMCom
+  * atmodem: Don't set AT+COLP=1 on SIMCom modems
+  * sim7100: Specify vendor ID while creating voicecall driver
+
+  [ Mark van der Putten ]
+  * gemalto: signal sim initialized
+
+  [ Christophe Ronco ]
+  * qmi: use right slot and application during SIM detection
+  * qmi: report failure or retry in case of invalid pin type
+  * qmi: report SIM not inserted when unable to get PIN type
+
+  [ Jonas Bonn ]
+  * atmodem: enlarge command buffer
+  * qmi: remove unused fields of service_send_data
+  * qmi: remove headroom parameter from req_alloc
+  * qmi: unify common request header setup
+  * qmi: request_alloc has no meaningful failure path
+  * qmi: drop header output parameter from request_alloc
+  * qmi: assume version_list is up to date
+  * qmi: make version_list private
+  * gobi: Update to the new version_list changes
+  * qmi: make services always shared
+
+  [ Bassem Boubaker ]
+  * cdma-netreg: Fix emission of PropertyChanged
+  * gemalto: Add more details in setup_gemalto comment
+  * gemalto: Clarify supported modem family name
+
+  [ Mariem Cherif ]
+  * gemalto: acquire the network technology
+  * gemalto: handle sim is inserted or removed URCs
+
+  [ Gabriel Lucas ]
+  * gemalto: add detection of ALS3 modem
+  * gemalto: support ALS3 in gemalto's plugin
+
+  [ Matti Lehtimäki ]
+  * [ril] Remove incorrect hardcoded tech value. JB#55388
+
+  [ Juho Hämäläinen ]
+  * [bluetooth] Be less pedantic about ordering of speech codecs. Fixes JB#55276
+  * Merge pull request #3 from jusa/jb55276
+
+  [ Frajo ]
+  * Merge pull request #2 from krnlyng/jb55233
+
+  [ Frajo Haider ]
+  * [packaging] Use transfiletriggerin to restart ofono when a plugin is installed. JB#55233
+
+ -- r3vn <giuseppe.corti@protonmail.com>  Tue, 14 Sep 2021 00:26:51 +0200
+
+ofono (1.23+git202107300000-1) bullseye; urgency=medium
+
+  [ r3vn ]
+  * Merge remote-tracking branch 'sfos/master' into 20210811
+
+  [ Slava Monich ]
+  * Merge branch 'jb50608-ondemand' into 'master'
+  * [ofono] Fixed signal emission, reworked D-Bus client list. JB#50816
+  * [ofono] Resolved a few issues with cell info notifications. JB#50816
+  * Merge branch 'dbus-clients-fixes' into 'master'
+  * [ofono] Set destination for Unsubscribed signal. JB#50816
+  * [simfs] Fix SIM I/O mess. JB#54380
+  * Merge pull request #1 from monich/start_block
+
+ -- r3vn <giuseppe.corti@protonmail.com>  Wed, 11 Aug 2021 15:56:03 +0200
+
+ofono (1.23+git202106040000-1) bullseye; urgency=medium
+
+  [ r3vn ]
+  * Merge branch 'origin/upstream' into feature/bullseye/20210604
+
+  [ Slava Monich ]
+  * Merge branch 'omp-jb53535' into 'master'
+  * Merge branch 'jb53576' into 'master'
+  * [ril] Documented umtsNetworkMode parameter
+  * [ril] Tweaked network state polling logic
+  * [ril] Cancel RIL_REQUEST_ALLOW_DATA when SIM is removed
+  * [ril] Do not submit RIL_REQUEST_ALLOW_DATA if it's disabled
+  * Merge branch 'misc' into 'master'
+  * [ril] Keep track of P-CSCF address. JB#48905
+  * Merge branch 'pcscf' into 'master'
+  * [sim-auth] Remove watch if open_channel fails
+  * [sim-auth] Only close open sessions
+  * Merge branch 'omp-jb54420' into 'master'
+  * [ril] Append ROOTMF path by default
+  * [sim-auth] Fill unused part of AID with FFs
+  * [sim-auth] Parse auth response according to TS 31.102
+  * [sim-auth] Support short AIDs. JB#54048
+  * [ril] Implement org.ofono.SimAuthentication interface. JB#54048
+  * Merge branch 'auth' into 'master'
+  * [sim] Fixed AID comparison. JB#54048
+  * [ofono] Expose P-CSCF address(es) via D-Bus. JB#48905
+  * [ril] Provide P-CSCF address to the core. JB#48905
+  * [ril] Don't limit MTU for non-MMS contexts
+  * Merge branch 'mtu' into 'master'
+  * Merge branch 'pcscf' into 'master'
+
+  [ Denis Grigorev ]
+  * [ofono] Sumbit a pending request from the DBus queue. JB#53576
+  * [unit] Fix the test for __ofono_dbus_queue_reply_all_error. JB#53576
+  * [ril] Cell info updates can be disabled. JB#50608
+  * [ril] Enable cell info updates only when requested. JB#50608
+  * [ril] Cell info consumer can unsubscribe from updates. JB#50608
+  * [ril] Make cell info updates unicast. JB#50608
+
+  [ Bogdan Migunov ]
+  * [ril] Get rid of unwanted retries on manual network connection. Fixes JB#53535
+  * [ril] Use ofono_sim_read_path() in case of reading EFpbr from USIM. Fixes JB#54420
+
+  [ Denis Kenzior ]
+  * simutil: Fix EF structure bit processing
+
+  [ Eugenio Paolantonio (g7) ]
+  * [ci] Updated to match new name [CI SKIP]
+
+ -- r3vn <giuseppe.corti@protonmail.com>  Mon, 07 Jun 2021 09:36:25 +0200
+
+ofono (1.23+git202011190000) bullseye; urgency=medium
+
+  [ r3vn ]
+  * Merge branch 'upstream' into feature/bullseye/20201119
+  * [ci] Moved to Drone CI
+
+  [ Slava Monich ]
+  * [hfp_ag_bluez5] Register HandsfreeAudioManager straight away at startup. JB#52107
+  * [hfp_hf_bluez5] Removed __ofono_handsfree_audio_manager_ calls
+  * [ril] Took out erroneous assert
+  * [ofono] Request D-Bus name after initializing all plugins. JB#52107
+  * Merge branch 'hfp' into 'master'
+
+  [ Juho Hamalainen ]
+  * Merge branch 'jb48911' into 'master'
+
+  [ Juho Hämäläinen ]
+  * [hfp_ag_bluez5] Don't try to connect if bluetooth service is not available. JB#48911
+
+ -- r3vn <giuseppe.corti@protonmail.com>  Sat, 09 Jan 2021 15:34:13 +0100
+
+ofono (1.23+git202009150000) bullseye; urgency=medium
+
+  [ r3vn ]
+  * build with travis-ci
+  * Merge remote-tracking branch 'origin/upstream' into feature/bullseye/update
+
+  [ NeKit ]
+  * [ril] Respond to INCOMING_CALL_INDICATION with SET_CALL_INDICATION. Fixes JB#40950
+  * debian: import packaging from UBPorts
+  * issue SET_DATA_PROFILE after SET_INITIAL_ATTACH_APN
+  * debian: Gemian packaging changes
+  * debian: do not exclude Sailfish RIL plugin in ofono.service
+
+  [ Slava Monich ]
+  * Fixed memory leak in provision_get_settings
+  * mbpi: Provision mmsc and message_proxy
+  * Fixed memory leak in provision_get_settings
+  * include: Be more const-correct in ofono_dbus_*
+  * mbpi: Pop subparser stack after mmsc and mmsproxy
+  * Ensure that AP list has one INTERNET and one MMS access point
+  * [gprs] Create and provision MMS context if it doesn't exist
+  * Push forwarder plugin
+  * Create /etc/ofono/push_forwarder.d directory
+  * [push-forwarder] Split WSP payload
+  * include: Be more const-correct in ofono_dbus_*
+  * mbpi: Pop subparser stack after mmsc and mmsproxy
+  * [push-forwarder] Fixed push data length
+  * Merge pull request #199 from monich/push-length
+  * [gprs] Limit MMS interface MTU by 1280
+  * [rilmodem] Actually remove delayed register timer in ril_call_barring_remove
+  * [rilmodem] Remove delayed register timer in ril_oemraw_remove
+  * [provision] Fixed memory leak
+  * [mbpi] Parse gsm provider name
+  * [push-forwarder] Fixed sim/sms watch id mixup
+  * [rilmodem] Plugged a few memory leaks
+  * Merge pull request #217 from monich/simsms
+  * Merge pull request #218 from monich/leaks
+  * Fixed compilation warnings
+  * [ofono] Fixed a problem with multiple data calls
+  * [network] Added NetworkRegistration.OperatorsChanged signal
+  * Merge pull request #271 from monich/OperatorsChanged
+  * [gprs] Setup route for mmsc if there's no mms proxy
+  * [ofono] Added ProvisionContext method to ConnectionContext interface
+  * [rilmodem] Fixed memory leak in handle_sne()
+  * [modem] Don't unnecessarily emit "Features" PropertyChanged signal
+  * [sms] Don't drop SMS datagrams with unknown ports. Fixes MER#1137
+  * Merge pull request #294 from monich/mer1137
+  * [ofono] Added org.ofono.DebugLog interface. MER#531
+  * Merge pull request #298 from monich/debuglog
+  * [rilmodem] If error or request code is unknown, print the number
+  * [rilmodem] Simplified RIL initialization code
+  * Merge pull request #301 from monich/uicc_subscription
+  * [spec] Fixed configure option. MER#531
+  * [ofono] Updated nettime plugin to support more than one modem. MER#1110
+  * Merge pull request #302 from monich/nettime
+  * [ofono] Allow to specify a function to be called when debug flags change
+  * Merge branch 'log' into 'master'
+  * [ofono] Added ofono_gprs_get_roaming_allowed() function
+  * [ril] New RIL plugin supporting multiple modems. Fixes MER#1110
+  * Merge branch 'multisim' into 'master'
+  * [ril] Elimitated dependency on mce-headers. MER#1110
+  * [ril] Always fire ModemRemoved first then ModemAdded. Contributes to MER#1110
+  * [ril] Don't rely on DATA_CALL_LIST_CHANGED too much. Fixes JB#32969
+  * Merge branch 'addremove' into 'master'
+  * Merge branch 'jb32969' into 'master'
+  * [provision] Fixed memory leak. Contributes to MER#1394
+  * [provision] Fixed memory leak. Contributes to MER#1394
+  * [ril] Fixed conversion of RIL to ofono registration status
+  * [ril] Eliminated unnecessary debug print
+  * [ril] Append +0 to MCCMNC in network selection request. Fixes JB#33299
+  * Merge branch 'mer1394' into 'master'
+  * Merge branch 'jb33299' into 'master'
+  * [ril] Add GetPresentSims to ModemManager interface. Contributes to JB#33265
+  * [ril] Fixed double free on self-deactivation of GPRS context. Fixes JB#33441
+  * Merge branch 'jb33265' into 'master'
+  * Merge branch 'jb33441' into 'master'
+  * [ofono] modem: Destroy modem->properties in ofono_modem_remove()
+  * [ril] Fixed memory leak on ofono_modem_register() failure
+  * [ril] Added GetIMEI method to ModemManager. Contributes to JB#33484
+  * Merge branch 'imei' into 'master'
+  * [ofono] sms: Queue GetProperties requests while waiting for sca_query. Fixes JB#33531
+  * Merge branch 'jb33531' into 'master'
+  * [ril] Provide PrefixLength for IPv6 address. Contributes to JB#31859
+  * Merge branch 'PrefixLength' into 'master'
+  * [ofono] radio-settings: Queue GetProperties requests
+  * [ril] radio_settings: Implemented query_available_rats, removed obsolete code
+  * Merge branch 'radio-settings' into 'master'
+  * [ril] Reset data modem pointer after default data SIM is gone
+  * [ril] Sync constants with the latest Android ril.h
+  * [ril] Indicate SIM card presence in appropriate radio state. Contributes to JB#33805
+  * [ril] Let gprs driver control "allow data" setting
+  * [ril] Use libgrilio built-in retry mechanism
+  * [ril] Allow to control libgrilio logging with ofono -d option
+  * Merge branch 'sim_card' into 'master'
+  * [ril] Use different SET_UICC_SUBSCRIPTION codes for different RIL versions. Fixes MER#1446
+  * [ril] Updated sample ril_subscription.conf
+  * Merge branch 'uicc_sub' into 'master'
+  * Merge branch 'ril_subscription' into 'master'
+  * [systemd] Add $OFONO_DEBUG to the service command line
+  * [ril] Only query the initial network state only if radio is on
+  * [ril] Fixed GET_SIM_STATUS retry
+  * [ril] Poke enabled modems with RADIO_POWER request after any modem gets powered off. Fixes JB#33830
+  * Merge branch 'lastcause' into 'master'
+  * Merge branch 'reg_state' into 'master'
+  * Housekeeping
+  * [ril] Set gprs cid range when registering gprs driver. Fixes JB#33861
+  * [ril] Return cached IMEI values from query_serial
+  * Merge branch 'imei' into 'master'
+  * [ril] Allow 3 values for registration state response
+  * [ril] Provide reasonable default for max_calls
+  * Merge branch 'voicereg' into 'master'
+  * [ril] Fix eternal loop with roaming sim. Fixes JB#33872
+  * [ril] Tweaking mobile data management
+  * Merge branch 'jb33872' into 'master'
+  * [ofono] Update to upstream 1.17
+  * Merge tag '63f6a75a61e7e07cc773929acb4c13acaf8a4b00' into merge-1.17
+  * Merge branch 'merge-1.17' into 'master'
+  * [ril] Removed redundant declaration of enum operator_status
+  * [gprs] Remove redundant ofono_gprs_get_modem declarations
+  * [ril] Set correct status for the current operator. Fixes JB#33922
+  * Merge branch 'post-1.17-picks' into 'master'
+  * [gprs] Removed unnecessary debug trace
+  * [ril] Reduced the amount of debug trace produced by ril_radio.c
+  * [ofono] sim: Add ServiceProviderName property to SimManager
+  * Merge branch 'EFspn' into 'master'
+  * [ril] Moved context setup and deactivation to ril_data. Contributes to JB#33358
+  * [ril] Add Get/SetMmsSim functionality. Contributes to #28417
+  * Merge branch 'mmssim' into 'master'
+  * Housekeeping
+  * [ril] Remove Enable4GChanged signal from the introspection data
+  * Merge branch 'enable4G' into 'master'
+  * [ril] Housekeeping
+  * [ril] Fixed assert in dbus library. Contributes to JB#28417
+  * [ril] Fixed possible crash on exit
+  * [rilmodem] Fixed compilation of the old rilmodem code
+  * [ofono] watch: Ensure that watch id is non-zero
+  * [ofono] sim: Add iccid and imsi watches
+  * [ril] Added org.nemomobile.ofono.SimInfo interface. Contributes to JB#34053
+  * Merge branch 'siminfo' into 'master'
+  * [ril] MTU watcher. Fixes JB#33639
+  * [ofono] gprs: Took MTU management out of the ofono core
+  * Merge branch 'mtu' into 'master'
+  * [ril] Housekeeping
+  * [ril] sim_info: Slightly more generic handling of ofono watchlists
+  * Merge branch 'sim_info' into 'master'
+  * [ril] Fixed crash on unexpected DATA_CALL_LIST payload
+  * [ofono] network: Allow multiple Scan and (auto) Register requests.
+  * Merge branch 'null' into 'master'
+  * [ril] Replaced assert with a comment
+  * [ril] Removed org.nemomobile.ofono.SimSettings D-Bus interface. Contributes to JB#34189
+  * Merge branch 'scan' into 'master'
+  * Merge branch 'nosimsettings' into 'master'
+  * [ril] Don't power up the modem at startup. Fixes JB#34230
+  * Merge branch 'power' into 'master'
+  * [ril] Complete ussd send requests immediately. Fixes JB#33891
+  * Merge branch 'ussd' into 'master'
+  * [ril] Try harder to pick the first SIM as the default. Contributes to JB#34203
+  * Merge branch 'defaults' into 'master'
+  * [ril] Replaced G_INLINE_FUNC with 'static inline'
+  * [ril] Removed incorrect asserts in ril_sim_info_handle_sim_state
+  * [ril] Added 'ready' flag to ModemManager interface. Contributes to JB#34203
+  * [ril] Fixed a memory leak in ril_sim_change_passwd
+  * [ril] Don't expect that SIM changes state after pin change. Fixes JB#34393
+  * Merge branch 'pin' into 'master'
+  * [ril] Clear cached callback pointer prior to invoking it.
+  * Merge branch 'ready' into 'master'
+  * [ril] Moved online flag from slot to ril_radio object
+  * [ofono] radio-settings: Made radio_access_mode_to/from_string public
+  * [ril] Let current data SIM in any slot use 3G/LTE. Fixes JB#33358
+  * Merge branch 'handover' into 'master'
+  * Merge branch 'call' into 'master'
+  * [ril] Ensure that all debug messages have the same syslog priority
+  * [ril] Fixed ril_trace in release build
+  * [ril] Don't wait for radio power on before indicating SIM presence. Fixes JB#34351
+  * Merge branch 'sim' into 'master'
+  * [rpm] Bumped libglibutil version requirement
+  * [ril] Don't set preferred network mode if SIM isn't ready. Fixes JB#34418
+  * Merge branch 'rat' into 'master'
+  * [ril] Set ready flag if there are no modems at all. Contributes to JB#34456
+  * Merge branch 'nomodems' into 'master'
+  * [ril] Load ecclist from a file. Contributes to JB#34084
+  * Merge branch 'ecclist' into 'master'
+  * [ril] Handle the case of data call list changing before disconnect completes
+  * Merge branch 'disconnect' into 'master'
+  * [ril] Don't force 3G/LTE for MMS data slot. Fixes JB#34350
+  * Merge branch 'mmsdata' into 'master'
+  * [ril] Housekeeping
+  * [ril] Refactored mce support
+  * Merge branch 'mce' into 'master'
+  * [ofono] sim: Pull in Canonical's simfs patches
+  * [ril] Canonical's RIL phonebook
+  * [ril] Removed unnecessary direct SIM I/O
+  * [ofono] phonebook: Block all Import requests while import is pending
+  * Merge branch 'import' into 'master'
+  * Merge branch 'phonebook' into 'master'
+  * [ril] Added cell info interfaces. Contributes to JB#34561
+  * Merge branch 'cellinfo' into 'master'
+  * [ril] Retry RIL_REQUEST_GET_CURRENT_CALLS
+  * [ril] Retry RIL_REQUEST_SIGNAL_STRENGTH
+  * [ril] Retry RIL_REQUEST_GET_IMSI. MER#1549
+  * [ril] Don't register modem until RIL_REQUEST_GET_IMEI completes. MER#1549
+  * [ril] Cache SPN when registered with the home network. Contributes to JB#34131
+  * [ril] Make sure that we don't complete dial request more than once. Fixes JB#34670
+  * Merge branch 'spn' into 'master'
+  * Merge branch 'wait' into 'master'
+  * Merge branch 'voicecall' into 'master'
+  * [ril] Unregister cells when removing CellInfo interface
+  * [ril] Reset the list of known cells when modem is powered off. Fixes JB#34745
+  * [ril] CellInfo D-Bus API optimization. Contributes to JB#34561
+  * [ril] Avoid double completion of data call deactivation requests. Fixes JB#34842
+  * Merge branch 'jb34842' into 'master'
+  * [mbpi] Housekeeping
+  * [ril] Simplify OemRaw D-Bus interface implementation
+  * Merge branch 'oemraw' into 'master'
+  * [ofono] mbpi: Make MBPI database file configurable at runtime
+  * [ofono] mbpi: Make default packet data protocol configurable. Contributes to JB#32750
+  * [ofono] Use IPV4V6 (dual) for internet context by default. Fixes JB#32750
+  * [ril] Prevent crash in ril_delayed_register. Fixes JB#34928
+  * Merge branch 'ipv4v6' into 'master'
+  * Merge branch 'jb34928' into 'master'
+  * [ofono] Silence "Interface xxx not found on the interface_list" messages
+  * [ril] Fixed IMEI query at startup. Fixes JB#34937
+  * Merge branch 'imei' into 'master'
+  * [ril] Retry RIL_REQUEST_SMS_ACKNOWLEDGE. Contributes to JB#34851
+  * Merge branch 'ackretry' into 'master'
+  * [ofono] Use the right data protocol for default context settings. Contributes to JB#32750
+  * Merge branch 'default-proto' into 'master'
+  * [ril] Fix crash on exit if data call setup is pending. Fixes JB#35249
+  * Merge branch 'jb35249' into 'master'
+  * [ril] Fix memory trashing after sending DTMF tone. Fixes JB#35384
+  * [ofono] Control ofono logging over D-Bus. Contributes to JB#34874
+  * Merge branch 'dtmf' into 'master'
+  * Merge branch 'debuglog' into 'master'
+  * [ril] Retry data call on PDP_FAIL_ERROR_UNSPECIFIED. Fixes JB#35406
+  * Merge branch 'jb35406' into 'master'
+  * [ofono] Deleted obsolete debuglog-api.txt
+  * [ril] Added allowDataReq ril_subscription.conf option. Fixes MER#1613
+  * [ril] Allow to specify default values in Settings section of ril_subscription.conf
+  * Merge branch 'allow-data' into 'master'
+  * Merge branch 'master' into 'master'
+  * [rpm] configs-mer doesn't need to require ofono
+  * [ril] Query available band modes at startup. Contributes to JB#35461
+  * [ril] Free phonebook state if export hasn't finished. Contributes to MER#1615
+  * sim: Query the status of SC facility lock
+  * [ril] Implement facility lock query. Fixes MER#1614
+  * [ril] Fixed another memory leak in RIL phonebook. Fixes to MER#1615
+  * Merge branch 'configs-mer' into 'master'
+  * Merge branch 'ril_phonebook' into 'master'
+  * Merge branch 'locked_pins' into 'master'
+  * [ril] Query number of retries left with empty pin. MER#1089
+  * Merge branch 'band-mode' into 'master'
+  * Merge branch 'pin_retries' into 'master'
+  * [ofono] call-forwarding: allow multiple pending GetProperties
+  * [ril] Cleaned up call forwarding code. JB#20921
+  * [ril] Implemented SIM write I/O support. Fixes MER#1199
+  * Merge branch 'sim_write' into 'master'
+  * [ril] Fixed default single-SIM config. Fixes JB#35840
+  * Merge branch 'jb35840' into 'master'
+  * Merge branch 'cf_get_prop' into 'master'
+  * [ril] Improved parsing of RIL_UNSOL_ON_USSD packets
+  * [ril] Don't fail USSD cancel requests from the core. Contributest to JB#36348
+  * Merge branch 'ussd' into 'master'
+  * Merge branch 'master' into 'master'
+  * [ril] Don't update SPN while slot is being enabled or disabled. Fixes JB#36420
+  * Merge branch 'cached_spn' into 'master'
+  * [ril] Added EmptyConfig configuration option. Fixes MER#1660
+  * Merge branch 'empty' into 'master'
+  * [ofono] Use libmce-glib to track the display state. JB#36523
+  * Merge branch 'libmce' into 'master'
+  * main: Make -d option repeatable
+  * [ril] Make sure that maximum number of simultaneous calls is not zero. Fixes MER#1672
+  * [ofono] Housekeeping
+  * Merge branch 'max_calls' into 'master'
+  * Merge branch 'housekeeping' into 'master'
+  * [ofono] Remove the old rilemodem
+  * [ofono] Remove merge artifact
+  * [ofono] Fixed compilation after 1.18 merge
+  * [update] Update to upstream 1.18. Fixes MER#1673
+  * [ril] Added support for org.ofono.NetworkMonitor interface
+  * netmon: Make sure we don't pass NULL message to g_dbus_send_message
+  * Fixed merge artifact that was breaking OBS build
+  * [ril] Query preferred network mode at startup
+  * [spec] Bumped version
+  * Merge branch 'prefmode' into 'master'
+  * Merge branch 'v1.18' into 'master'
+  * [ril] Assume RIL_Data_Call_Response_v11 for RIL version 10. Fixes MER#1679
+  * Merge branch 'v10' into 'master'
+  * [ril] Made data call format configurable. Contributes to MER#1679
+  * [ril] Housekeeping
+  * [ril] Check network mode after ril_data is created. Contributes to JB#36683
+  * Merge branch 'data_calls' into 'master'
+  * Merge branch 'rat' into 'master'
+  * [nettime] Handle NITZ information coming before MCC/MNC. Fixes MER#1680
+  * [ril] Preferred network mode, corner cases. Fixes JB#36683
+  * Merge branch 'prefmode' into 'master'
+  * Merge branch 'nitz' into 'master'
+  * [ril] Make sure data request completion callback is called on cancel. Contributes to JB#33640
+  * Merge branch 'cancel' into 'master'
+  * gprs: Check GPRS_FLAG_ATTACHED_UPDATE
+  * Merge branch 'gprs-picks' into 'master'
+  * Merge branch 'jb36957' into 'master'
+  * [ril] Reset imsi in ril_sim_settings to NULL when SIM is removed.
+  * [ril] Register ofono radio settings only when IMSI is available. Fixes MER#1708
+  * Merge branch 'radiosetting' into 'master'
+  * [ril] A few debug log changes
+  * [ofono] Retry data call more than once. Contributes to JB#35406
+  * Merge branch 'silent-retry' into 'master'
+  * [ril] Preferred network mode, more corner cases. Contributes to JB#36683
+  * [ril] Enable Cell Broadcast support. Fixes MER#1729
+  * Merge branch 'rat' into 'master'
+  * Merge branch 'cbs' into 'master'
+  * main: Make -d option repeatable
+  * include: Remove unused field from primary_context
+  * [ril] Removed old workaround breaking hot-swap. Fixes MER#1730
+  * [ofono] Update baseline to 1.19
+  * Merge branch 'v1.19' into 'master'
+  * [ril] Allow to retry GET_BROADCAST_SMS_CONFIG. MER#1729
+  * [ril] Count rild crashes. Contributes to JB#35780
+  * Merge branch 'modem-error' into 'master'
+  * [ofono] Don't allow to add or remove connection context over D-Bus. Fixes MER#1733
+  * [ofono] Disable PhoNet/ISI and QMI modem support. MER#1734
+  * Merge branch 'disable' into 'master'
+  * [ofono] Added ofono_voicecall_find_call API
+  * [ril] Don't use internal voicecall data structures
+  * Merge branch 'voicecall' into 'master'
+  * [ofono] Allow to conifigure custom hangup reasons. Fixes JB#37879
+  * Merge branch 'lastcause' into 'master'
+  * [ril] Handle fancy variant of LAST_CALL_FAIL_CAUSE response. Fixes JB#38079
+  * Merge branch 'last_fail' into 'master'
+  * [ril] Added "technologies" configuration option. Fixes JB#38295
+  * Merge branch 'tech' into 'master'
+  * [ril] Housekeeping
+  * [ril] Always refresh SIM status from query_passwd_state. Fixes JB#38257
+  * Merge branch 'puk' into 'master'
+  * [sim] Allow plugins to use puk2pin() function
+  * [ril] Query PUK retry count. JB#38257
+  * Merge branch 'retries' into 'master'
+  * [ril] Improved detection of permanently locked SIM cards. JB#38257
+  * Merge branch 'permlock' into 'master'
+  * [ril] Use DEVICE_IDENTITY request instead of GET_IMEI. Contributes to JB#38632
+  * [ril] Allow (some) DEVICE_IDENTITY requests to time out. Fixes JB#38632
+  * [simfs] Prevent a crash in sim_fs_notify_file_watches. Fixes JB#38656
+  * Merge branch 'file_watches' into 'master'
+  * Merge branch 'imei' into 'master'
+  * Merge branch 'jb38795' into 'master'
+  * [ril] Added assert in ril_sim_card_status_parse
+  * [ril] Don't auto-select the data sim on a multisim phone. JB#38719
+  * Merge branch 'default_data_sim' into 'master'
+  * radio-settings: Fix memory leaks in radio_load_settings
+  * [ril] Keep hangup D-Bus request pending until RIL hangup completes. JB#38105
+  * Merge branch 'hangup' into 'master'
+  * [ofono] Renamed Sailfish OS specific provision plugin to sailfish_provision. JB#38927
+  * [ofono] Renamed sailfishos configure option to sailfish-bt. JB#38927
+  * [ofono] Renamed jolla-rilmodem configure option into sailfish-rilmodem. JB#38927
+  * [ofono] debuglog plugin -> sailfish_debuglog. JB#38927
+  * [ofono] push-forwarder -> sailfish-pushforwarder. Fixes JB#38927
+  * Merge branch 'sailfish_plugins' into 'master'
+  * [rpm] Drop the .changes file
+  * [ril] Notify rild when we don't need mobile data. JB#38689
+  * [ril] Start using SET_RADIO_CAPABILITY. Fixes JB#38689
+  * [ril] Added SetRadioCapability config option. JB#38689
+  * Merge branch 'radio_caps' into 'master'
+  * [ofono] Expose IMEI SV via org.nemomobile.ofono.ModemManager. JB#38973
+  * Merge branch 'imeisv' into 'master'
+  * [ofono] Added ANY and NONE authentication methods. JB#38972
+  * [ril] Respect the authentication algorithm option. JB#38972
+  * [ofono] Allow to compile unit tests with coverage enabled
+  * [test] Improved provisioning test coverage
+  * [rpm] Require mobile-broadband-provider-info at runtime
+  * [ofono] Reset authentication method together with other context settings. JB#38972
+  * Merge branch 'auth_method' into 'master'
+  * [ril] Fixed voicecall problem introduced by commit 351ac1e9. JB#38105
+  * [ofono] Workaround for broken MMS proxy IP address. JB#38990
+  * Merge branch 'octal' into 'master'
+  * [ofono] Switch USSD state from USER_ACTION to IDLE. Fixes JB#38992
+  * Merge branch 'ussd' into 'master'
+  * [ril] Serialize requests at startup. JB#38998
+  * [ril] Block requests while UICC subscription is in progress. JB#38998
+  * [ril] Make RIL_REQUEST_RADIO_POWER blocking. JB#38998
+  * [ril] Poll data call state if DEACTIVATE_DATA_CALL request fails. JB#38998
+  * [ril] Made GSM_GET_BROADCAST_SMS_CONFIG blocking. JB#38998
+  * [ril] Made SET_SUPP_SVC_NOTIFICATION blocking. JB#38998
+  * [ril] Made PIN requests blocking. JB#38998
+  * [ril] If SET_UICC_SUBSCRIPTION times out, drop (rather than cancel) it. jb#38689
+  * [ril] Make radio capability switch more reliable. JB#38689
+  * [ril] Handle the case of one of the SIMs missing. JB#38689
+  * [ril] Notify the UI if the capability switch transaction fails. JB#38689
+  * [ril] Don't start radio caps switch until SIM I/O calms down. JB#38689
+  * Merge branch 'slow_down' into 'master'
+  * [pushforwarder] Housekeeping
+  * [ril] Changed the name of the common section in the error statistics file
+  * [ril] Housekeeping
+  * [ofono] network: Added ofono_netreg_get_name() function
+  * [ofono] Moved RIL-independent stuff out of Sailfish OS RIL driver. JB#39257
+  * Merge branch 'sailfish_manager' into 'master'
+  * sms: Pass const pointer to dispatch_app_datagram
+  * [ofono] Add test-sailfish_manager and test-sailfish_sim_info to the ignore list
+  * [ofono] Renamed __ofono_dbg -> ofono_dbg to allow binary plugins to use DBG macro
+  * [ril] Deserialize RIL I/O when SIM status becomes known. JB#39481
+  * [ril] Fixed a bug in ril_plugin_find_unused_slot. Fixes JB#39481
+  * Merge branch 'fix' into 'master'
+  * [ofono] mbpi: Add support for APN protocol in MBPI. Fixes #JB39520
+  * [ofono] Added tests for fetching APN protocol from MBPI. JB#39520
+  * Merge branch 'protocol' into 'master'
+  * [ofono] sailfish_manager: require manager_create callback
+  * smsutil: Prevent invalid access in cbs_decode_text
+  * unit: test-sms: Fix memory leaks in the unit test
+  * unit: Avoid use of uninitialised data in test-simutil
+  * [ril] Use REQUEST_SEND_SMS_EXPECT_MORE when appropriate
+  * Merge branch 'mms' into 'master'
+  * [ofono] Support for RIL_CellInfo_v12. Fixes JB#39220
+  * [ofono] Avoid pointless radio caps switches. Fixes JB#39589
+  * Merge branch 'cellinfo12' into 'master'
+  * Merge branch 'samecaps' into 'master'
+  * [ril] Fixed online state tracking. Fixes JB#39592
+  * Merge branch 'online' into 'master'
+  * [ril] Support for logging new packet types (RIL v13). JB#39228
+  * Merge branch 'ack' into 'master'
+  * [ofono] Move cell info API to the driver independent area. Fixes JB#39725
+  * [ofono] Added unit test for sailfish_cell_info
+  * Merge branch 'cellinfo' into 'master'
+  * [ofono] Set the ready flag if no drivers is registered with sailfish_manager. Fixes MER#1808
+  * [ofono] More unit tests for the ready flag
+  * [ril] Support for optional modems. Fixes MER#1783
+  * Merge branch 'optionalmodem' into 'master'
+  * Merge branch 'ready' into 'master'
+  * [ril] Use default start timeout for default configuration. Fixes JB#39840
+  * Merge branch 'default_timeout' into 'master'
+  * [build] Fixed configure check for libmce-glib
+  * [ofono] Added __ofono_plugin_foreach()
+  * [iofono] Allow to manage logs of binary plugins
+  * Merge branch 'debug' into 'master'
+  * [mbpi] Use PROVIDER_DATABASE from config.h as the default
+  * [ofono] Moved gutil_log_func initialization from ril_plugin_init()
+  * [ril] Fixed erroneous assert
+  * [ril] Don't mix slice and default allocators in ril_plugin.c
+  * include: Add ofono_modem_get_sim
+  * modem: Implement ofono_modem_get_sim
+  * atmodem: Fix use after free in sim_state_cb
+  * [ofono] Fixed setting/clearing debug flags for binary plugins
+  * [ofono] Allow older versions of plugins.
+  * [ofono] Support for SMS filter plugins. JB#37478
+  * Merge branch 'smsfilter' into 'master'
+  * [ril] Added ril_parse_int utility
+  * [test] Added test-ril_util
+  * [ril] Fix storage directory permissions at startup. Fixes JB#39961
+  * Merge branch 'perm' into 'master'
+  * [ril] First fix permissions on top-level directories. JB#39961
+  * [ril] Removed a few unused things
+  * [ofono] Generic queueing of D-Bus requests
+  * [ofono] network: Use ofono_dbus_queue for queuing D-Bus requests
+  * [ofono] radio-settings: Use ofono_dbus_queue for queuing D-Bus requests
+  * Merge branch 'dbus-queue' into 'master'
+  * [ril] Housekeeping
+  * Fixed -Wsign-compare warnings
+  * gatmux: Remove finalized watches from the list
+  * gatmux: Remove write watch source at shutdown
+  * atmodem: Query the list of supported <fac>s from the modem
+  * gatchat: Removed unused GAtPPP field
+  * sim: Move atom registration to the end of ofono_sim_register
+  * [ril] Fixed -Wsign-compare compilation warnings
+  * [ofono] Moved ofono_gprs_get_roaming_allowed declaration from gprs.h to ofono.h
+  * Sync whitespaces with upstream
+  * sim: Stop facility lock query sequence on removal
+  * Merge branch 'v1.20' into 'master'
+  * Bumped spec version to 1.20
+  * [ril] Added legacyImeiQuery configuration option. JB#39612
+  * Merge branch 'get_imei' into 'master'
+  * [ril] Don't retry REQUEST_DATA_CALL_LIST on RADIO_NOT_AVAILABLE
+  * [ril] Don't retry REQUEST_GET_CURRENT_CALLS on RADIO_NOT_AVAILABLE
+  * [ril] Fixed a few compilation warnings
+  * include: Add storage.h
+  * storage: Implement ofono_config_dir and ofono_storage_dir
+  * [ofono] Adapt Sailfish OS plugins to newly introduced <ofono/storage.h>
+  * [ofono] Add gdbus.h to the devel package. JB#37478
+  * Merge branch 'devel' into 'master'
+  * [sailfish_bt] Handle multiple EMULATOR_HFP atoms. Fixes JB#40530
+  * Merge branch 'sfos_bt_crash' into 'master'
+  * [ril] Housekeeping
+  * [ofono] sms-filter: Added api_version field. JB#37478
+  * [ril] Handle SIM reset. Fixes JB#40010
+  * Merge branch 'sms-filter-api-version' into 'master'
+  * sim: Don't submit parallel EFpl reads
+  * Merge branch 'refresh' into 'master'
+  * [ril] Make sure SIM_IO and QUERY_FACILITY_LOCK get completed
+  * Merge branch 'fac_timeout' into 'master'
+  * [ofono] Properly reset cached SIM info after removal. Fixes JB#39810
+  * Merge branch 'iccid_watch' into 'master'
+  * [test] Improve sailfish_manager.c test coverage
+  * [ril] Don't repeat cell info requests indefinitely. Fixes JB#40756
+  * Merge branch 'jb40756' into 'master'
+  * [ril] Validate dbus_bool_t
+  * [unit] Added test-sailfish_cell_info_dbus
+  * [ofono] gprs: Add __ofono_gprs_context_settings_by_type
+  * [ril] Support for vendor extensions. JB#39612
+  * unit: Improve idmap.c unit test coverage
+  * Merge branch 'vendor' into 'master'
+  * [ril] Don't require AID for SIM pin requests. Fixes JB#40837
+  * [ril] A few corner cases for cached SIM info
+  * [unit] Improved test coverage for sailfish_sim_info.c
+  * [unit] Added test-sailfish_sim_info_dbus
+  * Merge branch 'aid_pin' into 'master'
+  * Merge branch 'sim_info' into 'master'
+  * [unit] Improved ril_util.c test coverage
+  * [ofono] Upgrade baseline to 1.21. Fixes JB#40876
+  * Merge branch 'v1.21' into 'master'
+  * [ril] Updated netmon implementation
+  * [ril] INT_MAX -> SAILFISH_CELL_INVALID_VALUE where appropriate
+  * [ril] Use the right cid to signal context settings change. Fixes JB#40845
+  * Merge branch 'cid' into 'master'
+  * [rpm] Made dbus unit tests work with older versions of dbus (e.g. 1.6)
+  * [ofono] sailfish_watch should reset online flag when modem is removed
+  * [unit] Added test-sailfish_watch
+  * [ril] Poll registration state on PS_NETWORK_STATE_CHANGED. Fixes JB#40937
+  * Merge branch 'mtk_reg' into 'master'
+  * [ril] Make 4G work on MTK tablet. Fixes JB#40923
+  * Merge branch 'mtk_4g' into 'master'
+  * [mtk] Handle INCOMING_CALL_INDICATION event. JB#40950
+  * Merge branch 'mtk_call' into 'master'
+  * [ril] Make CBS support configurable. Fixes MER#1873
+  * Merge branch 'cbs' into 'master'
+  * [ril] Make sure that SET_UICC_SUBSCRIPTION is not repeated forever.
+  * [ril] Handle RIL_UNSOL_SIM_REFRESH
+  * [gprs] Disable special treatment of LTE
+  * [ril] A better way to reset the SIM state
+  * [ril] Give SIM card 10 seconds to activate USIM app. JB#41130
+  * Merge branch 'uicc_sub_stop' into 'master'
+  * [ril] Fix UICC subscription. JB#41130
+  * Merge branch 'uuid_sub' into 'master'
+  * phonebook: Fixed double deletion of merge_list
+  * [ril] Detect MTK variant based on events codes. JB#40397
+  * Merge branch 'mtk' into 'master'
+  * [ril] Explicitely include <glib-object.h> where it's needed. MER#1437
+  * [ril] Allow comments in int array config values
+  * [ril] Added ril_config_merge_files utility
+  * [ril] Unit test for ril_config.c
+  * [ril] Allow multiple RIL config files. Fixes JB#41276
+  * Merge branch 'config_merge' into 'master'
+  * dbus: Use dbus_validate_path
+  * voicecall: Use dbus_validate_path
+  * [ofono] Added support for gprs filter plugins. JB#41405
+  * [unit] Added test-gprs-filter
+  * Merge branch 'gprs-filter' into 'master'
+  * [ofono] Fixed a few corner cases in D-Bus queue
+  * [unit] Added test-dbus-queue. JB#38932
+  * [ril] Fixed parsing of data call list. Fixes JB#41474
+  * Merge branch 'jb41474' into 'master'
+  * [ril] Deduce signal strength from RSRP. Fixes JB#41497
+  * Merge branch 'jb41496' into 'master'
+  * Housekeeping
+  * [ofono] Return AccessDenied if filter disallows a data call. JB#41405
+  * [ril] Don't use QUERY_AVAILABLE_BAND_MODE with MTK RILs. Fixes JB#41506
+  * Merge branch 'query_available_band_mode' into 'master'
+  * [ril] Fix SET_INITIAL_ATTACH_APN crash on some MTK devices. Fixes JB#41587
+  * Merge branch 'initial_apn' into 'master'
+  * [ril] Make sure cancelled I/O doesn't remain marked as active. JB#41583
+  * [ril] Some events triggering caps switch, were missed. Fixes JB#41583
+  * Merge branch 'sim_caps_fix' into 'master'
+  * ussd: Don't ignore data from TERMINATED response
+  * Merge branch 'lte_mode' into 'master'
+  * [ril] Don't retry SET_PREFERRED_NETWORK_TYPE too often. JB#41570
+  * [ril] Destroying ril_radio_caps cancels its pending requests. JB#41570
+  * [ril] Made SET_PREFERRED_NETWORK_TYPE timeout configurable. JB#41570
+  * Merge branch 'mtk_caps' into 'master'
+  * [coverage] Remove *.gcda and *.gcno files on clean
+  * include: Add ofono_modem_get_gprs
+  * modem: Implement ofono_modem_get_gprs
+  * [ofono] Expose gprs_attached_update() to plugins. JB#41665
+  * [ofono] Added filter_check to ofono_gprs_filter. JB#41665
+  * Merge branch 'mdm_deactivate' into 'master'
+  * [ril] Don't wait for SIM state change after enabling/disabling pin. JB#41508
+  * Merge branch 'jb41508' into 'master'
+  * [ril] netreg: Housekeeping
+  * [ril] Handle NITZ string without DST part. Fixes JB#41890
+  * Merge branch 'nettime' into 'master'
+  * ussd: Cancel pending requests when unregistering
+  * [ril] Make sure that USSD cancel callback is invoked. JB#41925
+  * Merge branch 'jb41925' into 'master'
+  * [gprs-filter] Removed unnecessary forward declaration
+  * include: Add ofono_voicecall_get_modem
+  * voicecall: Implement ofono_voicecall_get_modem
+  * [ril] set_udub should be implemented as RIL_REQUEST_UDUB
+  * [ril] Implement hangup_active in voicecall driver
+  * [ofono] Added voicecall-filter. JB#41404
+  * [ofono] Hooked up voicecall-filter. JB#41404
+  * Merge branch 'voicecall-filter' into 'master'
+  * dbus: Make cme_errors_mapping static const
+  * [ofono] Housekeeping
+  * include: Add OFONO_ERROR_TYPE_ERRNO
+  * emulator: Handle OFONO_ERROR_TYPE_ERRNO in switch
+  * dbus: Add D-Bus mapping for OFONO_ERROR_TYPE_ERRNO
+  * [ofono] Return AccessDenied if voice call is blocked by the filter. JB#41404
+  * [ofono] Don't filter emergency calls. JB#41404
+  * Merge branch 'voicecall-filter2' into 'master'
+  * include: Add ofono_modem_get_voicecall
+  * modem: Implement ofono_modem_get_voicecall
+  * [ofono] Allow to filter existing calls. JB#41404
+  * Merge branch 'voicecall_filter3' into 'master'
+  * [ril] Fix broken QUERY_FACILITY_LOCK packets. Fixes JB#42428
+  * Merge branch 'fac_lock' into 'master'
+  * [ril] Added radioPowerCycle configration entry.
+  * [ril] Added confirmRadioPowerOn configration entry
+  * [ril] Do not submit unnecessary radio power requests
+  * [ril] Do not wait for radio power request to complete
+  * [ril] Housekeeping
+  * [ril] Pull phone number type from SUPP_SVC_NOTIFICATION event
+  * [ofono] Add interface for RIL transport plugins. JB#42359
+  * plugin: Don't unload external plugins too early
+  * Merge branch 'transport' into 'master'
+  * [ril] Improved cell info debug log. JB#42359
+  * Merge branch 'cell_info_dbg' into 'master'
+  * Merge branch 'mtk2_incoming_call_fix' into 'master'
+  * [ril] Respect state restrictions. JB#42752
+  * Merge branch 'restrict' into 'master'
+  * [ril] Don't take LTE caps away from the only SIM
+  * [ril] Disconnect stray data calls. JB#42752
+  * Merge branch 'stray_call' into 'master'
+  * Merge branch 'jb42297' into 'master'
+  * [ril] Added "singleDataContext" configuration option. JB#42837
+  * Merge branch 'context' into 'master'
+  * Merge branch 'hfp_ag' into 'master'
+  * [ril] Specify timeout for SETUP_DATA_CALL requests. JB#42820
+  * [ril] Retry registration requests. JB#42820
+  * [gprs] Make debug trace slightly more informative
+  * [ril] Never fail deactivate requests. JB#42820
+  * [netreg] Re-assert automatic operator selection at startup. JB#42820
+  * Merge branch 'roaming_issues' into 'master'
+  * [ofono] sailfish_watch -> ofono_watch. JB#44067
+  * Merge branch 'jb24119' into 'master'
+  * Merge branch 'ofono_watch' into 'master'
+  * [packaging] Require rpm >= 4.11
+  * Merge branch 'jb44709' into 'master'
+  * Merge branch 'jb38580' into 'master'
+  * [ril] Make UMTS network mode configurable. JB#44551
+  * Merge branch 'umts_network_mode' into 'master'
+  * [ril] Add "modem" entry to RIL transport parameters. JB#44551
+  * Merge branch 'modem_path' into 'master'
+  * Hosekeeping
+  * [ril] Take TD_SCDMA_SignalStrength into account. JB#44551
+  * Merge branch 'tdscdma_dbm' into 'master'
+  * [test] python => python3. Fixes JB#45222
+  * Merge branch 'python3' into 'master'
+  * [ofono] Fixed compilation warnings with gcc 4.9
+  * [ofono] Don't use __DATE and __TIME__ macros
+  * [ofono] Access control API. JB#44705
+  * [unit] Test for access control API. JB#44705
+  * [ofono] D-Bus access control plugin. JB#44705
+  * [unit] Test for D-Bus access control plugin. JB#44705
+  * [ofono] Access control for SimManager interface. JB#44705
+  * [ofono] Access control for Modem interface. JB#44705
+  * [ofono] Access control for RadioSettings interface. JB#44705
+  * [ril] Added networkSelectionManual0 config option. JB#42812
+  * Merge branch 'plus_0' into 'master'
+  * Merge branch 'access' into 'master'
+  * [ofono] Added ofono_gprs_context_settings_by_type() API. JB#44551
+  * Merge branch 'context_by_type' into 'master'
+  * [ofono] Added registration info to ofono_watch
+  * [ofono] Added gprs field to ofono_watch. JB#45342
+  * [ofono] Fixed crash on exit in __ofono_modem_remove_online_watch
+  * Merge branch 'watch' into 'master'
+  * [ril] Set initial attach APN for LTE. JB#45341
+  * [unit] Improved ril_util.c coverage
+  * [unit] Added ril_vendor test
+  * Merge branch 'initial_attach' into 'master'
+  * [build] Undefine _FORTIFY_SOURCE in debug build
+  * [ril] Made STK functionality configurable. JB#42589
+  * Merge branch 'stk_disable' into 'master'
+  * [ofono] Added __ofono_gprs_context_get_assigned_type(). JB#45344
+  * [ril] Use data profiles is needed. JB#45344
+  * [ofono] Report full IP settings for MMS context. MER#903
+  * Merge branch 'profiles' into 'master'
+  * Merge branch 'mms-settings' into 'master'
+  * [ril] Avoid GET/SET_PREFERRED_NETWORK_TYPE loop. JB#45343
+  * Merge branch 'get_set_pref_mode' into 'master'
+  * [ril] Pass enabled/disabled attribite to GRilIoChannel. JB#46324
+  * Merge branch 'enabled' into 'master'
+  * [ofono] Bumped libgrilio version requirement
+  * [ril] Send power off request at startup. JB#46294
+  * Merge branch 'power_off' into 'master'
+  * [ril] Hook up MO intermediate SSN (+CSSI). Fixes JB#46578
+  * Merge branch 'mo_ssn' into 'master'
+  * Merge branch 'fix_make' into 'master'
+  * [ril] Disable STK after SIM reset. JB#42589
+  * Merge branch 'sim_reset' into 'master'
+  * [ril] Defined more RIL command codes. JB#46836
+  * Housekeeping
+  * Merge branch 'master' into 'master'
+  * [ril] Improved device state management. JB#46836
+  * Merge branch 'device_state' into 'master'
+  * [ril] Never fail online requests. JB#46974
+  * Merge branch 'online' into 'master'
+  * include: Add storage.h
+  * sim-auth: Avoid using dbus_message_iter_get_element_count
+  * simfs: Add missing sim_fs_read_info_cb_t
+  * [dbus-queue] Added __ofono_dbus_queue_reply_all_error()
+  * [unit] Added tests for __ofono_dbus_queue_reply_all_error()
+  * Fix build
+  * [ril] Added missing ofono_sim_initialized_notify() call. JB#47380
+  * [voicecall] Moved new callback to the end of the driver structure
+  * [ofono] Updated baseline to 1.22. Fixes JB#47380
+  * [voicecall-filter] Fixed memory leaks
+  * Merge branch 'v1.22' into 'master'
+  * [rpm] Bump version to 1.22
+  * [simutil] Fix memory leak. JB#47380
+  * [unit] Fixed memory leak in test-sms
+  * [unit] Fixed memory leak in test-sms-root
+  * [unit] Fixed memory leak in test-simutil
+  * Merge branch 'fix_1.22' into 'master'
+  * [ril] Map RADIO_TECH_LTE_CA to ACCESS_TECHNOLOGY_EUTRAN
+  * [ril] Call ofono_sim_initialized_notify() before unlock. JB#47474
+  * Merge branch 'pin_recheck' into 'master'
+  * [ril] Fail PIN entry on receiving PASSWORD_INCORRECT. Fixes JB#47494
+  * Merge branch 't8_pin' into 'master'
+  * [ril] Report USSD errors to the core. JB#36701
+  * Merge branch 'jb36701' into 'master'
+  * [ril] Added ForceGsmForNonDataSlots configuration option. JB#47663
+  * Merge branch 'simfs-crash' into 'master'
+  * Merge branch 'force-gsm' into 'master'
+  * [ril] Added forceGsmWhenRadioOff config option. JB#47747
+  * Merge branch 'gsm_when_radio_off' into 'master'
+  * [ril] Added vendor-specific parsing of SIGNAL_STRENGTH messages. JB#47880
+  * Merge branch 'vendor_signal' into 'master'
+  * [ril] Hosekeeping
+  * [ril] Support MTK specific ril.ecclist syntax. JB#47953
+  * [unit] Added unit test for ril_ecclist. JB#47953
+  * Merge branch 'ecclist' into 'master'
+  * [packaging] Remove sailfish headers from the ofono-devel
+  * [ofono] Added __ofono_set_config_dir() function
+  * [ofono] ril_config_merge_files => config_merge_files
+  * [ofono] Added AutoSelectDataSim option. JB#48462
+  * [unit] Updated test-sailfish_manager. JB#48462
+  * Merge branch 'auto-select-data' into 'master'
+  * [ril] Added signalStrengthRange option. JB#46086
+  * Merge branch 'dbm' into 'master'
+  * Revert "[unit] Fixed memory leak in test-simutil"
+  * Merge branch 'v1.23' into 'master'
+  * [ofono] Updated baseline to 1.23. Fixes JB#48840
+  * [qmimodem] Move lte.c to the right place
+  * [ril] Workaround for data call status 55. JB#40162
+  * Merge branch 'error55' into 'master'
+  * [ofono] Ignore known deprecation warnings
+  * [ofono] Store one-time data SIM selection. JB#48462
+  * Merge branch 'once' into 'master'
+  * [ofono] Added support for provisioning IMS access points. JB#48905
+  * [ofono] Support for automatic creation of IMS context. JB#48905
+  * [ril] Allocate context for IMS. JB#48905
+  * Merge branch 'ims_ap' into 'master'
+  * [ofono] Access control for SIM Toolkit agent. Fixes JB#49163
+  * Merge branch 'jb49163' into 'master'
+  * Merge branch 'jb49175' into 'master'
+  * [ril] Added ril_config_get_mask. JB#49175
+  * [ril] Support combinations of device state tracking methods. JB#49175
+  * Merge branch 'jb49175' into 'master'
+  * Merge branch 'configurable-netsel-timeout' into 'master'
+  * Merge branch 'jb49322' into 'master'
+  * [ril] Fixed ref vs unref mixup.
+  * [ril] Take modem offline when ril_modem is deleted. JB#49471
+  * [ril] Tweaked power state confirmation logic. JB#49471
+  * [ril] Stop repeating requests on RADIO_NOT_AVAILABLE. JB#49471
+  * Merge branch 'modem_offline' into 'master'
+  * [ril] Register settings atom as soon as we have IMSI. Fixes JB#49714
+  * Merge branch 'jb49714' into 'master'
+  * Merge branch 'jb49798' into 'master'
+  * [ofono] Add OemRaw to D-Bus access control framework. JB#49309
+  * [unit] Added test for OemRaw access control. JB#49309
+  * [ril] Added access control for OemRaw interface. JB#49309
+  * [ril] Housekeeping
+  * Merge branch 'jb49955' into 'master'
+  * [ril] Workaround for bogus operator names in network scan. JB#49900
+  * [ril] Fixed parsing of NEW_BROADCAST_SMS packet. JB#5761
+  * Merge branch 'cbs' into 'master'
+  * Merge branch 'scan' into 'master'
+  * Merge branch 'oemraw-access' into 'master'
+  * [ril] Refactored radio caps code. JB#49391
+  * Merge branch 'recap' into 'master'
+  * [cbs] Allow the last CBS fragment to be truncated. JB#5761
+  * Merge branch 'cbs' into 'master'
+  * [ril] Tweaked CBS request retry logic. JB#5761
+  * [ril] Allow CBS PDU arrive from RIL as a plain blob. JB#5761
+  * Merge branch 'cbs_retry' into 'master'
+  * [aarch64] Print PLUGINDIR when compiling. JB#49681
+  * Merge branch 'jb50608' into 'master'
+  * Merge branch 'jb50995' into 'master'
+
+  [ Aleksei Berman ]
+  * [ril] Calculate signal strength based on rsrp value correctly. JB#50995.
+
+  [ Denis Grigorev ]
+  * [ril] Add a new device state management method. JB#49175
+  * [ril] Add networkSelectionTimeout config option. JB#49322
+  * [ril] Do not trigger automatic PLMN selection if not needed. JB#49322
+  * [ril] Fix RilCellInfo object leak. JB#49798
+  * [ril] Fix GRilIoTransportSocket object leak. JB#49798
+  * [ril] Provide SmsHistory interface for all modems. JB#49955
+  * [ril] Fix a memory leak in ril_plugin_shutdown_slot(). JB#49391
+  * [ril] Assert the network mode at startup. JB#49391
+  * [ril] Fix typo. JB#49391
+  * [ril] Select the best network for LTE. JB#49391
+  * [ril] Allow setting cell info update period to 0. JB#50608
+  * [ril] Add config options for cell info update interval. JB#50608
+
+  [ chriadam ]
+  * Merge branch 'jb50214' into 'master'
+
+  [ Chris Adams ]
+  * [ofono] Don't support '.' as a DTMF pause character. Contributes to JB#50214
+
+  [ Niels Breet ]
+  * [aarch64] Use macros for unitdir. Contributes to JB#49681
+  * Merge branch 'jb49681' into 'master'
+
+  [ Marcel Holtmann ]
+  * build: Build a simpler version of libgdbus-internal
+  * build: Use dummy=yes assignment for pkg-config check
+  * Release 1.13
+  * build: Remove unused dependency on USB library
+  * unit: Ignore errors about deprecated g_test_trap_fork
+  * Release 1.14
+  * gatchat: Fix handling of WRITE_SCHEDULER_DEBUG
+  * gatchat: Fix handling of WRITE_SCHEDULER_DEBUG
+  * Release 1.15
+  * handsfree-audio: Fix broken coding style in switch statement
+  * Release 1.16
+  * gatchat: Fix compiler warning with logical expression
+  * isiusb: Fix compiler warning with logical expression
+  * n900: Fix compiler warning with logical expression
+  * u8500: Fix compiler warning with logical expression
+  * Release 1.17
+  * Release 1.18
+  * Release 1.19
+  * Release 1.20
+  * atmodem: Fix missing break statement for ublox driver
+  * telitmodem: Fix GPRS activation command string buffer size
+  * ifxmodem: Fix GPRS activation command string buffer size
+  * gatchat: Reword the fall through cases to avoid compiler warnings
+  * stk: Add missing break statement for inkey duration
+  * voicecall: Reword fall through statement to avoid compiler warning
+  * phonebook: Add missing fall through statement
+  * u8500: Add missing fall through statement
+  * ublox: Add missing break statement
+  * ril_intel: Fix wrong pointer derference for power status
+  * build: Don't report format truncation as warnings
+  * Release 1.21
+  * Release 1.22
+  * Release 1.23
+
+  [ Jonas Bonn ]
+  * qmimodem: fix typo
+  * qmimodem: add WDA service string
+  * gobi: query presence of WDA service
+  * udevng: simplify logic in check_usb_device
+  * ofono.rules: remove 'change' action
+  * udev: remove extraneous subsystem check
+  * udev: get udev property via lib function
+  * udev: remove unused modem property
+  * udev: simplify add_modem
+  * udev: add common modem registration code
+  * udev: simplify ifx modem registration
+  * udev: simplify wavecom modem registration
+  * udev: remove extraneous subsystem check
+  * udevng: add serial device handling functions
+  * udevng: match on the hsi subsystem for legacy devices
+  * udevng: hook up legacy devices
+  * udevng: get properties from interface
+  * plugins: remove udev module
+  * udevng: remove 'option' driver setup
+  * qmi: add service ID's
+  * qmi: fix bad lookup and double free
+  * modem: set_online is valid for AlwaysOnline modems
+  * qmi: NAS definitions adjustment
+  * qmi: add WDS parameter definition
+  * qmi: retrieve GPRS context parameters
+  * qmi: implement read_settings for automatic contexts
+  * qmi: duplicate callback data correctly
+  * qmi: fix typo
+  * gprs: _cid_activated is an 'attaching' state
+  * gprs: set driver_attached when activating automatic contexts
+  * qmi: read_settings needs to call start network
+  * qmi: free cb_data on error
+  * qmi: implement detach_shutdown method
+  * qim: use named status value
+  * qmi: add missing header inclusion
+  * ofono: add missing header inclusions
+  * qmi: move rat_to_tech() into own module
+  * Add support for Quectel EC21/25 modems
+  * qmi: watch packet status for spontaneous disconnection only
+  * qmi: use shared services
+  * qmi: use named status values
+  * qmi: activate default bearer context for LTE networks
+  * qmimodem: set APN for LTE default bearer
+  * qmi: implement RAT selection
+  * qmi: add helper to get int16_t result
+  * qmi: provide AvailableTechnologies in radio-settings
+  * doc: RSSI is also an LTE property
+  * udev: fix quectelqmi gps interface
+  * udev: fixes for detection of non-USB modems
+  * udev: isi modems do not use 'Device' property
+  * Fix out of tree build
+  * qmi: add NetworkMonitor interface
+  * gobi: create NetworkMonitor atom
+  * qmi: support SMS receive on Quectel EC21
+  * xmm7modem: drop executable bit from C source file
+  * qmi: add LTE atom driver
+  * gobi: add LTE atom
+  * qmimodem: get LTE default bearer APN from modem
+  * qmimodem: release WDS service on GPRS atom removal
+  * qmimodem: release DMS service on radio-settings atom removal
+
+  [ Denis Kenzior ]
+  * AUTHORS: Mention Jesper's contributions
+  * atmodem: Fix whitespace violation
+  * handsfree-audio: Make sure to reset has_wideband
+  * hfp: Fix up disconnect reason handling for +CHUP
+  * hfp: Set UDUB affected set to WAITING only
+  * test-sms: Add skeleton code for MWI unit test
+  * smsutil: Make sure to return 1/0
+  * test: Add selecting the modem in create-multiparty
+  * test: Add selecting the modem in private-chat
+  * include: Add voicecall multiparty hint method
+  * voicecall: Implement ofono_voicecall_mpty_hint
+  * atmodem: Update parse_clcc utility function
+  * hfpmodem: Call ofono_voicecall_mpty_hint as needed
+  * test: Add display-icon script
+  * test: Add set-msisdn script
+  * hfp_hf_bluez5: Mark Release method as NOREPLY
+  * hfp_hf_bluez5: Remove Cancel method
+  * handsfree-audio: Tweak logic a bit
+  * hfp_hf_bluez5: Add version debug info
+  * hfp_hf_bluez5: Be more pedantic in get_version
+  * mbm: Fix segfault with hot-plugged MD300 modem
+  * build: Always build the connman plugin
+  * plugins: Add initial Telit he910 driver
+  * udevng: Add he910 detection logic
+  * hfp_ag_bluez5: Try to support non-phone hardware
+  * AUTHORS: Mention Slava's contributions
+  * netreg: Turn off CIEV indications other than rssi
+  * he910: tweak initialization logic
+  * AUTHORS: Mention Andrew's contributions
+  * AUTHORS: Mention Krzysztof's contributions
+  * git: Fixup messed up permissions
+  * AUTHORS: Mention Tony's contributions
+  * he910: Fix whitespace
+  * AUTHORS: Mention Martin's contributions
+  * test: Make sure test-stk-menu works with python3
+  * stktest: Remove some unneeded output
+  * AUTHORS: Mention Alfonso's contributions
+  * handsfree: Fixup variable names
+  * hfp: Fixup variable names
+  * hfp: Use enum from hfp.h
+  * he910: Fixup SIM detection
+  * he910: Switch to permissive parser
+  * he910: Fix unused variable warning
+  * phonesim: Fixup whitespace
+  * AUTHORS: Mention Jussi's contributions
+  * handsfree: style fixes for previous commit
+  * handsfree: Remove unneeded variable i
+  * handsfree: Remove unneeded variable
+  * handsfree: Rename function
+  * handsfree: Remove function
+  * handsfree: Reflow logic
+  * handsfree: Rename variable
+  * handsfree: Simplify logic
+  * handsfree: Rename driver function
+  * hfp: Use proper prefix
+  * hfp: Fix case where RING never arrives
+  * AUTHORS: Mention Sergio's contributions
+  * gatchat: Fix up minor coding style issues
+  * gprs: Make the code a bit easier to read
+  * AUTHORS: Mention Philip's contributions
+  * atmodem: Minor style fixups
+  * quectel: Remove unneeded VENDOR flags
+  * quectel: Minor style cleanup
+  * ublox: Remove unneeded VENDOR flags
+  * ublox: Minor style cleanup
+  * build: Avoid warnings about _FORTIFY_SOURCE
+  * doc: Fixup Handsfree API
+  * hfp: Update for new HFP 1.7 values
+  * hfp: Add enum for known HF Indicators
+  * emulator: Improve SLC establishment logic
+  * emulator: Fix CHLD=? not treated as part of SLC
+  * emulator: Add +BIND implementation
+  * emulator: Add +BIEV implementation
+  * emulator: Extend BRSF bitmap
+  * emulator: Enable HF Indicator feature
+  * doc: Add 'hf-indicators' feature to Handsfree API
+  * handsfree: Implement new Features property value
+  * doc: Add Distracted Driving Reduction to Handsfree
+  * hfp: Add initial SLC negotiation for HFP 1.7
+  * handsfree: Add new driver method for HF indicators
+  * handsfree: Skeleton implementation of DDR
+  * hfp: Add HF Indicators BRSF feature for 1.7
+  * emulator: Refactor data types
+  * hfp: Add implementation of +BIEV
+  * include: Add HF Indicators related API
+  * handsfree: Implement new HF indicators API
+  * hfp: Track supported / active indicators
+  * hfp: Notify core of HF indicators supported by AG
+  * hfp: Implement +BIND notifications
+  * slc: Make sure to initialize variables
+  * handsfree: Don't try to send a method return
+  * hfp_hf_bluez5: Use latest HFP version
+  * handsfree: Be extra pedantic with booleans
+  * test: Add test/set-ddr
+  * include: Add API to (de)activate HF indicators
+  * emulator: Implement new API
+  * emulator_fuzz: Add test plugin
+  * hfp_ag_bluez5: Bump HFP version to 1.7
+  * emulator: Refine +BIND support
+  * AUTHORS: Mention Kuba's contributions
+  * telitmodem: Fix a few coding style violations
+  * sim: Fix pin retries bogus values on some arch-es
+  * include: No need for OFONO_FLAG* defines
+  * radio-settings: rework AvailableTechnologies logic
+  * radio-settings: Add additional sanity check
+  * radio-settings: Always query available rats
+  * phonesim: Add skeleton of radio settings driver
+  * phonesim: Add minimal radio-settings functionality
+  * phonesim: Instantiate radio-settings in post_sim
+  * AUTHORS: Mention Tommi's contributions
+  * smsutil: Add additional sanity check
+  * hfpmodem: Make sure to set the prefix properly
+  * hfpmodem: Make sure to use none_prefix
+  * handsfree-audio: Add additional debugs
+  * gatchat: Introduce g_at_chat_get_userdata
+  * include: Add sco_connected_hint to handsfree-audio
+  * handsfree-audio: Call sco_connected_hint
+  * hfp_hf_bluez5: Implement sco_connected_hint
+  * AUTHORS: Mention Alex's contributions
+  * dundee: Fix out-of-order free
+  * ste: Fix out-of-order free
+  * test: Fix file mode for reset-contexts
+  * sim: Fix up whitespace issues
+  * handsfree: Fix potential buffer overflow
+  * AUTHORS: Mention Sergey's contributions
+  * AUTHORS: Mention Marko's contributions
+  * handsfree: Mark GetProperties method ASYNC
+  * AUTHORS: Mention Johannes' contributions
+  * gprs: Try re-attaching when we switch cells
+  * ppp_net: Make static analysis tools happy
+  * cdma-connman: Make static analysis tools happy
+  * voicecall: Don't accept USSD strings in Dial()
+  * test: Fix file mode for reset-contexts
+  * sim: Fix up whitespace issues
+  * gprs: Try re-attaching when we switch cells
+  * voicecall: Don't accept USSD strings in Dial()
+  * doc: Add Item M17 to coding-style.txt
+  * include: Add ofono_radio_settings_get_modem()
+  * radio-settings: Implement get_modem()
+  * gprs: Allow synchronous callbacks for set_attached
+  * gprs: Add ofono_gprs_get_modem()
+  * gprs: Implement ofono_gprs_get_modem
+  * include: Add ofono_gprs_context_get_type
+  * gprs: Implement ofono_gprs_context_get_type
+  * modem: Don't move to pre-sim state in case of failure
+  * atmodem: Change query_locked to query_facility_lock
+  * isimodem: Remove unimplemented query_locked method
+  * isi: Change query_locked to query_facility_lock
+  * include: Remove unused query_locked method
+  * AUTHORS: Mention Simon's contributions
+  * include: Add ofono_emulator_set_handsfree_card
+  * emulator: Add ofono_emulator_set_handsfree_card
+  * gril: Remove unused function
+  * gril: Remove unused function
+  * gril: Remove unused header
+  * gril: Remove unused structure members
+  * gril: Fix IO reference counting
+  * rilmodem: Move get_imsi implementation to rilmodem
+  * gril: Remove g_ril_request_read_imsi
+  * rilmodem: Implement ril_cw_set inline
+  * gril: Remove g_ril_request_set_call_waiting
+  * rilmodem: Implement ril_cw_query inline
+  * gril: g_ril_request_query_call_waiting
+  * rilmodem: Implement ril_clir_set inline
+  * gril: Remove g_ril_request_set_clir
+  * rilmodem: Implement ril_cw_query_cb inline
+  * gril: Remove g_ril_reply_parse_query_call_waiting
+  * rilmodem: Implement ril_clip_query_cb inline
+  * gril: Remove g_ril_reply_parse_query_clip
+  * rilmodem: Implement ril_clir_query_cb inline
+  * gril: Remove g_ril_reply_parse_get_clir & related
+  * rilmodem: Implement ril_imsi_cb inline
+  * gril: Remove g_ril_reply_parse_imsi
+  * rilmodem: Rework call-forwarding requests
+  * gril: Remove g_ril_request_call_fwd and related
+  * rilmodem: Implement g_ril_request_call_fwd inline
+  * gril: Remove g_ril_reply_parse_query_call_fwd
+  * ril: Implement power on/off inline
+  * gril: Remove g_ril_request_power
+  * rilmodem: Implement ril_call_barring_query inline
+  * gril: Remove g_ril_request_query_facility_lock
+  * rilmodem: Implement ril_call_barring_set inline
+  * gril: Remove g_ril_request_set_facility_lock
+  * rilmodem: Make ril_call_barring_set_passwd inline
+  * gril: Remove g_ril_request_change_barring_password
+  * rilmodem: Implement ril_call_barring_query_cb inline
+  * gril: Remove g_ril_reply_parse_query_facility_lock
+  * rilmodem: Implement ril_call_barring_set_cb inline
+  * gril: Remove g_ril_reply_parse_set_facility_lock
+  * rilmodem: Rework header order in call-barring
+  * rilmodem: Rework header order in call-forwarding
+  * rilmodem: Rework header order in call-settings
+  * rilmodem: Implement ril_call_volume_mute inline
+  * gril: Remove g_ril_request_set_mute
+  * rilmodem: Implement probe_mute_cb inline
+  * gril: Remove g_ril_reply_parse_get_mute
+  * rilmodem: Rework header order in call-volume
+  * rilmodem: Rework devinfo driver
+  * gril: Remove g_ril_reply_parse_baseband_version
+  * gril: Remove g_ril_reply_parse_get_imei
+  * rilmodem: Inline query_serial and query_revision
+  * rilmodem: Implement ril_ussd_notify inline
+  * gril: Remove g_ril_unsol_parse_ussd and related
+  * rilmodem: Rework ril_ussd_cancel
+  * rilmodem: Rework ril_ussd_request
+  * rilmodem: Make ril_ussd_request inline
+  * gril: Remove g_ril_request_send_ussd
+  * build: Tweak gril_sources
+  * rilmodem: Get rid of g_try_new0
+  * gril: Fix distcheck error
+  * build: Make distcheck pass again
+  * rilmodem: Get rid of radio-settings.h
+  * ril: Pass GRil object to radio_settings
+  * rilmodem: Get rid of ril_radio_settings_driver_data
+  * rilmodem: Get rid of pointless g_idle_add
+  * rilmodem: Implement ril_set_fast_dormancy inline
+  * gril: Remove g_ril_request_screen_state
+  * rilmodem: Implement ril_rat_mode_cb inline
+  * gril: Remove g_ril_reply_parse_get_preferred_network_type
+  * rilmodem: Implement ril_set_rat_mode inline
+  * gril: Remove g_ril_request_set_preferred_network_type
+  * rilmodem: Move constants from gril
+  * gril: Remove radio-setting specific constants
+  * rilmodem: Remove comments that state the obvious
+  * rilmodem: Remove unneeded code
+  * rilmodem: Implement ril_sms_notify inline
+  * gril: Remove g_ril_unsol_parse_new_sms & related
+  * rilmodem: Implement ril_csca_set inline
+  * gril: Remove g_ril_request_set_smsc_address
+  * rilmodem: Implement ril_cmgs inline
+  * gril: Remove g_ril_request_sms_cmgs
+  * rilmodem: Implement ril_ack_delivery inline
+  * gril: Remove g_ril_request_sms_acknowledge
+  * rilmodem: Implement ril_submit_sms_cb inline
+  * gril: Remove g_ril_reply_parse_sms_response
+  * rilmodem: Implement ril_csca_query_cb inline
+  * gril: Remove g_ril_reply_parse_get_smsc_address
+  * rilmodem: Fix up headers in sms
+  * rilmodem: Implement ril_pin_send inline
+  * gril: Remove g_ril_request_pin_send
+  * rilmodem: Implement ril_pin_send_puk inline
+  * gril: Remove g_ril_request_pin_send_puk
+  * rilmodem: Implement ril_change_passwd inline
+  * gril: Remove g_ril_request_change_passwd
+  * rilmodem: Implement ril_pin_change_state inline
+  * gril: Remove g_ril_request_pin_change_state
+  * rilmodem: Remove auto-answering logic
+  * ril: Don't use ril_voicecall_driver_data
+  * voicecall: Remove redundant comment
+  * rilmodem: Get rid of ril_voicecall_driver_data
+  * rilmodem: Implement enable_supp_svc inline
+  * gril: Remove g_ril_request_set_supp_svc_notif
+  * rilmodem: Implement ril_private_chat inline
+  * gril: Remove g_ril_request_separate_conn
+  * TODO: Add DTMF batch hint task
+  * rilmodem: Implement send_one_dtmf inline
+  * gril: Remove g_ril_request_dtmf
+  * rilmodem: Implement hangups inline
+  * gril: Remove g_ril_request_hangup
+  * rilmodem: Implement dial inline
+  * gril: Remove g_ril_request_dial
+  * rilmodem: Implement ril_ss_notify inline
+  * gril: Remove g_ril_unsol_parse_supp_svc_notif
+  * rilmodem: Implement lastcause_cb inline
+  * gril: Remove g_ril_reply_parse_call_fail_cause
+  * rilmodem: Inline signal strength parsing & calc
+  * gril: Remove g_ril_unsol_parse_signal_strength
+  * rilmodem: Implement ril_nitz_notify inline
+  * gril: Remove g_ril_unsol_parse_nitz
+  * rilmodem: Implement ril_cops_list_cb inline
+  * gril: Remove g_ril_reply_parse_avail_ops
+  * rilmodem: Implement ril_cops_cb inline
+  * gril: Remove g_ril_reply_parse_operator
+  * rilmodem: Simplify ril_gprs_set_attached
+  * ril: Implement radio state changed parsing inline
+  * gril: Remove g_ril_unsol_parse_radio_state_changed
+  * rilmodem: Implement ril_sim_read_info inline
+  * gril: Remove g_ril_request_sim_read_info
+  * rilmodem: Implement ril_sim_read_binary inline
+  * gril: Remove g_ril_request_sim_read_binary
+  * rilmodem: Implement ril_sim_read_record inline
+  * gril: Remove g_ril_request_sim_read_record
+  * rilmodem: Implement ril_sim_update_binary inline
+  * gril: Remove g_ril_request_sim_write_binary
+  * rilmodem: implement update_record inline
+  * gril: Remove g_ril_request_sim_write_record
+  * rilmodem: Add ril_util_build_deactivate_data_call
+  * rilmodem: Use ril_util_build_deactivate_data_call
+  * gril: Remove g_ril_request_deactivate_data_call
+  * rilmodem: Implement ril_register_manual inline
+  * gril: Remove g_ril_request_set_net_select_manual
+  * rilmodem: Remove unused ril_util_call_compare_by_id
+  * rilmodem: Remove unused ril_util_call_compare
+  * rilmodem: Remove unused compare_by_phone_number
+  * rilmodem: Remove unused ril_util_call_compare_by_status
+  * rilmodem: Remove unused ril_util_sim_state_query
+  * rilmodem: Implement sim io parser inline
+  * gril: Remove g_ril_reply_parse_sim_io & related
+  * gril: Add parcel skip string
+  * rilmodem: Refactor get_sim_status reply parsing
+  * gril: Remove g_ril_reply_parse_sim_status
+  * rilmodem: Add ril_util_gprs_proto_to_ril_string
+  * rilmodem: Implement activate_primary inline
+  * gril: Remove g_ril_request_setup_data_call
+  * gril: Add parcel_r_strv
+  * rilmodem: Add ril_util_registration_state_to_status
+  * rilmodem: Implement reg_cb inline
+  * gril: Remove g_ril_reply_parse_voice_reg_state
+  * rilmodem: Refactor ril_data_reg_cb
+  * gril: Remove g_ril_reply_parse_data_reg_state
+  * rilmodem: inline request_oem_hook_raw
+  * gril: Remove g_ril_request_oem_hook_raw
+  * rilmodem: Inline g_ril_request_oem_hook_strings
+  * gril: Remove g_ril_request_oem_hook_strings
+  * ril: Remove grilrequest.h
+  * rilmodem: Don't include grilrequest.h
+  * gril: Remove grilrequest.[ch]
+  * rilmodem: Implement mtk_pin_retries_cb inline
+  * gril: Remove g_ril_reply_oem_hook_strings
+  * rilmodem: Implement inf_pin_retries_cb inline
+  * gril: Remove g_ril_reply_oem_hook_raw
+  * rilmodem: Implement ril_pin_change_state_cb inline
+  * gril: Remove g_ril_reply_parse_retries
+  * rilmodem: Implement clcc_poll_cb inline
+  * gril: Remove g_ril_reply_parse_get_calls
+  * rilmodem: use g_new0 instead of g_try_new0
+  * ril: Don't include grilreply.h
+  * rilmodem: Don't include grilreply.h
+  * gril: Remove grilreply.[ch]
+  * rilmodem: Remove data reg state query retry logic
+  * rilmodem: Get rid of useless member variable
+  * ril: Get rid of gprs_driver_data
+  * rilmodem: Get rid of ril_gprs_driver_data
+  * rilmodem: Get rid of unnecessary exports
+  * rilmodem: Don't expose private structures
+  * rilmodem: Remove drivers/rilmodem/gprs.h
+  * gril: Remove unused ril_ofono_protocol_to_ril_string
+  * gril: Remove unused ril_appstate_to_string
+  * gril: Remove unused ril_apptype_to_string
+  * gril: Remove unused ril_authtype_to_string
+  * gril: Remove unused ril_cardstate_to_string
+  * gril: Remove unused ril_pinstate_to_string
+  * gril: Remove unused ril_radio_tech_to_string
+  * gril: Remove unused str_array functions
+  * rilmodem: Implement get_active_data_calls_cb inline
+  * rilmodem: Implement ril_setup_data_call_cb inline
+  * gril: Remove g_ril_unsol_parse_data_call_list
+  * ril: Don't include grilunsol.h
+  * rilmodem: Don't include grilunsol.h
+  * gril: Remove grilunsol.[ch]
+  * rilmodem: Remove unneeded include
+  * sim: Add additional DBG statements
+  * sim: Tweak debug statement
+  * gril: Use unsigned int instead of gsize
+  * sim: Silence warning on 32-bit
+  * rilmodem: Get rid of ril_sim_data
+  * ril: Don't use ril_sim_data
+  * rilmodem: Get rid of ril_gprs_context_data
+  * ril: Get rid of ril_gprs_context_data
+  * stktest: Remove usage of decode_at_error
+  * build: Fix building without atmodem support
+  * plugins: Add sofia3GR ril driver
+  * gril: Remove unneeded defines
+  * gril: Add g_ril_new_with_ucred
+  * ril: Use g_ril_new_with_ucred
+  * HACKING: Update instructions with email address
+  * rilmodem: Initialize ofono_error correctly
+  * AUTHORS: Mention John's contributions
+  * ril_sofia3gr: Add radio_settings atom
+  * gatchat: Add support for shutting down the server
+  * gitignore: Add rilmodem-cb and rilmodem-sms
+  * test: Add register-auto
+  * test: Add register-operator
+  * udevng: Move from setup_icera to setup_ublox
+  * doc: Add NetworkMonitor API
+  * include: Add netmon.h
+  * netmon: Fix enumeration
+  * AUTHORS: Mention Dongsu's contributions
+  * AUTHORS: Mention Dragos' contributions
+  * AUTHORS: Mention Samrat's contributions
+  * ril_sofia3gr: Fix warning
+  * ublox: devinfo atom driver has no vendor behavior
+  * ubloxmodem: Remove unneeded #include
+  * sofia3gr: Fix style issue
+  * build: Add recently added test scripts
+  * AUTHORS: Mention Anirudh's contributions
+  * include: Fix whitespace issues
+  * netmon: Add ofono/netmon.h into ofono.h
+  * netmon: Fix minor style issues
+  * rilmodem: Fix minor style issues
+  * modem: Fix style
+  * AUTHORS: Mention Nishanth's contributions
+  * radio-settings: Fix minor style issues
+  * radio-settings: Fix potential leak
+  * log: Fix style
+  * rilmodem: Refactor away some explicit casts
+  * rilmodem: Rename addrs to addr when not plural
+  * rilmodem: Remove some unneeded whitespace
+  * ril: vendorize SoFiA set_band implementation
+  * ril_sofia3gr: Add quirk to radio_settings atom
+  * AUTHORS: Mention Antara's contributions
+  * radio-settings: Fix 80-character limit
+  * rilmodem: Fix style
+  * include: Remove unused query_locked method
+  * rilmodem: Remove no longer relevant TODO
+  * radio-settings: Fix style
+  * AUTHORS: Mention Martin's contributions
+  * udevng: Fixup various minor style issues
+  * gobi: Fix warning
+  * allowed-apns: Fix crash
+  * AUTHORS: Mention Suman's contributions
+  * AUTHORS: Mention Rajagopal's contributions
+  * test: Fix permissions
+  * test: Add cancel-sms script
+  * sim: return false for SIM_PASSWORD_NONE
+  * sim: Fix style
+  * rilmodem: Co-locate the callback with invocation
+  * rilmodem: Co-locate the callback with invocation
+  * handsfree-audio: Fix crash
+  * gatchat: Fix style
+  * AUTHORS: Mention Antoine's contributions
+  * include: Make lte method const correct
+  * build: Add lte-api.txt
+  * build: add test/set-lte-property
+  * include: Fix return signature in lte methods
+  * lte: Relax condition to g_free imsi
+  * lte: If method is NULL, return not implemented
+  * netmon: No need to initialize mcc/mnc
+  * netmon: Fix style issue
+  * AUTHORS: Mention Djalal's contributions
+  * ubloxmodem: Fix warning
+  * ubloxmodem: Fixup minor style issues
+  * AUTHORS: Mention Christophe's contributions
+  * AUTHORS: Mention Vincent's contributions
+  * AUTHORS: Mention Piotr's contributions
+  * doc: Add 'switch' to item M1
+  * tools: Remove unused qmi tool
+  * qmi: Fix typo
+  * AUTHORS: mention André's contributions
+  * rilmodem: Fix warning
+  * qmimodem: Fix warning
+  * AUTHORS: Mention Lukasz's contributions
+  * qmi: track discovery tasks so clean up is possible
+  * qmi: Optimize structure allocations
+  * qmi: Fix qmi_device_shutdown
+  * qmi: Use destroy callback for context deactivate
+  * qmi: Use destroy callback for context activate
+  * AUTHORS: Mention Jonas' contributions
+  * gprs: Return after releasing pri_ctx
+  * gprs: Don't use pri_set_apn for auto activated cids
+  * qmi: Fix invalid memory access
+  * build: Add cinterion-hardware-monitor-api.txt
+  * include: Add a quote from primary source document
+  * AUTHORS: Mention Matthijs' contributions
+  * qmimodem: Fix whitespace issue
+  * AUTHORS: Mention Clayton's contributions
+  * netmonagent: Fix typo
+  * doc: Mark ServingCellInformationChanged as noreply
+  * AUTHORS: Mention Joey's contributions
+  * ifxmodem: Fix minor style issues
+  * build: Add optional ell dependency
+  * mbimmodem: Add skeleton driver
+  * mbim: Add skeleton mbim modem driver
+  * udevng: Add basic detection for MBIM
+  * mbim: Add skeleton mbim_device object
+  * mbim: Add MBIM descriptor utilities
+  * udevng: Store MBIM descriptors file
+  * mbim: Parse MBIM descriptors
+  * mbim: Add skeleton mbim-message class
+  * mbim: Add basic message payload parser
+  * mbim: add _mbim_information_buffer_length_offset
+  * mbim: Handle extraction of strings
+  * mbim: Add mbim_message_get_arguments
+  * unit: Add test-mbim
+  * mbim: Parse variable sized item arrays
+  * unit: Add subscriber ready status test
+  * mbim: Don't assume 4-byte alignment
+  * mbim: Add support for arrays of fixed-size elements
+  * mbim: Support parsing structures
+  * unit: Add phonebook read parse test
+  * mbim: Add MBIM service UUID constants
+  * mbim: Add basic message builder support
+  * mbim: Add _mbim_message_new_command_done
+  * mbim: Add _mbim_message_set_tid
+  * mbim: Add _mbim_message_to_bytearray
+  * mbim: Add support for building arrays
+  * mbim: Support for building variable-sized structs
+  * mbim: Add mbim_message_set_arguments
+  * unit: Add device_caps build test
+  * unit: print mbim messages for easier debugging
+  * unit: Add subscriber ready build test
+  * unit: Add phonebook read build test
+  * mbim: Add mbim_message_get_error
+  * mbim: Rework mbim_message_new
+  * mbim: Add mbim_message_get_cid
+  * mbim: Add mbim_message_get_uuid
+  * mbim: Add mbim_device_set_max_outstanding
+  * mbim: Get rid of fd and close_on_unref members
+  * mbim: Rework constructor
+  * mbim: Add mbim_device_set_ready_handler
+  * mbim: Implement MBIM_OPEN_MSG
+  * mbim: Implement MBIM_CLOSE_MSG
+  * mbim: Add header & body accessors for mbim-message
+  * unit: Add device caps query build test
+  * mbim: Add message_assembly utilities
+  * mbim: Add is_ready flag
+  * mbim: Close IO in an idle event
+  * mbim: Implement sending commands
+  * mbim: Implement receiving responses
+  * mbim: Add basic enable/disable
+  * mbim: Add mbim_device_cancel
+  * mbim: Add mbim_device_cancel_group
+  * include: add ofono_devinfo_get_modem
+  * devinfo: Implement ofono_devinfo_get_modem
+  * mbim: Add devinfo driver
+  * mbim: Instantiate devinfo atom
+  * mbim: Support all types in _mbim_message_build
+  * mbim: Add CIDs from the specification
+  * AUTHORS: Mention Richard's contributions
+  * ims: Remove logic checking presence of SIM atom
+  * ims: Rework initialization
+  * AUTHORS: Mention Ankit's contributions
+  * mbim: Add basic SIM driver
+  * mbim: Add sim atom to mbim modem driver
+  * mbim: Set device online and offline properly
+  * unit: Fix up style issues
+  * voicecall: expand synthesize_outgoing_call
+  * mbm: Add sim-auth
+  * test: Add list-applications
+  * voicecall: Fix up dial_last_callback error paths
+  * AUTHORS: Mention Philippe's contributions
+  * AUTHORS: Mention Gabriel's contributions
+  * atmodem: Disambiguate simcom/cinterion spic use
+  * hfpmodem: Make sure to NULL terminate
+  * sim: Use gcc's bitfield instead of managing flags
+  * sim: Compact all booleans into the bitfield
+  * mbim: Add support for registering to notifications
+  * mbim: Fix comment typo
+  * include: Introduce ofono_sim_initialized_notify
+  * sim: Introduce ofono_sim_initialized_notify
+  * mbimmodem: Support PIN/PUK operations
+  * sim: Remove stale comment
+  * udevng: Save off MBIM modem's VID/PID
+  * mbim: Add MBIM_DATA_CLASS enum
+  * mbimmodem: Add netreg driver
+  * mbim: Add netreg atom
+  * mbim: Turn radio off before disabling
+  * mbim: Fix iterator advance logic
+  * mbim: Support appending byte arrays
+  * mbim: Add additional sanity checking
+  * unit: Fix fragmenting messages < frag_size
+  * unit: Add SMS Read response tests
+  * mbim: Fix incorrectly generating arrays
+  * mbim: Support embedded databuffers
+  * unit: Add SMS Send parse test
+  * mbimmodem: Add SMS atom
+  * mbim: Add sms atom
+  * mbim: Support variable struct signatures in arrays
+  * unit: Add Device Subscribe List set build test
+  * mbim: Set the subscribe list
+  * atmodem: Remove EPEV handling
+  * mbm: Signal sim initialized on EPEV
+  * ste: signal sim initialized on EPEV
+  * sim: Remove QSS handling
+  * telit: signal sim initialized
+  * atmodem: Remove XSIM handling from sim driver
+  * ifx: Use sim_initialized_notify
+  * xmm7xxx: Use sim_initialized_notify
+  * atmodem: Rework at_pin_send_cb
+  * mbim: Silence unused variable warning
+  * mbimmodem: Move available_data_classes_to_tech
+  * mbim: Add support for 64-bit integers
+  * mbim: Properly write values in little endian format
+  * mbimmodem: Add GPRS atom driver
+  * gprs: Set Attached if no .read_settings
+  * mbim: Add gprs atom
+  * mbim: Add mbim context type UUIDs
+  * gprs: Add implementation of set_ipv4_prefix_length
+  * mbim: Add IPv4/v6 Element & Address extractors
+  * mbimmodem: Add gprs-context driver
+  * mbim: Instantiate gprs-context atom
+  * unit: Add mbim packet service notification test
+  * mbimmodem: Add provisioned context query (debug only)
+  * include: add ofono_gprs_context_set_ipv4_prefix_length
+  * test: Fix up process-context-settings
+  * mbim: Keep track of max_sessions
+  * unit: Add ip configuration query sanity check
+  * mbimmodem: fix crash
+  * build: Add voice.h to qmi_sources
+  * simutil: Fix copiler warning
+  * simutil: Add sim_app_record free
+  * sim: Fix crash
+  * sim: Do not leak aid_list
+  * simfs: Fix crash
+  * simfs: Fix crash in sim_fs_op_free
+  * hfpmodem: Don't use strcat
+  * unit: Use sim_app_record_free to avoid memleaks
+  * sim-auth: Do not leak nai
+  * sim-auth: Improve pending cleanup on sim_auth_remove
+
+  [ Christophe Ronco ]
+  * qmimodem: fix get signal strength
+  * qmimodem: fix QMI notification messages handling
+  * sim: backup driver read_imsi by IMSI via EF read
+  * qmimodem: Add read_imsi to qmimodem sim driver
+  * udevng: Sierra modems use SIM driver
+  * qmimodem: get password state from modem
+  * qmimodem: add pin_send feature
+  * qmimodem: query_passwd_state can be retried
+  * qmimodem: get/set kernel device driver data format
+  * qmimodem: change kernel driver data format if needed
+  * gprs: fix error check of gprs_cid_alloc function
+  * atmodem: use ATD99 to enter data state when needed
+  * qmimodem: fix sim file reading on MC7304
+  * provision: add plugin to provision from config file
+  * huawei: reopen modem channel if it disconnects
+  * atmodem: correctly report lte bearer for huawei modems
+  * huawei: add LTE support
+  * qmi: remove request when it timeouts
+  * doc: Add SystemPath to Modem interface
+  * modem: Add SystemPath dbus property
+  * udevng: Add modem string SystemPath
+
+  [ Philippe De Swert ]
+  * include/voicecall : update ofono_voicecall_driver to support call last dialled number
+  * voicecallmanager: Handle last number dialled DBUS call
+  * hfpmodem: Send last call dialled request
+  * doc: Document the new DialLast voicecallmanager API addition
+  * voicecall: Fix issue with invalid dbus path
+  * voicecall: Rename hfp dialing functions
+  * voicecall: Add support for dialing number at a given memory location
+  * voicecall: Add memory location dialing
+  * hfpmodem: Add memory dialling support
+  * doc: add new DialMemory method to VoicecallManager
+
+  [ James Prestwood ]
+  * simutil: Added app type to application parser
+  * simutil: Added authenticate builder/parser API
+  * unit: add gsm and umts parse/build unit tests
+  * sim: new API to check for a UST service only
+  * sim-auth: prep simauth/dbus headers
+  * doc: documentation for SimAuth dbus interfaces
+  * test: added tests for GSM/UMTS auth algorithms
+  * sim-auth: implementation of core sim-auth atom
+  * atmodem: implemented sim-auth functionality in atmodem
+  * xmm7xxx: add sim-auth driver to xmm7xxx plugin
+  * phonesim: Added sim-auth to phonesim plugin
+  * simauth: fixup adding more dbus return checks
+  * simauth: Fixed incorrect AUTS length
+  * simutil: Made UMTS/GSM authenticate more consitent
+  * simutil: Added ISIM elementary file ID's
+  * include: Add sim ops for session based sim access
+  * sim: AID session management
+  * atmodem: helper for appending the file path to a command
+  * atmodem: implement new driver APIs for AID sessions
+  * simfs: read files from specific AID's
+  * sim: header definitions for ISIM context API
+  * sim: implement create ISIM context
+  * docs: ImsPrivateIdentity property documentation
+  * sim: added ImsPrivateIdentity to SimManager
+  * sim: logical access API
+  * sim: logical access API implementation
+  * atmodem: implemented logical access driver API
+  * simauth: use new sim atom functionality for simauth
+  * atmodem: removed simauth init
+  * make: remove atmodem simauth driver
+  * atmodem: removed simauth.c from atmodem
+  * simauth: remove driver API definitions from simauth include
+  * simauth: remove driver code from core simauth atom
+  * plugins: updated plugins using simauth module
+  * unit: fix test-simutil failure
+  * simutil: fix bug when parsing AID type
+
+  [ Alexander Couzens ]
+  * udevng/gobi: improve debug output
+  * udevng/gobi: use subsystem as first identification
+  * udevng/gobi: allow to detect ec20 tty devices
+  * plugins/gobi: add the qmi type to the debug output of discover_cb()
+  * qmimodem: add debug helper qmi_result_print_tlvs
+  * qmimodem/sms: don't check for free ME space on receive
+  * voicecall.h: declare struct ofono_modem
+  * plugins: Remove AllowedAccessPoints interface
+  * qmimodem: use a default RAT when registering
+  * gprs-context: set apn length to 100 bytes
+  * qmi/sms: require WMS version >= 1.2 for bearer calls
+  * include/gprs-context.h: declare struct ofono_modem
+  * common: move strlen(apn) check into is_valid_apn()
+  * udevng: use first cdc-wdm interface for sierra qmi
+  * qmimodem: add strength (in %) to the debug output
+  * qmimodem: extract network time from serving system
+  * gprs: use registration_status_to_string in debug messages
+  * plugins/udevng: use else if instead of if
+  * voicecall,common: move call_status_to_string() to common
+  * voicecall: use ofono_call_status_name in DBG messages
+  * network.c: notify_status_watches: check for NULL
+  * qmimodem: register callbacks after netreg_register
+  * qmi/discovery: remove useless code
+  * qmi: include the CTL in the debug output
+  * qmi: implement the control sync command
+  * plugins/gobi: reset the qmi interface when enabling the modem
+  * network: allow drivers to generate more specific error codes
+  * qmimodem: add define CALLBACK_WITH_CME_ERROR(cb, err, args..)
+  * qmimodem: add translator qmi_error_to_ofono_cme()
+  * qmimodem: convert register_net_cb errors into CMEs
+  * add qmimodem/voice.h to add USSD defines
+  * qmi: add USSD support for MO services
+
+  [ Gabriel Lucas ]
+  * gemalto: add PIN retries support in driver
+  * gemalto: add PIN retries support in plugin
+
+  [ Ankit Navik ]
+  * ril_sofia3gr: use vendor modem power down command
+  * rilmodem: Add lte atom driver
+  * rilmodem: set LTE preferred in rat mode
+  * atmodem: Add lte atom driver
+  * Add support for Intel xmm7xxx series modem driver
+  * atutil: Add logic for cgcontrdp to get address and netmask
+  * ifxmodem: support automatic context activation
+  * Add support for Intel xmm7xxx series modems
+  * udevng/xmm7xxx: Allow to detect xmm7xxx series modems
+  * doc: add ims atom documentation
+  * include: added IpMultimediaSystem interface
+  * test: add scripts to test ims registration
+  * ims: add implementation for IMS atom
+  * xmm7modem: Add ims atom driver
+  * xmm7modem: Add support for ims
+  * doc: Add IMS interface to Interfaces list
+
+  [ Clayton Craft ]
+  * plugins: Fix compilation on armhf/Musl
+  * gril: Fix compilation on armhf/Musl
+  * isimodem: Use correct callback for pin status
+  * nokia-gpio: do not create links to gpios in /dev/cmt
+
+  [ Richard Röjfors ]
+  * ublox: Disable DCD to avoid HUP when leaving data mode.
+
+  [ John Ernberg ]
+  * cbs: Resolve a use-after-free
+  * gprs: Fix the ContextAdded() signal Introspection
+  * network: Fix crash caused by empty Scan() results
+  * voicecall: fix CreateMultiparty method introspection
+  * voicecall: limit g_drivers variable exposure
+  * atmodem: use g_slist_free_full
+  * hfpmodem: Use g_slist_free_full
+  * ifxmodem: Use g_slist_free_full
+  * rilmodem: Use g_slist_free_full
+  * stemodem: Use g_slist_free_full
+  * gatchat: Use g_slist_free_full
+  * bluez4: Remove unneeded casts
+  * smart-messaging: Use g_slist_free_full
+  * cbs: use g_slist_free_full
+  * cdma-smsutil: Use g_slist_free_full
+  * handsfree: Use g_slist_free_full
+  * modem: Use g_slist_free_full
+  * network: Use g_slist_free_full
+  * simutil: Use g_slist_free_full
+  * sms: Use g_slist_free_full
+  * smsutil: Use g_slist_free_full
+  * stkutil: Use g_slist_free_full
+  * ussd: Use g_slist_free_full
+  * voicecall: Use g_slist_free_full
+  * unit: Use g_slist_free_full
+  * phonebook: Remove explicit casts
+  * sim: Remove explicit casts
+  * simfs: Remove explicit casts
+  * configure: Bump glib dependecy to 2.32
+  * stk: clean up undefined function pointer casts
+  * radio-settings: Fix typo in radio_band_umts_from_string
+  * doc: Add missing LTE interface to Interfaces list
+
+  [ Herrie ]
+  * configure.ac: always require libglibutil and dbus-glib-1
+
+  [ Sergey Chupligin ]
+  * [ril] Added option to disable voicecall handling. Contributes to MER#1798
+  * [rild] make lte mode configurable
+  * [ril] Fix incoming call indication on mtk2 vendor. Fixes JB#40790
+  * [packaging] Fixup build without rild. Fixed JB#46736
+
+  [ Santtu Lakkala ]
+  * huaweimodem: Fix DHCP parsing on 32-bit platforms
+  * [ofono] Interpret , and . as pause in tone string. Contributes to: JB#44709
+  * [ofono] Delay sending SMS by 0.1s. Contributes to: JB#38580
+
+  [ Tomi Leppänen ]
+  * [packaging] Add ofono-doc subpackage. Contributes to JB#24119
+
+  [ Juho Hämäläinen ]
+  * [rilmodem] Remove libwaudio dependency.
+  * [rilmodem] Don't update sim_data if pointer is NULL.
+  * [rilmodem] Use empty strings instead of NULL for debug.
+  * [ril] Fix segfault when wrong type pointer used.
+  * [gril] Remove duplicate io channel setup functions.
+  * [rpm] Update packaging, include dundee.service.
+  * Handle more cause values for call control. Fixes MER#1461
+  * [ofono] Handle normal call end with error cause. Fixes JB#39622
+  * [ofono] Support multiple modems in emulator. JB#42297
+  * [examples] Use updated emulator.
+  * [bluez4] Use updated emulator.
+  * [bluez5] Use updated emulator. Fixes JB#42297
+  * [handsfree-audio] Set freed agent to NULL on exit. JB#42087
+  * [hfp_ag_bluez5] Follow BlueZ in system bus. JB#42087
+  * [hfp_ag_bluez5] Remove DBUS_TYPE_UNIX_FD check.
+
+  [ Joey Hewitt ]
+  * qmimodem: implement SIM write functions
+  * gobi: enable message waiting atom
+
+  [ Nishanth V ]
+  * include: Add netmon changes
+  * gril: Added RIL_REQUEST_GET_CELL_INFO_LIST
+  * netmon: Add serving cell info support
+  * rilmodem: Add netmon support
+  * sofia3gr: Add netmon support
+  * test: Add get serving cell information script
+  * gprs-context: fix set ipv4 netmask for rilmodem
+  * doc: Add allowed-apns api doc
+  * simutil: Add EFACL in elementary file db
+  * plugins: Add allowed apn list
+  * test: Add list allowed access points script
+  * ril: don't set an ipv4 netmask if not provided
+  * rilmodem: Add address to protocol type util func
+  * rilmodem: Add IPv6 support in gprs-context
+  * plugins: Fix allowed apn plugin exit
+  * rilmodem: fix WCDMA only in query rat mode
+  * netmon: modified api.txt for network monitor agent
+  * include: added enable_periodic_update in netmon driver
+  * include: added NetworkMonitorAgent interface
+  * netmon: core changes for network monitor agent
+  * gril: added RIL constants for cell info list
+  * rilmodem: driver changes for netmon agent
+  * test: added script to test serving cell agent
+  * rilmodem: netmon fix missing notify for g_ril_send
+  * netmonagent: fix unnecessary function declaration
+
+  [ Matthijs Kooijman ]
+  * at/cdma/ifxmodem: Use /dev/net/tun to check for TUN support
+
+  [ Vincent Cesson ]
+  * atmodem: Fix CGDCONT result parsing.
+  * plugins: Add Gemalto plugin for Cinterion P-family
+  * udevng: Add Gemalto P-family detection
+  * udevng: complete gemalto setup
+  * drivers: Add gemaltomodem driver to handle GNSS
+  * gemalto: Add location reporting support
+  * gemalto: Clean post init functions
+  * gemalto: Change offline mode, keep USIM available
+  * gemalto: Use sim_state_query for sim detection
+  * atmodem: Fix SMS reception for Gemalto modems
+  * gemalto: Set vendor for sms atom
+  * gemalto: Prepare new interface for hardware monitoring
+  * doc: gemalto: add cinterion.HardwareMonitor api
+  * gemalto: Implement HardwareMonitor method
+
+  [ Luiz Augusto von Dentz ]
+  * gdbus: Fix sending ObjectManager/Properties signals out of order
+  * gdbus: Add g_dbus_send_message_with_reply
+  * gdbus: Avoid calling dbus_connection_send*
+  * gdbus: Fix emitting PropertiesChanged twice
+  * gdbus/watch: Fix crash when g_dbus_remove_watch is called from connect callback
+  * gdbus/watch: Fix aborting when removing D-Bus filter
+  * gdbus/watch: Fix crash when disconnecting from D-Bus
+  * gdbus/client: Use g_dbus_add_service_watch to track services
+  * gdbus/client: Use g_dbus_add_signal_watch to track signals
+  * gdbus/client: Use g_dbus_add_properties_watch to track properties
+  * [gdbus] Fix crash when disconnecting from D-Bus
+  * gdbus: Replace g_timeout_add with g_idle_add
+  * Revert "gdbus: Don't include just added interfaces in GetManagedObjects"
+  * gdbus: Fix crash when calling g_dbus_add_service_watch
+  * gdbus: Fix crash when watch is toggled or disconnected
+  * gdbus: Make GDBusClient work without ObjectManager
+  * gdbus: Close private connection if setup fails
+  * gdbus: Make GDBusClient work without ObjectManager
+  * gdbus: Close private connection if setup fails
+  * hfp_hf: Fix not creating modem during NewConnection
+  * hfp_hf: Handle ServicesResolved signal
+  * hfp_hf_bluez5: Rework code handling device changes
+  * doc/handsfree-audio-api: Add Acquire method
+  * handsfree-audio: Add Acquire implementation
+
+  [ Lukasz Nowak ]
+  * qmimodem: telit LE910 V1 - fix ESN string
+  * qmimodem: read ss_info at probe time
+  * qmimodem: detect utf-8 string as operator name
+  * gobi: Do not use low-power modes for some modems
+  * udevng: add Telit LE910 V1 support
+  * unit: rilmodem-test - add missing string.h
+  * atmodem: telit - re-attach gprs automatically
+
+  [ Piotr Haber ]
+  * atmodem: add LTE to Telit #PSNT status parser
+  * doc: description of Telit LE910V2 network setup
+  * qmimodem: send authentication credentials
+  * plugins: rename he910 to xe910
+  * plugins: Handle HE910 and UE910 variants
+  * udevng: setup of Telit LE910V2
+  * telitmodem: support for CDC-NCM network adapter
+  * xe910: support for Telit LE910V2 modem
+  * plugins: rename xe910 to telit
+  * udevng: unify telit and xe910
+  * telit: add support for UE866
+  * telit: register SIM if it goes straight to ready
+
+  [ André Draszik ]
+  * plugins: telit: send AT&C0 on both channels
+
+  [ Antara Borwankar ]
+  * rilmodem: Driver code to set band mode and value
+  * radio-settings: Store GSM and UMTS band settings
+  * radio-settings: Init pending_band_{gsm|umts}
+  * ril_intel: renamed ril_sofia3gr to ril_intel
+  * ril_intel: changes for lte modem
+  * rilmodem: Send needed RIL request for stk init
+  * ril_intel: Add support for stk
+
+  [ Marko Šulejić ]
+  * atmodem: fix typo
+
+  [ Djalal Harouni ]
+  * include: add NETMON_INFO_{RSCP|ECN0|RSRQ|RSRP}
+  * doc: Add additional netmon properties
+  * netmon: handle NETMON_INFO_{RSCP|ECN0|RSRQ|RSRP}
+  * test: support NETMON_INFO_{RXLEV|RSCP|ECN0|RSRQ|RSRP}
+  * ubloxmodem: add the netmon driver
+  * ubloxmodem: register and initialize the netmon driver
+  * build: build the ublox netmon driver
+  * netmon: add NETMON_INFO_{EARFCN|EBAND|CQI}
+  * doc: document netmon EARFCN, EBand and CQI properties
+  * netmon: handle OFONO_NETMON_INFO_{EARFCN|EBAND|CQI}
+  * test:netmon: support EARFCN, Eband and CQI in testing scripts
+
+  [ Dragos Tatulea ]
+  * plugins/udevng: ublox: set model string
+  * atmodem: add vendor enumeration for ublox toby
+  * atmodem: ublox: EPS now supported by newer ublox
+  * ublox: allow enabling of TOBY L2 modems
+  * ublox: use vendor from structure instead of fixed
+  * atmodem: add support for U-Blox TOBY L2 modems
+  * ublox: give names to model ids
+  * ublox: enable ubloxmodem driver when possible
+  * ublox: support more internet contexts
+  * ubloxmodem: add Toby L2 gprs context driver
+  * ubloxmodem: support authentication
+  * gprs: custom cid for assign_context
+  * gprs: automatic context configuration notifier
+  * gprs: pri_set_apn: make reply msg optional
+  * idmap: add api for finding a certain id in map
+  * gprs-context.h: add op for reading context config
+  * gprs: implement ofono_gprs_cid_activated
+  * atmodem: gprs: handle automatic context activation
+  * ubloxmodem: support automatic ctx activation
+  * gprs: assume attached state when registered on LTE
+  * src: add LTE atom define
+  * include: add LTE dbus service define
+  * include: add header file for lte atom
+  * test: add script for setting lte atom properties
+  * doc: add lte atom documentation
+  * ubloxmodem: fix memory leak in gprs_context_remove
+  * lte: add implementation for LTE atom
+  * build: add lte atom support
+  * ubloxmodem: add lte atom driver
+  * build: add support for ublox lte atom driver
+  * plugins: ublox: enable lte driver for tobyl2
+  * ubloxmodem: tweak to work on different firmware
+  * lte: fix early imsi free
+  * gprs: lte: set attached after successful activation
+
+  [ Kuba Pawlak ]
+  * doc: new file doc/telit-modem.txt
+  * telitmodem: location reporting driver
+  * udev: add GPS port definition for HE910
+  * he910: enable location raporting atom
+  * he910: Update copyright
+  * hfp_ag_bluez5: use none prefix for AT+BCC.
+  * hfpmodem: hfpmodem.c make sure to use none_prefix
+  * hfpmodem: slc.c: make sure to use none_prefix
+  * hfpmodem: Fix connecting to AG with existing mpty
+  * hfp_hf_bluez5: Fix crash on re-pairing a Device
+  * hfp: Synchronize call state in case of +CHUP error
+  * hfp: Handle extra CCWA event
+  * hfpmodem: Handle repeated held call indicator
+  * hfp: Handle +CCWA at HFP connection setup
+  * drivers/isimodem: fix GCC 6.0 errors
+  * plugins/nokia-gpio: fix glibc 2.23.9+ issues
+  * unit: fix GCC 6.0 compilation issues
+  * gatchat: Fix parsing fields with odd number of quotation marks
+  * bluez5: fix crash on DBus transport disconnection
+
+  [ Matti Kosola ]
+  * Merge branch 'jb39622' into 'master'
+
+  [ Martin Kampas ]
+  * [packaging] Fix passing -j to make. Contribute to JB#38795
+
+  [ jpoutiai ]
+  * Merge pull request #38 from jpoutiai/master
+  * Merge pull request #39 from jkangas/master
+  * Merge pull request #53 from marttipiirainen/master
+  * Merge pull request #83 from ptakalok/master
+  * Merge branch 'jb38053' into 'master'
+
+  [ Jarko Poutiainen ]
+  * n900 disable cbs
+  * rilmodem/call-settings: clir cb parsel handling fix
+  * rilmodem/call-volume: probe_mute_cb parsel handling fix
+  * rilmodem/radio-settings: comment line fix
+  * plugins/ril: disable sending RIL_REQUEST_RADIO_POWER Radio Off
+  * rilmodem/call-settings: cw set and query fix
+  * rilmodem/rilutil: fix for tech mapping
+  * rilmodem/sim: pin retry count implementation + minor style etc fixes
+  * include/sim: introducing ofono_set_pin_lock_state
+  * src/sim: implementing ofono_set_pin_lock_state
+  * drivers/rilmodem: implementing pin lock status update
+  * drivers/rilmodem: USSD query message from NW to MS
+  * [test] Automatically answer incoming calls
+  * parcel: printing bug fix
+  * rilmodem: randomly broken ussd message fix
+  * gril: prepare set_write_handler for multi-request
+  * gril: provide multi-request support
+  * rilmodem: fixes possible segfault issue in USSD
+  * rilmodem: cancel USSD + minor style fix
+  * gril:fix queue removing in cancel group + style fixes
+  * sim: fix ofono crash when pin is blocked
+  * rilmodem: removing unnecessary sim inserted notifies
+  * [rilmodem] proper idle/timer handling gprs
+  * [rilmodem] proper idle/timer handling sim
+  * [rilmodem] proper idle/timer handling sms
+  * [rilmodem] proper idle/timer handling ussd
+  * [rilmodem]Removing not used voicecall vts_source
+  * [rilmodem] proper idle/timer handling vc
+  * [rilmodem] proper idle/timer handling radio
+  * [rilmodem] proper idle/timer handling pb
+  * [rilmodem] proper idle/timer handling netr
+  * [rilmodem] proper idle/timer handling devinfo
+  * [rilmodem] proper idle/timer handling cbs
+  * [rilmodem] proper idle/timer handling cv
+  * [rilmodem] proper idle/timer handling cs
+  * [rilmodem] proper idle/timer handling cf
+  * [rilmodem] proper idle/timer handling ril
+  * [rilmodem] stop timer firing every 2 seconds
+  * [rilmodem] unregister unsolicited message
+  * [rilmodem] fix group queue cleanup
+  * Merge pull request #135 from marttipiirainen/mergefix
+  * [gril]revert grilio back to original
+  * [gril]send all commands before destroying watch
+  * [ril] Leave extra capabilities as radio cannot set IP address
+  * [ril] run ofono as root
+  * [ril] Multiple PDP context support for rilmodem
+  * [ril] fix merge and some style issues
+  * [rilmodem] fix warnings from ril plugin
+  * [rilmodem] fix CF to support all the service classes
+  * [rilmodem] remove comments regarding the BEARER_CLASS_DEFAULT
+  * [rilmodem] define SERVICE_CLASS_NONE
+  * [rilmodem] use SERVICE_CLASS_NONE insteead of hard coded value
+  * [rilmodem] add missing brace characters
+  * Merge pull request #182 from jkangas/next
+  * Merge pull request #185 from marttipiirainen/next
+  * Merge pull request #192 from jkangas/next
+  * Merge pull request #202 from monich/mms-pdu
+  * Merge pull request #203 from tkenakka/next
+  * [RILMODEM] fix cf query callback list handling
+  * Merge pull request #215 from lpotter/master
+  * [SRC] Disable stack trace from command line log.c
+  * [SRC] Disable stack trace from command line main.c
+  * [SRC] Disable stack trace from command line ofono.h
+  * [SRC] Disable stack trace from command line ofono.service.in
+  * [SRC] fix incorrect CF state after CFU erasure
+  * [RILMODEM] hardening phonebook driver implementation
+  * [RILMODEM] prevent ofono crash when sim removed while reading
+  * [RILMODEM] add more logging
+  * [RILMODEM] add more logging
+  * [RILMODEM] add more logging
+  * [RILMODEM] refactor gprs driver
+  * [RILMODEM] refactor gprs-context driver
+  * [RILMODEM] code review and checkpatch cleaning
+  * [RILMODEM] code review and checkpatch cleaning
+  * [RILMODEM] fake also roaming
+  * Merge pull request #228 from jpoutiai/master
+  * Merge pull request #230 from martinjones/master
+  * [RILMODEM] gprs set detach notified only for callback
+  * Merge pull request #231 from jpoutiai/gprs
+  * Merge pull request #233 from tkenakka/netregfix
+  * [RILMODEM] initial support to read and delete sms from sim
+  * [RILMODEM] change cb_data_new2 to abort in failure
+  * [RILMODEM] removing unnecessary empty lines and null check
+  * Merge pull request #240 from monich/data_calls
+  * [RILMODEM] PB crash fix
+  * [RILMODEM] PB crash fix add logging
+  * [RILMODEM] return failure to manufacturer and model queries
+  * [RILMODEM] fix phonebook memory leaks
+  * [RILMODEM] fix memory leak in sms sca query
+  * [RILMODEM] fix sim mem leak and code cleaning
+  * Merge pull request #252 from mkuukkane/fix_ofono_cleanup
+  * [RILMODEM] free before calling g_strdup to avoid mem leak
+  * Merge pull request #257 from jpoutiai/master
+  * [RILMODEM] prepare ril_roaming_allowed to be published
+  * [RILMODEM] introduce ril_roaming_allowed
+  * [RILMODEM] get network status from core
+  * [RILMODEM]publish get_current_network_status
+  * [RILMODEM] prevent datacall slipping through when roaming disabled
+  * [RILMODEM] recheck status value before using it
+  * [RILMODEM] recheck status also in ril_data_probe_reg_cb
+  * [RILMODEM] style fix
+  * Merge pull request #258 from jpoutiai/roaming-fix
+  * Merge pull request #259 from jpoutiai/gprs
+  * [voicecall] src/voicecall.c MO call delay storing number
+  * Merge pull request #260 from jpoutiai/vc-delay-nro-storing
+  * [RILMODEM] query password state and prevent double sim initialisation
+  * Merge pull request #261 from jpoutiai/sim-fix
+  * [gprs] implement ofono_gprs_get_modem
+  * [gprs] publish ofono_gprs_get_modem
+  * [RILMODEM] remove gprs state faking
+  * [RILMODEM] style fixes
+  * Merge pull request #262 from nemomobile-packages/no-fake
+  * [RILMODEM] fix hotswap regression
+  * Merge pull request #263 from jpoutiai/sim-fix
+  * [RILMODEM] ipv6 support
+  * [GRIL] in reply parse all datacall settings
+  * [RILMODEM] gprs dual mode support
+  * Merge pull request #266 from locusf/master
+  * [GRIL] use glib to split string to array
+  * [RILMODEM] use glib to split string to array and some style fixes
+  * Merge pull request #268 from hedayat/master
+  * [RILMODEM] fix same gateway for ipv4 and ipv6 issue
+  * Merge pull request #270 from jpoutiai/ipv6
+  * [gprs] define ofono_gprs_context_signal_change
+  * [gprs] implement ofono_gprs_context_signal_change
+  * [gril] publish g_ril_unsol_cmp_dcl
+  * [gril] compare data call lists based on cid
+  * [rilmodem] if data call changed emit signal
+  * [plugins] add rildev.h
+  * [plugins] rildev to detect rild socket
+  * [plugins] ril to support rild socket detection
+  * [rilmodem] remove current_passwd support from sim driver
+  * [gril] gril.c remove current_passwd
+  * [gril] gril.h remove current_passwd
+  * [Makefile] add rildev as builtin
+  * [plugins] rildev.c add error handling
+  * [plugins] rildev.c remove unnecessary modem reset
+  * [packaging] remove bluez build requirement.Contributes to JB#36046
+  * [plugins] support bt call audio control. Fixes JB#38053
+
+  [ Alfonso Sánchez-Beato ]
+  * unit: add rilmodem test engine
+  * unit: add rilmodem gprs tests
+  * build: add rilmodem gprs unit tests
+  * gitignore: unit/test-rilmodem-gprs binary
+
+  [ Antoine Aubert ]
+  * gatmux: fix read channel remove on error
+
+  [ Frédéric Dalleau ]
+  * udevng: Detect huawei E3372 pcui
+  * udevng: Detect huawei E3372 modem and pcui
+
+  [ Samrat Guha Niyogi ]
+  * include: Add query_facility_lock method
+  * sim: Query the status of PS and PN facility locks
+  * ril_sofia3gr: add ussd atom to post_online
+  * doc: Add SoftwareVersionNumber to Modem interface
+  * include: Add support for IMEISV in devinfo
+  * devinfo: Add support of IMEISV
+  * rilmodem: Add support of IMEISV
+  * test: Support SoftwareVersionNumber in test-modem
+  * include: Add query_facility_lock method
+  * rilmodem: Implement sim atom query_facility_lock
+  * ril_sofia3gr: Return -EINPROGRESS on disable()
+  * sim: query facility during initialization in chain manner
+  * rilmodem: Remove unneeded pin sending logic
+  * rilmodem: split ril_pin_change_state_cb
+  * rilmodem: fix num_params in query_facility_lock_cb
+  * rilmodem: fix cbd init in ril_query_facility_lock
+  * sim: remove locked_pin reset from sim_free_main_state
+
+  [ Anirudh Gargi ]
+  * rilmodem: Add sms bearer set and bearer query func
+  * sofia3gr: Enable vendor type in SMS driver
+  * test: Add sms bearer set and SMSC set scripts
+  * radio-settings: Add RAT mode to ofono storage
+  * gril: Fix print macros to use latest print_buf
+
+  [ Rajagopal Aravindan ]
+  * ril_sofia3gr: Add transmit power throttling
+  * test: Added test to enable sofia 3gr tx throttling
+  * test: Added test to disable sofia 3gr tx throttling
+
+  [ Caiwen Zhang ]
+  * sim: fix crash when going into state LOCKED_OUT
+  * plugins/ril: Move GPRS atom to 'post_online' state
+  * doc: Fix enumeration value to be gprs and not gsm
+  * rilmodem/stk: add STK support for rilmodem
+  * plugins/ril: enable STK
+  * gprs: fix crash removing a context being activated
+  * plugins/ril: complete modem power off process
+  * gril: avoid glib runtime warning
+  * rilmodem: add cell broadcast message support
+  * plugins/ril: enable cbs
+
+  [ Suman Mallela ]
+  * rilmodem: Fix PIN retries logic
+
+  [ Martin Jones ]
+  * [voicecall] Cancel pending DTMF tones before hanging up call.
+  * [ofono] Fix call forwarding unconditional change signal emission.
+  * [ril] Fix creating multiparty and splitting multiparty. Contributes to JB#4743
+  * [ofono] Fix receiving UTF-16 encoded messages with split 4-byte char. Fixes JB#36957
+
+  [ Martin Chaplet ]
+  * udevng: Add usbmisc scan for QMI devices
+  * gobi: Enable SIM driver forcing
+  * udevng: Improve modem properties detection
+  * udevng: Add support for Sierra MC73xx QMI modems
+
+  [ Harald Welte ]
+  * log: Don't crash when addr2line output contains no newline
+
+  [ Alfonso Sanchez-Beato ]
+  * plugins: Plugin for finding MNC length from IMSI
+  * include: MNC length from IMSI driver interface
+  * src: Auxiliar functions for MNC length plugins
+  * build: Added mnclenght plugin and driver
+  * [src] Fix EF_PNN access
+  * simutil: Fix EF_PNN access
+  * unit: Fix test to use valid EF_PNN
+  * test: Adapt voice call test scripts to multi-modem
+  * test: Adapt data test scripts to multi-modem
+  * doc: Add AvailableTechnologies property
+  * include: Add method to list RATs to radio-settings
+  * src: Implement RAT list property
+  * test: Add AvailableTechnologies to list-modems
+  * radio-settings: Show all available technologies
+  * plugins: Add rildev for creation of ril modems
+  * gprs: Add DBus method to reset contexts
+  * doc: Add description for ResetContexts method
+  * test: Add script for resetting contexts
+  * gprs: Refactor to remove forward declaration
+  * gprs: Add comment to gprs_reset_contexts
+  * message-waiting: Update properly EF_MWIS SIM file
+  * message-waiting: Fix reading EF_MWIS records
+  * push-notification: Accept push from any origin
+  * smsutil: Do not check the origin port
+  * sms: Add trace when datagram is not delivered
+  * gprs: Add DBus method to reset contexts
+  * doc: Add description for ResetContexts method
+  * test: Add script for resetting contexts
+  * gprs: Refactor to remove forward declaration
+  * gprs: Add comment to gprs_reset_contexts
+  * message-waiting: Update properly EF_MWIS SIM file
+  * message-waiting: Fix reading EF_MWIS records
+  * push-notification: Accept push from any origin
+  * smsutil: Do not check the origin port
+  * sms: Add trace when datagram is not delivered
+  * include: Add definitions for phone number types
+  * infineon: Plugin for infineon modems
+  * infineon: Definitions for infineon modem
+  * rildev: plugin that creates ril-type modems
+  * build: Add rilmodem to the build
+  * rildev: Do not create modems if no env var set
+  * gril: Remove asserts
+  * gril: Fix access to notify callbacks
+  * gitignore: Ignore rilmodem-cs test binary
+  * gril: Really use given uid/gid to open ril socket
+  * gprs: Deactivate old contexts on attach
+
+  [ Dongsu Park ]
+  * plugins/udevng: support the U-Blox TOBY-L2 series
+  * udevng: Support U-blox TOBY series of devices
+
+  [ Tony Espy ]
+  * idmap: use UL for bitshift literals
+  * src: make bearer/operator enums public
+  * gril: Library to communicate with rild
+  * rilmodem: driver for Android modems
+  * ril: Plugin for Android modems
+  * unit: add new test rilmodem-cs
+  * build: add support for rilmodem-cs test
+  * ril: remove unecessary sleep from ril plugin
+  * plugins: rm unneeded exits/sleeps from ril plugin
+  * unit: add new test-rilmodem-sms
+  * build: add support for test-rilmodem-sms
+  * unit: re-factor test-rilmodem-cs server logic
+  * build: update for test-rilmodem-cs changes
+  * unit: add write support to rilmodem-test-server
+  * unit: add new test-rilmodem-sms test cases
+  * rilmodem: fix set_call_barring reply trace (mako)
+  * rilmodem: restore SET_SMSC_ADDRESS number format
+  * unit: update test-rilmodem-sms set_sca test case
+  * rilmodem: fix sim_status_cb debug logging
+  * unit: add new test-rilmodem-cb
+  * rilmodem: fix call_barring_query_cb
+  * build: add support for new test-rilmodem-cb
+  * build: untangle ATMODEM and BLUETOOTH conditionals
+  * plugins: add upower battery monitor for bluetooth
+  * build: add support for upower plugin
+
+  [ Petr Vorel ]
+  * gobi: Add missing _GNU_SOURCE
+
+  [ Simon Fels ]
+  * voicecall: don't dereference a supplied null value
+  * handsfree-audio: add type for our audio cards
+  * hfp_ag_bluez5: register audio card
+  * hfp_ag_bluez5: Add initial handsfree audio driver
+  * emulator: add codec negotiation support
+  * hfp_ag_bluez5: use codec negotiation
+
+  [ martinjones ]
+  * Merge branch 'conf_proto' into 'master'
+
+  [ Pekka Vuorela ]
+  * [ofono] Ensure /var/lib/ofono exists on package. Contributes to JB#35132
+
+  [ Marko Sulejic ]
+  * configure.ac: fix typo
+  * configure.ac: fix typo
+
+  [ Szymon Janc ]
+  * gdbus: Check for NULL DBusPendingCall in g_dbus_send_message_with_reply
+  * gdbus: Remove not needed check for NULL DBusPendingCall
+  * gdbus: Fix not calling disconnect function
+  * gdbus: Use g_dbus_create_error_valist internally
+  * gdbus: Fix crash in g_dbus_create_error_valist
+  * gdbus: Fix not calling disconnect function
+  * gdbus: Use g_dbus_create_error_valist internally
+  * gdbus: Fix crash in g_dbus_create_error_valist
+
+  [ Michael Janssen ]
+  * gdbus: Add g_dbus_get_flags function
+  * gdbus: Add g_dbus_get_flags function
+
+  [ Arman Uguray ]
+  * gdbus: Don't refresh objects/props if disconnected
+  * gdbus/client: Don't GetManagedObjects w/o handlers
+  * gdbus/client: Allow specifying ObjectManager path
+  * gdbus: Don't refresh objects/props if disconnected
+  * gdbus/client: Don't GetManagedObjects w/o handlers
+  * gdbus/client: Allow specifying ObjectManager path
+
+  [ Carsten Munk ]
+  * Implement SET_UICC_SUBSCRIPTION. Fixes MER#1263
+
+  [ Johannes 'josch' Schauer ]
+  * udevng: add support for Ericsson N5321 gw
+
+  [ Sergey Alirzaev ]
+  * build: make ofono build against musl
+
+  [ Tommi Kenakkala ]
+  * [rilmodem] Change default network mode to any
+  * [rilmodem] Set technology preference values to match recent RIL changes
+  * [ofono] Handle gril ioconnection shutdown by exit
+  * [ofono][rilmodem] OemRaw interface and rilplugin implementation
+  * Merge pull request #144 from tkenakka/oemraw
+  * Merge pull request #146 from jkangas/master
+  * Merge pull request #176 from ptakalok/language
+  * Merge pull request #169 from monich/create-mms-context-after-upgrade
+  * Merge pull request #171 from monich/push-forwarder-next
+  * Merge pull request #178 from marttipiirainen/next
+  * Merge pull request #179 from ptakalok/mosms
+  * Merge pull request #183 from marttipiirainen/next
+  * Merge pull request #186 from ptakalok/call_forw
+  * Merge pull request #196 from marttipiirainen/next
+  * [rilmodem] Minor rilmodem/sim.c mem leak fix
+  * [rilmodem] Network lock depersonalisation support
+  * [ofono][dundee] At startup order dundee after dbus instead of syslog.
+  * Merge pull request #208 from tkenakka/next
+  * Merge pull request #216 from jpoutiai/master
+  * [rilmodem] Fix ratmode bad conf file handling
+  * Merge pull request #219 from tkenakka/conffix
+  * Merge pull request #220 from jpoutiai/master
+  * Merge pull request #225 from marttipiirainen/nettime
+  * [rilmodem] Improve ril.c logging
+  * Merge pull request #227 from tkenakka/logging
+  * Merge pull request #232 from mkuukkane/ussd
+  * [rilmodem] Null netreg pointer on netreg remove
+  * Merge pull request #234 from mkuukkane/remove-dundee
+  * Merge pull request #235 from jpoutiai/sms-on-sim
+  * Merge pull request #237 from martinjones/cfu_change
+  * Merge pull request #236 from special/master
+  * Merge remote-tracking branch 'martti/merge1.14' into merge1.14part
+  * Merge pull request #238 from tkenakka/merge1.14part
+  * Merge pull request #239 from monich/warnings
+  * Merge pull request #241 from jpoutiai/master
+  * Merge pull request #242 from tigeli/master
+  * Merge pull request #243 from jpoutiai/master
+  * Merge pull request #244 from jpoutiai/master
+  * [rilmodem] Minor phonebook code cleanup
+  * [rilmodem] Updated devinfo comments
+  * Merge pull request #245 from tkenakka/master
+  * [rilmodem] Mem leak fixes to sms sending and receiving
+  * Merge pull request #246 from tkenakka/leaksms
+  * [rilmodem] Fix stk mem leaks
+  * [rilmodem] Fix ussd mem leaks
+  * [rilmodem] Fix supplementary service mem leak
+  * Merge pull request #247 from tkenakka/leak
+  * [rilmodem] Nw selection mem leak fix
+  * [rilmodem] Call fwd mem leak fix
+  * Merge pull request #248 from tkenakka/leakfixes
+  * [rilmodem] Gprs fake timer fixes
+  * Merge pull request #249 from jpoutiai/master
+  * Merge pull request #250 from tkenakka/gprs
+  * [rilmodem] Minor logging update to ussd
+  * [rilmodem] Minor logging update to voicecall
+  * [rilmodem] Logging updates to radiosettings
+  * [rilmodem] Fix ussd notify ofono crash
+  * Merge pull request #254 from tkenakka/ussdnotifycrash
+  * Merge pull request #253 from tkenakka/logging2
+  * [rilmodem] Logging updates to netreg
+  * Merge pull request #255 from tkenakka/loggingnetreg
+  * [rilmodem] Logging improvements to gprs
+  * Merge pull request #256 from tkenakka/log-gprs
+  * Merge pull request #267 from jpoutiai/ipv6
+  * [rilmodem] Log ril version
+  * Merge pull request #269 from tkenakka/master
+  * Merge pull request #272 from monich/noproxy
+  * Merge pull request #273 from jpoutiai/signal-context
+  * [ofono] Move SCO socket allocation to hfp_hf_bluez5 plugin
+  * Merge pull request #274 from tkenakka/sco-sock
+  * [ofono] Move handsfree audio manager cleanup to hfp_hf_bluez5 plugin
+  * Merge pull request #275 from tkenakka/sco-sock
+  * [ofono] hfp_hf_bluez5 typo fix
+  * Merge pull request #276 from tkenakka/sco-sock
+  * main: Remove handsfree_audio_manager init/cleanup
+  * handsfree-audio: Refactor manager init / cleanup
+  * sms: Fix alphanumeric TP-OA handling
+  * unit: Add test to encode / decode 11 char TP-OA
+  * [ofono] sms: Fix alphanumeric TP-OA handling
+  * [ofono] unit: Add test to encode / decode 11 char SMS TP-OA
+  * [ofono] Add ril disconnect logging
+  * Merge pull request #278 from tkenakka/sms-tp-oa
+  * Merge pull request #279 from tkenakka/log
+  * Merge pull request #282 from monich/provision
+  * [plugins] Improved ofono rilmodem socket handling
+  * [gril] Minor updates to ofono gril logging
+  * Merge pull request #283 from tkenakka/norild
+  * [gprs] Fix pri_reset_context_properties crashes
+  * Merge pull request #284 from tkenakka/master
+  * [ofono] Merge upstream release 1.16
+  * [ofono] Update version to 1.16
+  * [ofono] Disable build time he910 modem
+  * Merge pull request #285 from tkenakka/merge1.16
+  * [rilmodem] Improve rilutil debug logging
+  * [rilmodem] Remove rilplugin sim inserted notification. MER#928
+  * [rilmodem] Register SimManager always and simplify logic. MER#928
+  * [rilmodem] Minor updates to error debug logging
+  * Merge pull request #286 from tkenakka/simmgr
+  * [rilmodem] Fix simmanager removal handling. Contributes to MER#928
+  * Merge pull request #289 from tkenakka/simmgr
+  * [rilmodem] Delay signalling SIM inserted until PIN state available
+  * [rilmodem] Reset rilmodem driver's PIN type on card removal. Contributes MER#1083
+  * [sim] Reset pin_type on card removal. Contributes MER#1083
+  * [rilmodem] Reset retry count on PIN state change
+  * [sim] Emit LockedPins changed. Contributes MER#1082
+  * [sim] Remove ofono_set_pin_lock_state. Contributes MER#1082
+  * [rilmodem] Remove ofono_set_pin_lock_state. Contributes MER#1082
+  * [rilmodem] Minor sim related logging updates
+  * Merge pull request #287 from monich/leak
+  * Merge pull request #288 from monich/features
+  * Merge pull request #290 from tkenakka/pin
+  * sim: Reset pin_type on card remove
+  * [sim] Reset pin state to none when card removed
+  * [sim] Coding conventions improvements for sim.c
+  * Merge pull request #291 from tkenakka/pin
+  * Emit LockedPins after pin_type is queried
+  * [gril] Change oFono gril to take a socket path. MER#1107
+  * [sim] Improve Emit LockedPins after pin_type is queried. MER#1082
+  * [ril] Read RILD socket path from a file at startup. MER#1107
+  * Merge pull request #292 from tkenakka/sockpath
+  * Merge pull request #293 from tkenakka/cherrypick-pin-upstr
+
+  [ Alex J Lennon ]
+  * tc65: Replace tc65 plugin with cinterion plugin
+  * atmodem: Add Cinterion quirk for signal strength
+  * cinterion: Register as OFONO_VENDOR_CINTERION
+  * udev: Add support for ehs6 name
+  * cinterion: Correct use of freed structure
+
+  [ Pasi Sjöholm ]
+  * [gprs] limit internet interface MTU by 1280
+  * [rilmodem] fix issue with only one nameserver being provided
+  * Merge pull request #280 from tigeli/master
+
+  [ Cedric Jehasse ]
+  * sierra: add sim state polling after CFUN enable
+  * atmodem: Sierra modems should be polled after CPIN
+  * atmodem: fix retries reporting from AT+CPINR
+
+  [ Hedayat Vatankhah ]
+  * Revert "Remove the cbs creation for n900 plugin, this lead to crashes on n9 ofono init."
+  * Fix cbs related n900/isimodem crash
+  * [packaging] Fix error in changelog date format preventing mb2 builds
+
+  [ Aleksi Suomalainen ]
+  * Remove the cbs creation for n900 plugin, this lead to crashes on n9 ofono init.
+
+  [ Neil Jerram ]
+  * test: Support receiving SMS with non-ASCII chars
+
+  [ Marko Kuukkanen ]
+  * [test] Add test script for explicit call transfer
+  * [rilmodem] Explicit call transfer driver implementation
+  * Merge pull request #229 from mkuukkane/transfer
+  * [rilmodem] Don't send <CR> with USSD string
+  * [ofono] Remove dundee (service)
+  * [ofono] Fix ofono cleanup
+
+  [ Alban Crequy ]
+  * gdbus: Fix match rule for NameOwnerChanged
+
+  [ Andrei Emeltchenko ]
+  * gdbus: Fix use after free
+
+  [ Claudio Takahasi ]
+  * gdbus: Add g_dbus_client_set_ready_watch()
+  * gdbus: Add g_dbus_proxy_set_property_array
+  * gdbus: Avoid reporting GDBusClient disconnect twice
+
+  [ Philip Paeps ]
+  * gatchat: implement PAP authentication
+  * doc: describe the AuthenticationMethod property
+  * include: add auth method to the gprs context API
+  * gprs: make PPP authentication method configurable
+  * atmodem: set the PPP authentication method to use
+  * include: add auth method to the provisioning API
+  * mbpi: add support for provisioning the auth method
+  * gprs: provision the authentication method
+  * atmodem: add vendor Quectel
+  * udevng: add detection logic for Quectel modems
+  * sim: query Quectel UC15 PIN retries with AT+QPINC?
+  * atmodem: add vendor u-blox
+  * gprs: add support for u-blox +UREG URCs
+  * plugins: add a new driver for Quectel UC15 modems
+  * udevng: add detection logic for u-blox modems
+  * sim: query u-blox PIN retries with AT+UPINCNT
+  * atmodem: set the auth method for u-blox modems
+  * plugins: new driver for u-blox SARA-U270 modems
+
+  [ Sergio Checa Blanco ]
+  * hfpmodem: Split AT+VTS command into multiple +VTS
+  * hfpmodem: Fix crash with more than two calls
+
+  [ John Brooks ]
+  * [ofono] Encode SMS as UTF-16 instead of UCS-2
+
+  [ Martti Piirainen ]
+  * [rilmodem][WIP] Create and split conference calls
+  * [rilmodem][WIP] Hold, resume, swap calls
+  * [rilmodem][WIP] USSD (Unstructured Supplementary Service Data) functionality
+  * [rilmodem][WIP] USSD (Unstructured Supplementary Service Data) functionality
+  * Merge branch 'master' of https://github.com/marttipiirainen/ofono
+  * Start ofono service as user 'radio'
+  * [rilmodem] Fix compilation warnings in USSD
+  * [test] Add test script for org.ofono.CallVolume.Muted property
+  * [gril] Exit and restart if errors occur during RILD socket intialization
+  * Merge pull request #30 from tkenakka/default-network-mode
+  * Merge pull request #31 from ptakalok/master
+  * Merge pull request #32 from leinomii/master
+  * Squashed 'ofono/' changes from de0ccde..f5fd814
+  * Merge commit '545866205ffd9d1247c5b3ff61a724746442c8fe' into ubuntu-ofono-filtered-merge
+  * Merge pull request #33 from nemomobile-packages/ubuntu-ofono-filtered-merge
+  * Merge pull request #37 from jkangas/master
+  * [rilmodem] Support for handling SMS delivery reports
+  * Merge pull request #46 from ptakalok/master
+  * [plugins] Signal SMS delivery status via D-Bus
+  * Revert accidentally merged files
+  * [doc] Add description of org.ofono.MessageManager.StatusReport
+  * Merge pull request #56 from jkangas/master
+  * Merge pull request #60 from ptakalok/master
+  * Merge pull request #61 from jkangas/master
+  * Merge pull request #62 from ptakalok/master
+  * [rilmodem] Fix call disconnect reason "network"
+  * Merge pull request #67 from ptakalok/master
+  * [rilmodem] "User busy" is not a network error
+  * Merge pull request #69 from marttipiirainen/callcause
+  * Merge pull request #71 from jkangas/master
+  * Merge pull request #75 from saukko/master
+  * [rilmodem] Fix answer and hangup in multiple-call scenarios
+  * Merge pull request #74 from ptakalok/master
+  * Merge pull request #77 from jkangas/master
+  * Merge pull request #78 from jpoutiai/master
+  * Merge pull request #79 from jpoutiai/master
+  * Merge pull request #80 from ptakalok/master
+  * Merge pull request #81 from jpoutiai/master
+  * Merge pull request #84 from jpoutiai/master
+  * Merge pull request #85 from ptakalok/master
+  * Merge pull request #86 from ptakalok/master
+  * Merge pull request #87 from jkangas/master
+  * [rilmodem] Fix crash when going offline
+  * Merge pull request #88 from marttipiirainen/gprs_crash
+  * Merge pull request #89 from jkangas/master
+  * Merge pull request #92 from jkangas/master
+  * Merge pull request #93 from jpoutiai/master
+  * Merge pull request #94 from jpoutiai/master
+  * Merge pull request #97 from jkangas/master
+  * Merge pull request #99 from jkangas/master
+  * [ofono] Make DTMF sending via rilmodem more robust
+  * Merge pull request #102 from marttipiirainen/dtmf_timing_fix
+  * Merge pull request #103 from tkenakka/techpref
+  * Merge pull request #104 from jpoutiai/master
+  * Merge pull request #107 from marttipiirainen/dbus_crash_upstream_fix
+  * [rilmodem] Queue DTMF requests in driver
+  * Merge pull request #108 from pgerdt/use-clock-boottime
+  * Merge pull request #109 from marttipiirainen/dtmf_queue
+  * [smsutil] Allow partial conversion of UCS2 SMS
+  * Merge pull request #111 from marttipiirainen/sms_retry_conversion
+  * Merge pull request #112 from ptakalok/master
+  * Merge pull request #113 from jkangas/master
+  * Merge pull request #114 from jkangas/master
+  * [voicecall] Shorten response time when playing single DTMF tone
+  * Merge pull request #115 from ptakalok/ussd2
+  * Merge pull request #116 from marttipiirainen/dtmf_faster
+  * Merge pull request #134 from jkangas/master
+  * [provision] Fix merge error
+  * Merge pull request #137 from jkangas/master
+  * [smshistory] Create org.ofono.SmsHistory API
+  * Revert "[doc] Add description of org.ofono.MessageManager.StatusReport"
+  * [rilmodem] Remove unnecessary 'fake' held status when dialing 2nd call
+  * [rilmodem] Call direction bookkeeping
+  * [voicecall] Fix compiler warnings
+  * Revert "Revert "[rilmodem] Make LTE configuration forcing working both ways""
+  * Merge pull request #143 from marttipiirainen/nextmerge
+  * Merge pull request #145 from marttipiirainen/master
+  * Merge branch 'upstream1.14'
+  * [ofono] Update version number to 1.14
+  * Merge pull request #151 from jkangas/master
+  * Merge pull request #150 from jpoutiai/master
+  * Merge pull request #156 from jpoutiai/master
+  * Merge pull request #163 from marttipiirainen/next
+  * Merge pull request #168 from jkangas/master
+  * Merge pull request #175 from ptakalok/subs_master
+  * [build] Fix network time plugin build issues
+  * Merge pull request #166 from marttipiirainen/next
+  * [gril] Fix 'unused variable' compiler warning
+  * Merge pull request #177 from monich/create-push-forwarder-d
+  * [configure] Make the push-forwarder plugin configurable
+  * [configure] Make libwspcodec dependency conditional
+  * Merge pull request #180 from monich/split_wsp_payload
+  * Merge pull request #188 from jkangas/next
+  * Merge pull request #197 from nemomobile-packages/next
+  * [rpm] Run unit tests before creating .rpm
+  * [unit] Fix EF_PNN unit test
+  * [unit] SMS decoding tests for Unicode
+  * Merge pull request #200 from jkangas/master
+  * Merge pull request #195 from marttipiirainen/unit
+  * [rilmodem] Fine-tune disconnect reasons for MO calls
+  * Merge pull request #206 from marttipiirainen/voice_busy
+  * Merge pull request #207 from tkenakka/nwlock
+  * Merge pull request #205 from monich/ril_oemraw_delayed_register
+  * Merge pull request #204 from monich/ril_delayed_register
+  * Merge pull request #209 from jpoutiai/next
+  * Merge pull request #210 from nemomobile-packages/next
+  * [voicecall] Inform client when local ringback tone is needed
+  * [provision] Expose provision_get_settings() in header (for testability)
+  * [unit] Add provisioning tests
+  * [provision] Take SPN into account when finding APNs
+  * Merge pull request #214 from marttipiirainen/ringback
+  * Merge pull request #213 from marttipiirainen/mbpi3
+  * [gprs-provision] Add field to distinguish primary MNO from MVNO
+  * [mbpi] Parse provider's "primary" property
+  * [provision] Prioritize "primary" providers (MNOs) over MVNOs
+  * Merge pull request #222 from marttipiirainen/mbpi_primary
+  * Merge pull request #223 from jpoutiai/master
+  * [nettime] Export test script to .rpm
+  * [nettime] Prevent crash if MNC or MCC is missing
+  * Merge pull request #224 from jpoutiai/master
+  * Merge branch 'ofono1.14' into merge1.14
+  * [rpm] Make test scripts depend on Python3
+  * [test] Port remaining test scripts to Python3
+  * Merge pull request #226 from jpoutiai/master
+
+  [ Lorn Potter ]
+  * [rilmodem] Fix gprs state after offline mode.
+
+  [ Andrew Earl ]
+  * hfp: Add Voice Recognition flag to BRSF
+  * doc: Add subscriber number to handsfree-api
+  * include: Add subscriber number to handsfree API
+  * hfp: Add subscriber number to handsfree properties
+  * hfp: Add CNUM query to handsfree interface for subscriber number
+  * handsfree: correct crash on connect of hfp
+
+  [ Jussi Pakkanen ]
+  * phonesim: Add conf file override
+
+  [ Jussi Kangas ]
+  * [rilmodem][WIP] enabling pin state query and follow up
+  * [rilmodem][WIP] enabling pin entering
+  * [rilmodem][WIP] enabling pin enabling and disabling
+  * [rilmodem][WIP] enabling pin unblocking
+  * [rilmodem][WIP] enabling pin and pin2 code changing
+  * [rilmodem][WIP] Introducing skeleton implementation for radio settings
+  * [rilmodem][WIP] Enabling preferred network type query
+  * [rilmodem][WIP] Introducing preferred network selection mode setting
+  * [rilmodem][WIP] Releasing radio data when removing
+  * [rilmodem][WIP] Starting up radio interface
+  * [rilmodem][WIP] Introducing skeleton implementation for phonebook
+  * [rilmodem][WIP] Introducing basic phonebook functionality
+  * [rilmodem][WIP] Enabling network api to follow preferred network setting
+  * [rilmodem][WIP] Implementing calling line presentation query
+  * [rilmodem][WIP] Implementing call waiting query and setting
+  * [rilmodem][WIP] Implementing call forwarding query and erasure
+  * [rilmodem][WIP] Adding support for class usage in call settings
+  * [rilmodem][WIP] Implementing call forwarding registration
+  * [rilmodem][WIP] Removing compilation warning for ril_phonebook_init
+  * [rilmodem][WIP] Introducing basic SMS cell broadcast support
+  * [rilmodem][WIP] Enabling emergency call when no ICC
+  * [rilmodem][WIP] removing need for setting modem online from dbus API
+  * [rilmodem][WIP] Adding mapping for personalisation substate
+  * [rilmodem][WIP] enabling ofono working with different ril
+  * [rilmodem][WIP] Fixing SIM application type recognizing in phonebook
+  * [rilmodem][WIP] Enabling configuration from separate package
+  * [rilmodem][WIP] Removing showing of the call and volume interfaces in simless state
+  * [rilmodem][WIP] Enabling showing serial number in offline and simless state
+  * [rilmodem][WIP] support for hidden reset
+  * [rilmodem][WIP] support for release_all_held
+  * Merge pull request #57 from ptakalok/master
+  * Merge pull request #58 from jpoutiai/master
+  * [rilmodem][WIP] Enabling showing of real call info already in dial response
+  * [rilmodem] Notify core always about GPRS connection changes
+  * Merge pull request #76 from marttipiirainen/waiting
+  * [rilmodem] Checking if phone is really roaming
+  * [rilmodem] Ensuring that short alpha is present
+  * [rilmodem] Ensure that *netreg_data is always set in callback data
+  * [rilmodem] Hide searching state only when registered has been reported
+  * [rilmodem] Enable configurable LTE support
+  * [rilmodem] Check and set tech prefence as configured
+  * [rilmodem] Release parcel after message sending
+  * [rilmodem] When sim stays on in offline mode PIN cache can be emptied
+  * [rilmodem] Check the ratmode and force it to be as configured
+  * Merging latest official upstream ofono and nemomobile ofono
+  * [rilmodem] do not check spdi if mcc and mnc are not valid
+  * [rilmodem] numeric value can be null in response to RIL_REQUEST_OPERATOR
+  * [rilmodem] Make LTE configuration forcing working both ways
+  * [rilmodem] Implementation for call forwarding activation and deactivation
+  * Merging latest official upstream ofono and nemomobile ofono
+  * Merge branch 'master' of github.com:nemomobile-packages/ofono into working-copy
+  * Merge branch 'working-copy' into new-ofono
+  * [rilmodem] check that received numeric value is valid
+  * Merge branch 'master' of github.com:nemomobile-packages/ofono into new-ofono
+  * Merge branch 'next-prep' into master-prep
+  * [src] fix the ofono configuration
+  * Revert "[rilmodem] Make LTE configuration forcing working both ways"
+  * Merge pull request #138 from marttipiirainen/smshistory
+  * [rilmodem] Enhancing traces
+  * [rilmodem] Do not close the ofono if rild dies
+  * [rilmodem] Configure the tech preference only once
+  * [rilmodem] Do not increase modem id when restarted
+  * Merge pull request #147 from marttipiirainen/master
+  * [rilmodem] Force GSM WCDMA configuration in very first start
+  * [rilmodem] Ack sms receiving also when error
+  * [voicecall] Read the EFECC also if SIM goes straigth to READY
+  * Merge pull request #164 from jkangas/next
+  * Merge pull request #170 from leinomii/next
+  * [rilmodem] Mobile country code configuration
+  * [rilmodem] Set the path for all ADN record readings
+  * [rilmodem] Disable cbs support
+  * [rilmodem] Do not handle unexisting response
+  * Merge pull request #190 from leinomii/next
+  * [network] Do not check the service table before reading SPDI
+  * [rilmodem] Do not remove unexisting modem data
+  * [rilmodem] Check if really network registration status is really searching
+
+  [ Krzysztof Wilk ]
+  * doc: Add Siri API
+  * dbus: Define Siri DBUS Interface
+  * include: Add Siri interface definition
+  * siri: Add atom implementation
+  * siri: Add atom driver
+  * hfp_hf_bluez4: Enable Siri atom
+  * hfp_hf_bluez5: Enable Siri atom
+  * phonesim: Enable Siri atom
+  * features: Describe Siri feature
+  * doc: Extend Features property
+  * hfp: Define hfp_ag_chld_feature
+  * include: Declaration function to set CHLD features
+  * hfp: extend Features to three way calling and CHLD
+  * hfp: Add CHLD features to drver data
+
+  [ Petri Takalokastari ]
+  * [rilmodem][WIP] Adding SMSC address request
+  * [PATCH] [rilmodem][WIP] Enabling getting and setting CLIR
+  * [PATCH] [rilmodem][WIP] Add IMEI and revision query support
+  * [PATCH] [rilmodem][WIP] Enabling getting and setting CLIR
+  * [PATCH] [rilmodem][WIP] Add IMEI and revision query support
+  * [rilmodem][WIP] Enable SCA setting
+  * [rilmodem][WIP] Temporary fix for nw  mode handling
+  * [rilmodem][WIP] Fix SCA query response parsing
+  * [rilmodem] map RIL LTE radio access technology constant to corresponding value in oFono 
+  * [rilmodem]preferred RAT mode value mapping for new UI design
+  * [rilmodem]pref RAT mode value mapping for RAT query for new UI
+  * [rilmodem] Update RIL constants
+  * [rilmodem] Call forwarding indicator for MT call
+  * [rilmodem] Fix oFono compiler warnings
+  * Merge branch 'warnings'
+  * [rilmodem] Fix remaining compiler warning
+  * [rilmodem] Add support for new RIL API radio tech definition
+  * [rilmodem] Set service class to 0 in call waiting query
+  * [rilmodem] Add support for RIL_REQUEST_SCREEN_STATE request
+  * [rilmodem] Support for voice mailbox
+  * [rilmodem] Add support for ReleaseAndAnswer()
+  * [smsutil] Improve conversion of incoming UCS2 SMS to UTF-8
+  * Fix receiving USSD messages not part default GSM character set
+  * [rilmodem] Fix for call waiting status query
+  * [rilmodem] Add initial SIM ATK support
+  * [rilmodem] Allow subscription of stk notifications only once
+  * [rilmodem] Set current UI system language to environment variable
+  * [rilmodem] Refine SMS sending response value handling
+  * [rilmodem] Change call forwarding default service class per RIL design
+
+  [ Miia Leinonen ]
+  * Bug 7937: Telephony: Call hold support missing from ofono
+  * rilmodem/voicecall: Support for call hold
+  * Offline mode support to oFono
+  * Prevent going to online after boot when SIM inserted and Offline enabled
+  * Prevent going to online after boot when SIM inserted and Offline enabled
+  * Merge branch 'master' of https://github.com/leinomii/ofono into oma_ofono
+  * Merge pull request #128 from jkangas/master
+  * Add MNC plugin changes from Canonical
+  * [rilmodem] Add Call Barring support
+  * [rilmodem] Fix for Call Barring commit
+  * [gril] Clean useless cast and improve handle_unsol_req readability
+  * [rilmodem] Enable SIM operations also in outdated SIM cards
+  * Merge pull request #189 from jkangas/next
+  * Merge pull request #191 from jkangas/next
+
+  [ Martin Pitt ]
+  * test: Make print calls compatible with Python 3
+  * test: Make exceptions compatible with Python 3
+  * test: Replace obsolete has_key() with "in"
+  * test: Move from static gobject bindings to GI
+  * test: Convert to Python 3
+
+  [ Pekka Lundstrom ]
+  * [init] Added boot-time requirement to be started after dbus service
+  * Merge pull request #173 from plundstr/master
+  * [packaking] get rid off .yaml
+  * [packaking] Add fail safe to post scripts
+  * No restart on update
+  * Merge pull request #181 from plundstr/master
+
+  [ Anderson Lizardo ]
+  * gdbus: Fix memory leak
+  * gdbus: Fix incorrect DBusConnection reference counting
+
+  [ Richard Braakman ]
+  * [gdbus] Handle dbus disconnect signal
+
+  [ tkenakka ]
+  * Merge pull request #35 from jpoutiai/master
+  * Merge pull request #36 from jkangas/master
+  * Merge pull request #40 from jpoutiai/master
+  * Merge pull request #41 from jkangas/master
+  * Merge pull request #43 from jpoutiai/master
+  * Merge pull request #47 from jkangas/master
+  * Merge pull request #48 from jpoutiai/master
+  * Merge pull request #52 from marttipiirainen/sms_status
+  * Merge pull request #54 from marttipiirainen/master
+  * Merge pull request #55 from jkangas/master
+  * Merge pull request #72 from ptakalok/master
+  * Merge pull request #82 from jpoutiai/master
+  * Merge pull request #100 from jkangas/master
+  * Merge pull request #120 from jkangas/forwarding
+  * Merge pull request #122 from monich/master
+
+  [ Bastien Nocera ]
+  * gdbus: Fix trying to remove already removed sources
+
+  [ Petri M. Gerdt ]
+  * nettime: Network time plugin
+  * [nettime] Prefer CLOCK_BOOTTIME over CLOCK_MONOTONIC
+
+  [ leinomii ]
+  * Merge pull request #63 from ptakalok/master
+  * Merge pull request #68 from jpoutiai/master
+  * Merge pull request #101 from jkangas/master
+  * Merge pull request #105 from jkangas/master
+
+  [ ptakalok ]
+  * Merge pull request #51 from leinomii/offline2
+  * Merge pull request #59 from marttipiirainen/autoanswer
+  * Merge pull request #64 from leinomii/master
+  * Merge pull request #66 from marttipiirainen/callcause
+  * Merge pull request #70 from jkangas/master
+  * Merge pull request #73 from ptakalok/master
+  * Merge pull request #90 from jkangas/master
+  * Merge pull request #91 from jkangas/master
+
+  [ jkangas ]
+  * Merge pull request #34 from jkangas/master
+  * Merge pull request #50 from jpoutiai/master
+  * [rilmodem] Request network gprs state always when network state changes
+  * [rilmodem] Listen only network status and core state to set attached state
+  * [rilmodem] Enable roaming allowed setting manipulation
+  * [rilmodem] Enable context deactivation when RoamingAllowed is set to FALSE
+
+  [ Marko Saukko ]
+  * Merge pull request #45 from jkangas/master
+  * [systemd] Make it possible to provide cmdline options with environment files so each adaptation can do their own modifications if needed.
+
+  [ Vinicius Costa Gomes ]
+  * bluetooth: Add define for SCO voice settings
+  * handsfree-audio: Add setting SCO air mode
+  * handsfree-audio: Detect transparent SCO in kernel
+  * handsfree-audio: Set socket parameters
+  * handsfree-audio: Don't register if no defer_setup
+  * handsfree-audio: Don't listen() if no defer_setup
+
+  [ amccarthy ]
+  * Merge pull request #29 from amccarthy/settings-fix
+
+  [ Aaron McCarthy ]
+  * Add /var/lib/ofono directory with correct permissions to rpm.
+
+  [ Anthony Viallard ]
+  * SIMCOM: add a quirk for AT+CNMI command building
+  * SIMCOM: add a quirk for signal strength reporting
+  * SIMCOM: add a quirk to fix crsm request
+
+  [ Jesper Larsen ]
+  * sim900: Enable serial receiver
+  * sim900: Fix order of dlc prefixes
+  * atmodem: Add vendor entry for SIM900 module
+  * atmodem: Add gprs-context quirk for SIM900
+  * sim900: Use SIM900 quirk for gprs context
+
+  [ Lucas De Marchi ]
+  * build-sys: Use libgdbus-internal.la
+
+  [ Islam Amer ]
+  * Squashed 'ofono/' content from commit 649ee6b
+  * [packaging] add mer rpm packaging
+  * Merge commit 'eb0e3ed6674f93aa03fbce68460509ac01559fcd'
+  * Squashed 'ofono/' changes from 649ee6b..de0ccde
+  * Merge pull request #2 from jkangas/master
+  * Merge pull request #3 from jkangas/master
+  * Merge pull request #4 from jkangas/master
+  * Merge pull request #5 from jkangas/master
+  * Merge pull request #6 from jkangas/master
+  * Merge pull request #7 from jkangas/master
+  * Merge pull request #8 from jusa/dev
+  * Merge pull request #9 from jkangas/master
+  * Merge pull request #10 from jkangas/master
+  * Merge pull request #11 from jkangas/master
+  * Merge pull request #12 from marttipiirainen/master
+  * Merge pull request #13 from jkangas/master
+  * Merge pull request #14 from marttipiirainen/master
+  * Merge pull request #15 from jkangas/master
+  * Merge pull request #17 from jkangas/master
+  * Merge pull request #18 from jkangas/master
+  * Merge pull request #19 from marttipiirainen/master
+  * Merge pull request #20 from jkangas/master
+  * Merge pull request #21 from ptakalok/master
+  * Merge pull request #22 from jkangas/master
+  * Merge pull request #23 from ptakalok/master
+  * Merge pull request #24 from ptakalok/master
+  * Merge pull request #25 from marttipiirainen/master
+  * Merge pull request #26 from jkangas/master
+  * Merge pull request #27 from jkangas/master
+  * Merge pull request #28 from ptakalok/master
+
+  [ Gustavo Padovan ]
+  * dundee: return error if there is a connection procedure ongoing
+
+  [ Frederic Danis ]
+  * hfpmodem: Fix ECNR HF feature
+  * hfp_hf_bluez5: Fix SDP record with correct features
+
+  [ Henrique Dante de Almeida ]
+  * gdbus: Remove proxies when client disconnects
+
+ -- r3vn <giuseppe.corti@protonmail.com>  Fri, 30 Oct 2020 00:32:13 +0100
+
