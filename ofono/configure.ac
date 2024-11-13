@@ -215,6 +215,17 @@ AC_SUBST(BLUEZ_CFLAGS)
 AC_SUBST(BLUEZ_LIBS)
 fi
 
+AC_ARG_ENABLE(cares, AC_HELP_STRING([--disable-cares],
+				[disable DNS client using c-ares library]),
+						[enable_cares=${enableval}])
+if (test "${enable_cares}" != "no"); then
+	PKG_CHECK_MODULES(CARES, libcares, dummy=yes,
+						AC_MSG_ERROR(libcares is required))
+fi
+AC_SUBST(CARES_CFLAGS)
+AC_SUBST(CARES_LIBS)
+AM_CONDITIONAL(CARES, test "${enable_cares}" != "no")
+
 AM_CONDITIONAL(BLUEZ4, test "${enable_bluetooth}" != "no" && test "${enable_bluez4}" = "yes")
 AM_CONDITIONAL(BLUETOOTH, test "${enable_bluetooth}" != "no")
 

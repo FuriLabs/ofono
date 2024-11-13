@@ -30,7 +30,8 @@ pkginclude_HEADERS = include/log.h include/plugin.h include/history.h \
 			include/netmon.h include/lte.h include/ims.h \
 			include/slot.h include/cell-info.h \
 			include/storage.h include/conf.h include/misc.h \
-			include/mtu-limit.h
+			include/mtu-limit.h \
+			include/dns-client.h
 
 nodist_pkginclude_HEADERS = include/version.h
 
@@ -533,6 +534,14 @@ builtin_sources += plugins/connman.c
 builtin_modules += mnclength
 builtin_sources += plugins/mnclength.c
 
+if CARES
+builtin_modules += c_ares_dns_client
+builtin_sources += plugins/c-ares-dns-client.c
+
+builtin_cflags += @CARES_CFLAGS@
+builtin_libadd += @CARES_LIBS@
+endif
+
 if BLUETOOTH
 if BLUEZ4
 builtin_modules += sap
@@ -725,7 +734,8 @@ src_ofonod_SOURCES = $(builtin_sources) $(gatchat_sources) src/ofono.ver \
 			src/cell-info.c src/cell-info-dbus.c \
 			src/cell-info-control.c \
 			src/sim-info.c src/sim-info-dbus.c \
-			src/conf.c src/mtu-limit.c
+			src/conf.c src/mtu-limit.c \
+			src/dns-client.c
 
 src_ofonod_LDADD = gdbus/libgdbus-internal.la $(builtin_libadd) \
 			@GLIB_LIBS@ @DBUS_LIBS@ -ldl
