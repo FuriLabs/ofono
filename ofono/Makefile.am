@@ -113,9 +113,6 @@ gril_sources = gril/gril.h gril/gril.c \
 
 btio_sources = btio/btio.h btio/btio.c
 
-builtin_modules += cellinfo_netmon generic_phonebook
-builtin_sources += plugins/cellinfo-netmon.c plugins/generic-phonebook.c
-
 if UDEV
 builtin_cflags += @UDEV_CFLAGS@
 builtin_libadd += @UDEV_LIBS@
