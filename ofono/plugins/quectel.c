@@ -27,7 +27,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
-
+#include <ell/ell.h>
 #include <glib.h>
 #include <sys/stat.h>
 #include <sys/ioctl.h>
