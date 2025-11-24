@@ -417,8 +417,9 @@ struct cbs {
 	guint8 dcs;				/* 8 bits */
 	guint8 max_pages;			/* 4 bits */
 	guint8 page;				/* 4 bits */
-	guint8 udlen;
-	guint8 ud[82];
+	guint16 udlen;
+	/* a bit wasteful but greatly simplifies the implementation */
+	guint8 ud[1230];
 };
 
 struct cbs_assembly_node {
@@ -594,7 +595,9 @@ gboolean cbs_dcs_decode(guint8 dcs, gboolean *udhi, enum sms_class *cls,
 			enum cbs_language *language, gboolean *iso639);
 
 gboolean iso639_2_from_language(enum cbs_language lang, char *iso639);
-gboolean cbs_decode(const unsigned char *pdu, int len, struct cbs *out);
+void cbs_decode_serial(const unsigned char *serial, struct cbs *out);
+gboolean cbs_decode_gsm(const unsigned char *pdu, int len, struct cbs *out);
+gboolean cbs_decode_umts(const unsigned char *pdu, int len, struct cbs *out);
 gboolean cbs_encode(const struct cbs *cbs, int *len, unsigned char *pdu);
 gboolean cbs_extract_app_port(const struct cbs *cbs, int *dst, int *src,
 				gboolean *is_8bit);

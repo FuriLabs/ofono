@@ -186,7 +186,22 @@ void ofono_cbs_notify(struct ofono_cbs *cbs, const unsigned char *pdu,
 	if (cbs->assembly == NULL)
 		return;
 
-	if (!cbs_decode(pdu, pdu_len, &c)) {
+	/*
+	 * some devices apparently translate more recent messages down to
+	 * older formats - this means we can't just rely on the netreg
+	 * technology to decide how to parse these - but this is still the
+	 * first step to avoid garbage getting decoded by mistake
+	 */
+	gboolean is_decoded = false;
+	int technology = ofono_netreg_get_technology(cbs->netreg);
+
+	if (technology != ACCESS_TECHNOLOGY_GSM &&
+			technology != ACCESS_TECHNOLOGY_GSM_COMPACT &&
+			technology != ACCESS_TECHNOLOGY_GSM_EGPRS) {
+		is_decoded = cbs_decode_umts(pdu, pdu_len, &c);
+	}
+
+	if (!is_decoded && !cbs_decode_gsm(pdu, pdu_len, &c)) {
 		ofono_error("Unable to decode CBS PDU");
 		return;
 	}

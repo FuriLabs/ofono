@@ -3929,15 +3929,20 @@ gboolean cbs_dcs_decode(guint8 dcs, gboolean *udhi, enum sms_class *cls,
 	return TRUE;
 }
 
-gboolean cbs_decode(const unsigned char *pdu, int len, struct cbs *out)
+void cbs_decode_serial(const unsigned char *serial, struct cbs *out)
+{
+	out->gs = (enum cbs_geo_scope) ((serial[0] >> 6) & 0x03);
+	out->message_code = ((serial[0] & 0x3f) << 4) | ((serial[1] >> 4) & 0xf);
+	out->update_number = (serial[1] & 0xf);
+}
+
+gboolean cbs_decode_gsm(const unsigned char *pdu, int len, struct cbs *out)
 {
 	/* CBS is (almost) always a fixed length of 88 bytes */
 	if (len < 6 || len > 88)
 		return FALSE;
 
-	out->gs = (enum cbs_geo_scope) ((pdu[0] >> 6) & 0x03);
-	out->message_code = ((pdu[0] & 0x3f) << 4) | ((pdu[1] >> 4) & 0xf);
-	out->update_number = (pdu[1] & 0xf);
+	cbs_decode_serial(pdu, out);
 	out->message_identifier = (pdu[2] << 8) | pdu[3];
 	out->dcs = pdu[4];
 	out->max_pages = pdu[5] & 0xf;
@@ -3960,8 +3965,58 @@ gboolean cbs_decode(const unsigned char *pdu, int len, struct cbs *out)
 
 	out->udlen = (guint8)(len - 6);
 	memcpy(out->ud, pdu + 6, out->udlen);
-	if (out->udlen < 82)
-		memset(out->ud + out->udlen, 0, 82 - out->udlen);
+	if (out->udlen < 1230)
+		memset(out->ud + out->udlen, 0, 1230 - out->udlen);
+
+	return TRUE;
+}
+
+gboolean cbs_decode_umts(const unsigned char *pdu, int len, struct cbs *out)
+{
+	/*
+	 * 3GPP TS 23.041 / 9.4.2.2
+	 * octet | parameter
+	 *     0 | message type
+	 *   1-2 | message id
+	 *   3-4 | serial number
+	 *     5 | dcs
+	 *   6-n | - cb data -
+	 *     6 | number of pages
+	 *  7-89 | page 1 data
+	 *    90 | page 1 length
+	 *   ... | other pages, up to 15 total
+	 */
+
+	if (len < 90)
+		return FALSE;
+
+	cbs_decode_serial(pdu + 3, out);
+	out->message_identifier = (pdu[1] << 8) | pdu[2];
+	out->dcs = pdu[5];
+	/*
+	 * these are set for backwards compatibility as UMTS pages are not split
+	 * between multiple messages
+	 */
+	out->max_pages = 1;
+	out->page = 1;
+
+	guint8 max_pages = pdu[6];
+	int i;
+
+	if (len < max_pages * 83 + 7)
+		return FALSE;
+
+	out->udlen = 0;
+
+	for (i = 7; i < max_pages * 83 + 7; i += 83) {
+		guint8 page_len = pdu[i + 82];
+
+		memcpy(out->ud + out->udlen, pdu + i, page_len);
+		out->udlen += page_len;
+	}
+
+	if (out->udlen < 1230)
+		memset(out->ud + out->udlen, 0, 1230 - out->udlen);
 
 	return TRUE;
 }
