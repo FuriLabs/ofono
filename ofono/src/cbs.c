@@ -23,6 +23,7 @@
 #include <config.h>
 #endif
 
+#include <ctype.h>
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>
@@ -171,6 +172,62 @@ static void cbs_dispatch_text(struct ofono_cbs *cbs, enum sms_class cls,
 				DBUS_TYPE_INVALID);
 }
 
+/*
+ * XXX: there are copies of this function across codebase. There's also one copy
+ * of it in libell. I've tried to use that but I hit weird linking error. so
+ * for now add yet another copy... (this copy is copied from drivers/qmimodem/
+ * qmi.c)
+ */
+typedef void (*__hexdump_func_t)(const char *str, void *user_data);
+static void __hexdump(const char dir, const unsigned char *buf, size_t len,
+				__hexdump_func_t function, void *user_data)
+{
+	static const char hexdigits[] = "0123456789abcdef";
+	char str[68];
+	size_t i;
+
+	if (!function || !len)
+		return;
+
+	str[0] = dir;
+
+	for (i = 0; i < len; i++) {
+		str[((i % 16) * 3) + 1] = ' ';
+		str[((i % 16) * 3) + 2] = hexdigits[buf[i] >> 4];
+		str[((i % 16) * 3) + 3] = hexdigits[buf[i] & 0xf];
+		str[(i % 16) + 51] = isprint(buf[i]) ? buf[i] : '.';
+
+		if ((i + 1) % 16 == 0) {
+			str[49] = ' ';
+			str[50] = ' ';
+			str[67] = '\0';
+			function(str, user_data);
+			str[0] = ' ';
+		}
+	}
+
+	if (i % 16 > 0) {
+		size_t j;
+
+		for (j = (i % 16); j < 16; j++) {
+			str[(j * 3) + 1] = ' ';
+			str[(j * 3) + 2] = ' ';
+			str[(j * 3) + 3] = ' ';
+			str[j + 51] = ' ';
+		}
+		str[49] = ' ';
+		str[50] = ' ';
+		str[67] = '\0';
+		function(str, user_data);
+	}
+}
+
+static void log_hexdump(const char *hexdump, G_GNUC_UNUSED void *user_data)
+{
+	/* XXX: if upstreaming, ofono_debug() is probably better. */
+	ofono_error("%s", hexdump);
+}
+
 void ofono_cbs_notify(struct ofono_cbs *cbs, const unsigned char *pdu,
 				int pdu_len)
 {
@@ -202,7 +259,9 @@ void ofono_cbs_notify(struct ofono_cbs *cbs, const unsigned char *pdu,
 	}
 
 	if (!is_decoded && !cbs_decode_gsm(pdu, pdu_len, &c)) {
-		ofono_error("Unable to decode CBS PDU");
+		ofono_error("Unable to decode CBS PDU (technology = %s).",
+			registration_tech_to_string(technology));
+		__hexdump('<', pdu, pdu_len, &log_hexdump, NULL);
 		return;
 	}
 
