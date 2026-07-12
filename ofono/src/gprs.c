@@ -25,6 +25,7 @@
 #include <config.h>
 #endif
 
+#include <linux/types.h>
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>
@@ -743,6 +744,55 @@ done:
 	close(sk);
 }
 
+/*
+ * Not all libc headers expose struct in6_ifreq (it's a Linux UAPI type,
+ * not POSIX), so define our own under a private name to avoid colliding
+ * with any declaration a given libc does provide.
+ */
+struct ofono_in6_ifreq {
+	struct in6_addr ifr6_addr;
+	__u32 ifr6_prefixlen;
+	int ifr6_ifindex;
+};
+
+static void pri_set_ipv6_addr(const char *interface, const char *address,
+				unsigned char prefix_len)
+{
+	struct ifreq ifr;
+	struct ofono_in6_ifreq ifr6;
+	int sk;
+
+	if (interface == NULL || address == NULL)
+		return;
+
+	sk = socket(PF_INET6, SOCK_DGRAM, 0);
+	if (sk < 0)
+		return;
+
+	memset(&ifr, 0, sizeof(ifr));
+	strncpy(ifr.ifr_name, interface, IFNAMSIZ);
+
+	if (ioctl(sk, SIOCGIFINDEX, &ifr) < 0) {
+		ofono_error("Failed to get ifindex for %s", interface);
+		goto done;
+	}
+
+	memset(&ifr6, 0, sizeof(ifr6));
+	ifr6.ifr6_ifindex = ifr.ifr_ifindex;
+	ifr6.ifr6_prefixlen = prefix_len ? prefix_len : 64;
+
+	if (inet_pton(AF_INET6, address, &ifr6.ifr6_addr) != 1) {
+		ofono_error("Failed to parse IPv6 address %s", address);
+		goto done;
+	}
+
+	if (ioctl(sk, SIOCSIFADDR, &ifr6) < 0)
+		ofono_error("Failed to set interface IPv6 address");
+
+done:
+	close(sk);
+}
+
 static void pri_setproxy(const char *interface, const char *proxy)
 {
 	struct rtentry rt;
@@ -823,7 +873,7 @@ static void pri_update_mms_context_settings(struct pri_context *ctx)
 	struct ofono_gprs_context *gc = ctx->context_driver;
 	struct context_settings *settings = gc->settings;
 
-	if (ctx->message_proxy)
+	if (ctx->message_proxy && settings->ipv4)
 		settings->ipv4->proxy = g_strdup(ctx->message_proxy);
 
 	if (!pri_parse_proxy(ctx, ctx->message_proxy))
@@ -831,8 +881,14 @@ static void pri_update_mms_context_settings(struct pri_context *ctx)
 
 	DBG("proxy %s port %u", ctx->proxy_host, ctx->proxy_port);
 
-	if (ctx->type == OFONO_GPRS_CONTEXT_TYPE_MMS)
-		pri_set_ipv4_addr(gc->interface, settings->ipv4->ip);
+	if (ctx->type == OFONO_GPRS_CONTEXT_TYPE_MMS) {
+		if (settings->ipv4)
+			pri_set_ipv4_addr(gc->interface, settings->ipv4->ip);
+
+		if (settings->ipv6 && settings->ipv6->ip)
+			pri_set_ipv6_addr(gc->interface, settings->ipv6->ip,
+						settings->ipv6->prefix_len);
+	}
 
 	if (ctx->proxy_host)
 		pri_setproxy(gc->interface, ctx->proxy_host);
