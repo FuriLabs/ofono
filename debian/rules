@@ -17,6 +17,7 @@ CONFIGURE_FLAGS := \
     --disable-isimodem \
     --disable-qmimodem \
     --disable-upower \
+    --disable-bluetooth \
 
 %:
 	dh $@ --sourcedirectory=ofono
