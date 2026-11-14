@@ -51,6 +51,8 @@
 #define TXQ_MAX_RETRIES 4
 #define NETWORK_TIMEOUT 332
 
+#define SR_ASSEMBLY_MAX_AGE (7 * 24 * 60 * 60)
+
 static gboolean tx_next(gpointer user_data);
 
 static GSList *g_drivers = NULL;
@@ -1652,8 +1654,11 @@ static void handle_sms_status_report(struct ofono_sms *sms,
 	DBG("");
 
 	if (status_report_assembly_report(sms->sr_assembly, incoming, uuid.uuid,
-						&delivered) == FALSE)
+						&delivered) == FALSE) {
+		DBG("Status report with reference %u did not complete a sent "
+			"message", incoming->status_report.mr);
 		return;
+	}
 
 	__ofono_history_sms_send_status(modem, &uuid, time(NULL),
 			delivered ? OFONO_HISTORY_SMS_STATUS_DELIVERED :
@@ -2226,6 +2231,8 @@ void ofono_sms_register(struct ofono_sms *sms)
 		sms->assembly = sms_assembly_new(imsi);
 
 		sms->sr_assembly = status_report_assembly_new(imsi);
+		status_report_assembly_expire(sms->sr_assembly,
+					time(NULL) - SR_ASSEMBLY_MAX_AGE);
 
 		sms_load_settings(sms, imsi);
 	} else {
